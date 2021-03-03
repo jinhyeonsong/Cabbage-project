@@ -48,7 +48,7 @@
     outline: none;
     font-family: AppleSDGothic, sans-serif;
 }
-#singUpReadyContent>a{
+.nextBtn{
     position: absolute;
     top: 240px;
     left: 450px;
@@ -57,9 +57,15 @@
     height: 50px;
     font-size: 22px;
     color: white;
-    background-color: #0B4D40;
+    background-color: #424242;
     text-align: center;
     line-height: 50px;
     letter-spacing: 10px;
     border-radius: 5px;
+    pointer-events: none;
+    font-family: AppleSDGothic, sans-serif;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    
 }

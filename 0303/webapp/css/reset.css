@@ -57,4 +57,4 @@ a:visited{color:black; text-decoration: none;}
     line-height: 0;
     overflow:hidden;
     text-indent: -9999px;
-}<!--css 상에서는 숨기지만 리더기가 읽어준다. -->
+}/*css 상에서는 숨기지만 리더기가 읽어준다.*/
