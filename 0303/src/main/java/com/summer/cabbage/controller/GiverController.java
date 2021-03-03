@@ -22,4 +22,6 @@ public class GiverController {
 		model.addAllAttributes(service.getGiverDetail(no));
 		return "giverInform";
 	}
+	
+	
 }

@@ -4,6 +4,10 @@
             width: 100%;
             background:#fff;
             border-bottom: 1px solid #8c8c8c;
+            z-index:10;
+        }
+        #container{
+        	padding-top: 80px 
         }
         .header_contents_box{
             width: 1100px;
@@ -75,7 +79,7 @@
             color: #424242;
             cursor: pointer;
             background-color: transparent;
-            border:none;
+            border: none;
         }
 
         /*로그인*/
@@ -154,3 +158,4 @@
             border-bottom: 1px solid #d2d2d2;
         }
         
+

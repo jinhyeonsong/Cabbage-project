@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+		body{
+            font-family: "AppleSDGothic",sans-serif;
+            background-color: rgb(244, 255, 253);
+        }
+        html{
+            padding-right: 17px;
+        }
+        #wrap{
+            width: 1100px;
+            margin: auto;
+        }
+        #contents input[type=radio]{
+            display: none;
+        }
+        #contents input[type=radio]:checked + .signLabel{
+            background: #3C7166;
+            color: #fff;
+        }
+        .signLabel{
+            width: 200px;
+            height: 40px;
+            font-size: 16px;
+            text-align: center;
+            line-height: 45px;
+            padding:5px 0;
+            cursor: pointer;
+            display: inline-block;
+            margin: 0;
+            background-color: rgb(224, 224, 224);
+            color: #424242;
+        }
+        .logo{
+            display: block;
+            margin: auto;
+            margin-top: 100px;
+        }
+        h2{
+            font-size: 24px;
+            display: block;
+            text-align: center;
+            width: 350px;
+            margin: auto;
+            margin-top: 100px;
+        }
+        .signupSelectBox{
+            width: 405px;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        .btn{
+            width: 100px;
+            height: 40px;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            margin: auto;
+            background-color: #c0392b;
+            font-weight: bold;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 40px;
+        }
+        .takerIntroduce span{
+            width: 406px;
+            height: 83px;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 200px;
+            padding: 5px;
+            font-size: 18px;
+            display: block;
+            line-height: 50px;
+        }
+        .giverIntroduce{
+            display: none;
+
+        }
+        .giverIntroduce .btn{
+            margin-bottom: 50px;
+        }
+        .giverIntroduce img{
+            display: block;
+            margin: auto;
+        }

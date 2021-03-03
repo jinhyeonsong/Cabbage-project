@@ -51,4 +51,21 @@ public class MemberController {
 			return "redirect:/log";
 		}
 	}
+	
+	@RequestMapping(value="/signupSelect", method=RequestMethod.GET)
+	public String sdfsf() {
+		return "signupSelect";
+	}
+	@RequestMapping(value="/signupGiverStep1", method=RequestMethod.GET)
+	public String sdfqsf() {
+		return "signupGiverStep1";
+	}
+	@RequestMapping(value="/signupGiverStep2", method=RequestMethod.GET)
+	public String sdfswf() {
+		return "signupGiverStep2";
+	}
+	@RequestMapping(value="/signupGiverStep3", method=RequestMethod.GET)
+	public String sdfesf() {
+		return "signupGiverStep3";
+	}
 }
