@@ -1,0 +1,155 @@
+@charset "UTF-8";
+  #header{
+            position: fixed;
+            width: 100%;
+            background:#fff;
+            border-bottom: 1px solid #8c8c8c;
+        }
+        .header_contents_box{
+            width: 1100px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+        /*로고*/
+        .hcb_logo a>img{
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            top: 50%;
+            margin-top: -20px;
+        }
+        .hcb_logo a>span{
+            position: absolute;
+            line-height: 80px;
+            margin-left: 80px;
+            font-size: 25px;
+            color: #424242;
+            font-family: 'AppleSDGothic', serif;
+        }
+
+        /*카테고리*/
+        .hcb_category{margin-left: 200px}
+        .hcb_category ul{
+            /*display: none;*/
+        }
+        .hcb_category ul>li>a{
+            float: left;
+            width: 80px;
+            text-align: center;
+            line-height: 80px;
+            font-size: 20px;
+            color: #424242;
+            font-family: 'AppleSDGothic', serif;
+        }
+        .hcb_category ul>li>a:hover{
+            background-color: #713C47;
+            color: white;
+            font-size: 22px;
+        }
+
+        /*검색*/
+        .hcb_search{margin-left: 650px;}
+        .hcb_search form>div{
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            height: 40px;
+            border-bottom: 1px solid black;
+            background-color: white;
+        }
+        .hcb_search form>div>input[type="text"]{
+            width: 250px;
+            height: 40px;
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+            font-size: 16px;
+            padding-right: 40px;
+        }
+        .hcb_search form>div>button{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            margin-left: -40px;
+            color: #424242;
+            cursor: pointer;
+            background-color: transparent;
+        }
+
+        /*로그인*/
+        .hcb_login{margin-left: 1000px;}
+        /*로그인 안했을 경우*/
+        .hcb_login_btn{
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            top: 50%;
+            margin-top: -20px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 18px;
+            font-family: 'AppleSDGothic', serif;
+            border: 1px solid #424242;
+            border-radius: 3px;
+            display: none;
+        }
+        .hcb_login_btn a{color: #424242}
+
+        /* 로그인 했을 경우 */
+        .hcb_profile{
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            top: 50%;
+            margin-top: -20px;
+            border: 1px solid #424242;
+            cursor: pointer;
+            border-radius: 50px;
+        }
+        /*부모요소*/
+        .hcb_profile p{
+            height: 40px;
+            font-size: 27px;
+            color: #424242;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        /*첫번째 아이콘*/
+        .hcb_profile p>i:nth-child(1){
+            font-size: 18px;
+            margin-left: 7px;
+        }
+        /*두번째 아이콘*/
+        .hcb_profile p>i:nth-child(2){
+            align-items: center;
+        }
+        /*아이콘 클릭했을 경우 마이페이지,로그아웃 list*/
+        .hcb_mypage_and_logout{display: none}
+        .hcb_mypage_and_logout ul{
+            position: absolute;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-left: -140px;
+            margin-top: 70px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+        .hcb_mypage_and_logout ul>li>a{
+            display: inline-block;
+            width: 200px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            font-family: 'AppleSDGothic', serif;
+            cursor: pointer;
+        }
+        .hcb_mypage_and_logout a:hover{
+            background-color: #8c8c8c;
+        }
+        .hcb_mypage_and_logout ul>li:nth-child(1):nth-child(1){
+            border-bottom: 1px solid #d2d2d2;
+        }
+        

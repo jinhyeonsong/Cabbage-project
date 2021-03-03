@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="givers">
+	<select id="selectNo" parameterType="int" resultType="Giver">
+		SELECT NO,BUSINESS_NUM businessNum,COMPANY,PHONE	
+		FROM givers
+		WHERE no=#{no}			
+	</select>
+	
+	<!-- 0302 오승주 ===================================================================== -->
+	<select id="selectDetail" parameterType="int" resultType="Giver">
+		SELECT g.no, g.business_num businessNum,g.company,g.phone,m.profile_img profileImg
+		FROM givers g,members m
+		WHERE g.no=m.no AND g.no=#{no}		
+	</select>
+	<!-- 0302 오승주 ===================================================================== -->
+</mapper>
+
