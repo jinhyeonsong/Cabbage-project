@@ -75,6 +75,7 @@
             color: #424242;
             cursor: pointer;
             background-color: transparent;
+            border:none;
         }
 
         /*로그인*/
