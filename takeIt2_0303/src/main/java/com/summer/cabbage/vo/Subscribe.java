@@ -4,14 +4,46 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Subscribe {
-	private int no, productNo, takerNo, price, zipCode;
-	private String takerMsg, addr, addrDetail, delLocation, receiver, addrOpt; 
+	private int no, productNo, takerNo, price, zipCode, giverNo;
+	private String takerMsg, addr, addrDetail, delLocation, receiver, addrOpt, phone, productName, id; 
 	private char status;
 	private Date deliveryStart, cancelDate;
 	private Timestamp regdate;
 	
 	public Subscribe() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public int getGiverNo() {
+		return giverNo;
+	}
+
+	public void setGiverNo(int giverNo) {
+		this.giverNo = giverNo;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public int getNo() {
@@ -133,6 +165,24 @@ public class Subscribe {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
+	
+	// 03-03 강필규 추가 핸드폰번호
+	public String getPhonenum1() {
+		return phone.substring(0,3);
+	}
+	public String getPhonenum2() {
+		return phone.substring(3,7);
+	}
+	public String getPhonenum3() {
+		return phone.substring(7,11);
+	}
+	
+	public String getPhoneTotal() {
+		
+		return getPhonenum1()+"-"+getPhonenum2()+"-"+getPhonenum3();
+		
+	}
+	// 03 - 03 강필규 추가 end
 	
 	
 }

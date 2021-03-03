@@ -27,7 +27,8 @@ public class GiverController {
 	@RequestMapping(value = "/giver/{giverNo}/order/check",method = RequestMethod.GET )
 	private String name(@PathVariable int giverNo, Model model) {
 		
-		model.addAttribute("list",service.getGiverOrderCheckList(giverNo));
+		model.addAllAttributes(service.getGiverOrderCheckList(giverNo));
 		return "orderCheck";
+		
 	}
 }

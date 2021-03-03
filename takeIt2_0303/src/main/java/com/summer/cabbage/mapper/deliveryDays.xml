@@ -8,5 +8,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM delivery_days
 		WHERE no=#{no}	
 	</select>
+	<select id="selectOrderCheckListDays" parameterType="int" resultType="DeliveryDay">
+		SELECT NO,PRODUCT_NO productNo,DAY	
+		FROM delivery_days
+		WHERE product_no = #{productNo}	
+	</select>
 </mapper>
 

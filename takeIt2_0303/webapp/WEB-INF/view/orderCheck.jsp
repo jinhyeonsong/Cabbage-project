@@ -52,8 +52,10 @@
             <div class="id_filter_condition">
                 <h2>상세조건</h2>
                 <select>
-                    <option>구독 상품명</option>
-                    <option name="">네고왕 마스크 구독</option>
+                    <option>전체</option>
+                    <c:forEach items="${lists }" var="list">
+                    	<option name="productName">${list.productName }</option>
+                    </c:forEach>
                 </select>
                 <button type="button" id="ioFilterBtn">적용</button>
             </div>
@@ -62,7 +64,7 @@
 
         <div class="io_goods_box">
             <div class="io_goods_box_top">
-                <div>목록 (총 1개)</div>
+                <div>목록 (총 ${count}개)</div>
                 <button type="button" id="ioSubscribeCancel">구독 취소</button>
             </div><!--io_goods_box_top-->
 
@@ -83,17 +85,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <c:forEach items="${lists}" var="list">
                             <tr>
                                 <td><input type="checkbox" name="chk_item"></td>
-                                <td>네고왕 마스크 구독</td>
-                                <td>2021-02-21</td>
-                                <td>월,화,수,목,금,토,일</td>
-                                <td>서울시 동작구 대금로 아이에라루오타워 41층 104호</td>
-                                <td>01-02 프리미엄 상품 심플베이직 +L 사이즈 *40 너두나두 야나두</td>
-                                <td><p>빨리 끝내고 자기소개서 써써써써써 써써써써 써써써썼 써써써써써써써써써 써써써써써야한다.!! 하루하루 지나가면 너 영어 잘하냐? 나두 잘한다</p></td>
-                                <td>wlsgus1568@naver.com</td>
-                                <td>010-1234-1234</td>
+                                <td>${list.productName }</td>
+                                <td>${list.deliveryStart }</td>
+                                <td><c:forEach items="${days}" var="day" >${day.day },</c:forEach></td>
+                                <td>${list.addr} ${list.addrDetail }</td>
+                                <td>무슨 옵션을 넣을까용?</td>
+                                <td><p>${list.takerMsg }</p></td>
+                                <td>${list.id }</td>
+                                <td>${list.phoneTotal }</td>
                             </tr>
+                       </c:forEach>
                             <tr>
                                 <td><input type="checkbox" name="chk_item"></td>
                                 <td>네고왕 마스크 구독</td>

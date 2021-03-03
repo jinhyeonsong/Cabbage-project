@@ -52,8 +52,9 @@
         display: none;
     }
     .io_term_list input:checked+label{
-        color: #424242;
+        color: #fff;
         border: 1px solid #424242;
+        background-color: #3C7166;
     }
     .io_term_list label{
         border: 1px solid #8c8c8c;
