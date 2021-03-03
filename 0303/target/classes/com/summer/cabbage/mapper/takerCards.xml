@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="takerCards">
+	<select id="selectNo" parameterType="int" resultType="takerCardVO">
+		SELECT NO,TAKER_NO takerNo,CARD_NUM cardNum,CVC,REGDATE		
+		FROM taker_cards
+		WHERE no=#{no}
+	</select>
+</mapper>
+
