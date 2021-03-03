@@ -70,14 +70,14 @@ public class MemberController {
 	@RequestMapping(value="/signupGiverStep3", method=RequestMethod.GET)
 	public String sdfesf(Model model, Giver giver,RedirectAttributes ra) {
 		
-		String giverBusinessNum = service.getGiverBusinessNum(giver).getBusinessNum();
+		Giver giverBusinessNum = service.getGiverBusinessNum(giver);
 		if(giverBusinessNum!=null) {
 			System.out.print("성공");
 			ra.addFlashAttribute("msg", "이미 등록된 사업자 번호입니다.");
 			return "redirect:/signupGiverStep2";
 		}else {
-			System.out.print("성공");
-			model.addAttribute("giver", service.getGiverBusinessNum(giver));
+			System.out.print("실패");
+			model.addAttribute("giver", giver);
 			return "signupGiverStep3";
 		}
 	
