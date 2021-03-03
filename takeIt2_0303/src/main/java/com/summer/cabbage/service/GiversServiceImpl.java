@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.summer.cabbage.dao.DeliveryDaysDAO;
 import com.summer.cabbage.dao.GiversDAO;
+import com.summer.cabbage.dao.ProductsDAO;
 import com.summer.cabbage.dao.SubscribesDAO;
 import com.summer.cabbage.vo.Subscribe;
 
@@ -21,6 +22,8 @@ public class GiversServiceImpl implements GiversService {
 	private SubscribesDAO subscribesDAO;
 	@Autowired
 	private DeliveryDaysDAO deliveryDaysDAO; 
+	@Autowired
+	private ProductsDAO productsDAO;
 	
 	// 0302 판매자 정보 더보기 : 오승주 ===============================
 	@Override
@@ -46,6 +49,7 @@ public class GiversServiceImpl implements GiversService {
 		map.put("lists",subscribesDAO.selectOrderCheckList(giverNo));
 		map.put("count",subscribesDAO.selectOrderCheckListCount(giverNo));
 		List<Subscribe> list = subscribesDAO.selectOrderCheckList(giverNo);
+		map.put("options",productsDAO.selectByGiverNo(giverNo));
 		
 		for (Subscribe subscribe : list) {
 			

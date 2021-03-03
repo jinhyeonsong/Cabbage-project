@@ -23,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE m.no = s.taker_no AND s.PRODUCT_NO = p.NO AND p.giver_no = #{giverNo} AND s.status = 'Y'
 	</select>
 	
+	
 	<!-- //03-03 강필규 추가 -->
 </mapper>
 

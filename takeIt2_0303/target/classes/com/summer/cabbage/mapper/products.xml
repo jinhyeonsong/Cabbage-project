@@ -8,5 +8,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM products
 		WHERE no=#{no}	
 	</select>
+	<!-- 03-03 강필규 추가 주문조회 상품 목록 필터 옵션 -->
+	<select id="selectByGiverNo" parameterType="int" resultType="Product">
+		SELECT NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE
+		FROM products 
+		WHERE giver_no = #{giverNo}
+	</select>
+	<!-- //03-03 강필규 추가  -->
 </mapper>
 
