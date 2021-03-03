@@ -5,4 +5,6 @@ import java.util.Map;
 public interface GiversService {
 
 	Map<String,Object> getGiverDetail(int no);
+
+	public  getGiverOrderCheckList(int giverNo);
 }

@@ -32,8 +32,20 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 	<!-- mapper 경로 설정 -->
 	<mappers>
-		<mapper resource="/com/summer/cabbage/mapper/givers.xml" />
-		<mapper resource="/com/summer/cabbage/mapper/members.xml" />
+		<mapper resource="com/summer/cabbage/mapper/categories.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/deliveryDays.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/deliveryRegions.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/givers.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/members.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/payments.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/products.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/regions.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/replies.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/reviews.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/subscribes.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/takerAddrs.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/takerCards.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/takers.xml"/>
 	</mappers>
 
 </configuration>

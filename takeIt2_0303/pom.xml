@@ -91,5 +91,11 @@
 		<artifactId>java-image-scaling</artifactId>
 		<version>0.8.6</version>
 	</dependency>
+	<!-- email 전송 03-03 강필규 추가 -->
+	<dependency>
+	<groupId>org.apache.commons</groupId>
+	<artifactId>commons-email</artifactId>
+	<version>1.2</version>
+</dependency>
   </dependencies>
 </project>

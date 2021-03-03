@@ -22,4 +22,12 @@ public class GiverController {
 		model.addAllAttributes(service.getGiverDetail(no));
 		return "giverInform";
 	}
+	
+	//03-03 강필규 추가
+	@RequestMapping(value = "/giver/{giverNo}/order/check",method = RequestMethod.GET )
+	private String name(@PathVariable int giverNo, Model model) {
+		
+		model.addAttribute("list",service.getGiverOrderCheckList(giverNo));
+		return "orderCheck";
+	}
 }

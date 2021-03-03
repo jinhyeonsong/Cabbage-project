@@ -8,7 +8,7 @@ public interface MembersService {
 
 	Member login(Member member);
 
-	public void sendEmail(Member vo, String div);
-	void findPw(HttpServletResponse resp, String id);
+	public void sendEmail(Member member, String div);
+	public void findPw(Member member);
 
 }

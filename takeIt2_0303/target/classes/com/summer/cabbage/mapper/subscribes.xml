@@ -3,8 +3,8 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="subscribes">
-	<select id="selectNo" parameterType="int" resultType="subscribeVO">
-		SELECT NO,PRODUCT_NO productNo,TAKER_NO takerNo,STATUS,ADDR_OPT_NO addrOptNo,DELIVERY_START deliveryStart,PRICE,TAKER_MSG takerMsg,CANCEL_DATE cancelDate,ZIP_CODE zipCode,ADDR,ADDR_DETAIL addrDetail,DEL_LOCATION delLocation,RECEIVER,REGDATE				
+	<select id="selectNo" parameterType="int" resultType="Subscribe">
+		SELECT NO,PRODUCT_NO productNo,TAKER_NO takerNo,STATUS,ADDR_OPT addrOpt,DELIVERY_START deliveryStart,PRICE,TAKER_MSG takerMsg,CANCEL_DATE cancelDate,ZIP_CODE zipCode,ADDR,ADDR_DETAIL addrDetail,DEL_LOCATION delLocation,RECEIVER,REGDATE				
 		FROM subscribes
 		WHERE no=#{no}		
 	</select>

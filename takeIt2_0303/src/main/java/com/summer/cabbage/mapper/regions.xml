@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="regions">
-	<select id="selectNo" parameterType="int" resultType="regionVO">
+	<select id="selectNo" parameterType="int" resultType="Region">
 		SELECT NO,NAME,PRIOR_NO priorNo	
 		FROM regions
 		WHERE no=#{no}

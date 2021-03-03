@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="products">
-	<select id="selectNo" parameterType="int" resultType="productVO">
+	<select id="selectNo" parameterType="int" resultType="Product">
 		SELECT NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE			
 		FROM products
 		WHERE no=#{no}	

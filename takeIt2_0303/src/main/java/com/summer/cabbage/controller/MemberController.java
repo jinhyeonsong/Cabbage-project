@@ -28,22 +28,7 @@ public class MemberController {
 		return "/login";
 	}
 	
-	@RequestMapping(value="/find/password",method = RequestMethod.GET )
-	public String findPassword(){
-		
-		return "/findPassword";
-		
-	}
-	
-	@RequestMapping(value="/find/password",method = RequestMethod.PUT )
-	public String findPassword(Member member,HttpServletResponse resp){
-		
-		service.findPw(resp, member.getId());
-		
-		return "redirect:/log";
-		
-	}
-	
+
 	
 	@RequestMapping(value="/log",method=RequestMethod.POST)
 	public String login(Member member, HttpSession session, RedirectAttributes ra) {
@@ -69,6 +54,24 @@ public class MemberController {
 			return "redirect:/log";
 		}
 	}
+	
+	// 03-03 강필규 추가
+	@RequestMapping(value="/find/password",method = RequestMethod.GET )
+	public String findPassword(){
+		
+		return "findPassword";
+		
+	}
+	
+	@RequestMapping(value="/find/password",method = RequestMethod.PUT )
+	public String findPassword(Member member){
+		
+		service.findPw(member);
+		
+		return "redirect:/log";
+		
+	}
+	// 03-03 강필규 추가 end
 	
 	
 }

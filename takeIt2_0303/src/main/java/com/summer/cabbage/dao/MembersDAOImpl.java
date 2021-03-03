@@ -16,4 +16,10 @@ public class MembersDAOImpl implements MembersDAO {
 		// TODO Auto-generated method stub
 		return session.selectOne("members.selectLogin",member);
 	}
+	@Override
+	public int updatePw(Member member) {
+		
+		return session.update("members.updatePw",member);
+		
+	}
 }

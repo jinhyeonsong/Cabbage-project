@@ -9,5 +9,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM members
 		WHERE id=#{id} AND password =#{password} AND type=#{type}
 	</select>
+	<!--  03-03 강필규 작성 -->
+	<update id="updatePw" parameterType="Member">
+		update members
+		set password = #{password}
+		where id = #{id}
+	</update>
+	<!-- // 03-03 강필규 작성 -->
 </mapper>
 

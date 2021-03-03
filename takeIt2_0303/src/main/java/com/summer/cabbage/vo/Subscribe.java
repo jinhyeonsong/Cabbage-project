@@ -4,8 +4,8 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Subscribe {
-	private int no, productNo, takerNo, addrOptNo, price, zipCode;
-	private String takerMsg, addr, addrDetail, delLocation, receiver; 
+	private int no, productNo, takerNo, price, zipCode;
+	private String takerMsg, addr, addrDetail, delLocation, receiver, addrOpt; 
 	private char status;
 	private Date deliveryStart, cancelDate;
 	private Timestamp regdate;
@@ -38,12 +38,12 @@ public class Subscribe {
 		this.takerNo = takerNo;
 	}
 
-	public int getAddrOptNo() {
-		return addrOptNo;
+	public String getAddrOpt() {
+		return addrOpt;
 	}
 
-	public void setAddrOptNo(int addrOptNo) {
-		this.addrOptNo = addrOptNo;
+	public void setAddrOpt(String addrOpt) {
+		this.addrOpt = addrOpt;
 	}
 
 	public int getPrice() {

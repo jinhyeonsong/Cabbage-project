@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="deliveryRegions">
-	<select id="selectNo" parameterType="int" resultType="deliveryRegionVO">
+	<select id="selectNo" parameterType="int" resultType="DeliveryRegion">
 		SELECT NO,PRODUCT_NO productNo,AREA_NO areaNo,PRICE,REGDATE	
 		FROM delivery_regions
 		WHERE no=#{no}	
