@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TakeIt</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/appleSDGothic.css"/>
+</head>
+<body>
+TEST 
+<div id="wrap">
+    <div id="header">
+        <div class="logo_box">
+            <div>
+                <img class="logo_img" src="img/로고.png" width="140" height="50"/>
+            </div>
+            <div class="logo_title">Take it</div>
+        </div><!--logo_box-->
+    </div><!--header-->
+    <div id="content">
+        <div id="loginSelect">
+            <div>
+                <div>
+                    <input id="radioTaker" class="taker check_input" type="radio" checked name="loginSelect" value="t"/>
+                    <label for="radioTaker" class="taker check_label txt"> 테이커 </label>
+                </div>
+                <div>
+                    <input id="radioGiver" class="giver check_input" type="radio" name="loginSelect" value="g" />
+                    <label for="radioGiver" class="giver check_label txt"> 기버 </label>
+                </div>
+            </div>
+        </div> <!--login_select-->
+        <div class="login_box">
+            <div class="login_form taker show">
+                <form action="/login.do">
+                    <div class="taker_id">
+                        <p>아이디</p>
+                        <input class="login_input" type="email" name="takerId" placeholder="ex) taketiallfromit@gmail.com"/>
+                    </div>
+                    <div class="taker_password">
+                        <p>비밀번호</p>
+                        <input class="login_input" type="password" name="takerPassword" placeholder="영문/숫자/특수문자 포함 8~10자"/>
+                    </div>
+                    <p class="validation_check">테스트</p>
+                    <button class="taker_login_submit txt">로그인</button>
+                </form>
+            </div>
+            <div class="login_form giver">
+                <form action="/login.do">
+                    <div class="giver_id">
+                        <p>아이디</p>
+                        <input class="login_input" type="email" name="giverId" placeholder="ex) taketiallfromit@gmail.com" />
+                    </div>
+                    <div class="giver_password">
+                        <p>비밀번호</p>
+                        <input class="login_input" type="password" name="giverPassword" placeholder="영문/숫자/특수문자 포함 8~10자"/>
+                    </div>
+                    <p class="validation_check">테스트2</p>
+                    <button class="giver_login_submit txt">로그인</button>
+                </form>
+            </div>
+        </div> <!--login_box-->
+        <div class="login_footer">
+            <div class="join_box">
+                <button><a href="">회원가입</a> </button>
+            </div>
+            <div class="find_password">
+                <button><a href="">비밀번호찾기</a></button>
+            </div>
+        </div>
+    </div><!--content-->
+</div> <!--wrap-->
+<script src="js/jquery.js"></script>
+<script>
+
+    const $loginFormTab = $(".check_label");
+    $loginFormTab.on("click", function(){
+        const $this = $(this);
+        let idx = $this.parent().index();
+        console.log(idx);
+        $('.show').removeClass('show');
+        $(".login_box").children().eq(idx).addClass('show');
+
+    }); // click
+
+
+    // 유효성 검사 불일치는 서버에서 하자
+
+
+</script>
+</body>
+</html>
