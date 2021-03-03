@@ -23,7 +23,7 @@
                 <li class="giver_prepare_item">(필요한 경우)인감증명서 사본 1부</li>
             </ul><!--//giver_prepare_list end-->
         </div><!--//giver_prepare_list_box end-->
-        <a href="">다음</a>
+        <a href="/signupGiverStep2">다음</a>
     </div><!--//singUpReadyContent end-->
 </div><!--//container end-->
 </body>

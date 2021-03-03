@@ -24,7 +24,7 @@
             </div><!--//business_name_input_box end-->
             <div class="business_number_input_box"><!--business_name_input_box start-->
                 <div class="business_number_input_title"><span>사업자등록번호</span></div>
-                <div class="business_number">112-12-11511</div>
+                <div class="business_number">${giver.businessNum }</div>
             </div><!--//business_name_input_box end-->
             <div class="id_input_box"><!--idInputBox start-->
                 <div class="id_input_title"><span>아이디</span></div>

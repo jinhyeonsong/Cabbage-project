@@ -16,4 +16,10 @@ public class GiversDAOImpl implements GiversDAO {
 		// TODO Auto-generated method stub
 		return session.selectOne("givers.selectDetail",no);
 	}
+	
+	@Override
+	public Giver selectbusinessNum(Giver giver) {
+		// TODO Auto-generated method stub
+		return session.selectOne("givers.selectbusinessNum",giver);
+	}
 }

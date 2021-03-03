@@ -4,23 +4,26 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.summer.cabbage.service.GiversService;
 import com.summer.cabbage.service.MembersService;
+import com.summer.cabbage.vo.Giver;
 import com.summer.cabbage.vo.Member;
 
 @Controller
 public class MemberController {
 	@Autowired
 	private MembersService service;
+	
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index() {
 		return "index";
 	}
-	
 	
 	@RequestMapping(value="/log",method=RequestMethod.GET)
 	public String loginForm() {
@@ -65,7 +68,18 @@ public class MemberController {
 		return "signupGiverStep2";
 	}
 	@RequestMapping(value="/signupGiverStep3", method=RequestMethod.GET)
-	public String sdfesf() {
-		return "signupGiverStep3";
+	public String sdfesf(Model model, Giver giver,RedirectAttributes ra) {
+		
+		String giverBusinessNum = service.getGiverBusinessNum(giver).getBusinessNum();
+		if(giverBusinessNum!=null) {
+			System.out.print("성공");
+			ra.addFlashAttribute("msg", "이미 등록된 사업자 번호입니다.");
+			return "redirect:/signupGiverStep2";
+		}else {
+			System.out.print("성공");
+			model.addAttribute("giver", service.getGiverBusinessNum(giver));
+			return "signupGiverStep3";
+		}
+	
 	}
 }

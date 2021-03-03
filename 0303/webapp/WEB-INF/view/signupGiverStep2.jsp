@@ -16,7 +16,7 @@
     </div><!--//signUpTitleContent end-->
     <div id="singUpReadyContent"><!--singUpReadyContent start-->
         <div class="head_sentence"><span>사업자 등록번호를 입력하세요.</span><span>사업자 번호로 등록여부를 확인합니다.</span></div>
-        <form action="signupGiverStep3" method="POST">
+        <form action="signupGiverStep3" method="GET">
         	<input id="businessNumInput" name="businessNum" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
        		<button class="nextBtn">다음</button>
         </form>
@@ -24,6 +24,9 @@
 </div><!--//container end-->
 </body>
 <script>
+<c:if test="${msg!=null }">
+alert("${msg }");
+</c:if>
     $businessNumInput = $('#businessNumInput'); //사업자번호 입력공간
     $nextBtn = $('.nextBtn'); //다음 버튼
 

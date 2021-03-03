@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.summer.cabbage.dao.GiversDAO;
+import com.summer.cabbage.vo.Giver;
 
 @Service
 public class GiversServiceImpl implements GiversService {

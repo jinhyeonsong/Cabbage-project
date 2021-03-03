@@ -16,5 +16,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE g.no=m.no AND g.no=#{no}		
 	</select>
 	<!-- 0302 오승주 ===================================================================== -->
+	
+	<select id="selectbusinessNum" parameterType="Giver" resultType="Giver">
+		select business_num businessNum
+		from givers
+		where business_num = #{businessNum}
+	</select>
 </mapper>
 
