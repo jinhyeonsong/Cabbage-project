@@ -3,10 +3,6 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="categories">
-	<select id="selectNo" parameterType="int" resultType="categoryVO">
-		SELECT NO,NAME,PRIOR_NO priorNo,REGDATE
-		FROM categories
-		WHERE no=#{no}	
-	</select>
+	
 </mapper>
 

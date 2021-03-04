@@ -17,10 +17,12 @@ public class SubscribeController {
 
 	@Autowired
 	private SubscribesService service;
-	
-	@RequestMapping(value="subscribe/{productNo}",method=RequestMethod.GET)
+
+	@RequestMapping(value="/subscribe/{productNo}",method=RequestMethod.GET)
 	public String adad(Model model,@PathVariable int productNo) {
+		
 		model.addAllAttributes(service.getProductDetail(productNo));
+		
 		return "subscribeDetail";
 	}
 }

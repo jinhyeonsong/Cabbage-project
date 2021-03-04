@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>제품의 상세 페이지</title>
 	<c:import url="/WEB-INF/view/template/link.jsp"></c:import>
+	  <link rel="stylesheet" href="/css/subscribeDetail.css"/>
 </head>
 <body>
     <div class="product_detail_page_container">
@@ -31,14 +32,14 @@
                     <div class="giver_information">
                         <!-- taker 가 보는 giver 상세 페이지로 이동 -->
                         <a href=""><img class="giver_profile_img" src="img/walle.png"></a>
-                        <a href=""><span>패션의완성양말</span></a>
+                        <a href=""><span>${giver.company }</span></a>
                     </div>
                 </div>
             </div>
 
             <div class="product_detail_page_content_left">
                 <!-- 구독 제품 대표 이미지-->
-                <img class="product_thumbnail_img" src="img/rr.png">
+                <img class="product_thumbnail_img" src="/img/${product.photo }">
             </div>
             <div class="product_detail_page_content_right">
                 <h2 class="subs_title">귀염뽀짝 양말 구독하기</h2>
@@ -100,11 +101,11 @@
             <!--  ------------------------상품 상세 정보----------------------- -->
             <div class="tab_product_detail content on" id="tab1">
                 <!--제품 등록에서 퀼 에디터로 저장하는 것 보여주는 div (현재는 사진하나로 퉁쳐놨다)-->
-                <img class="tab_product_detail_img" src="img/pp.jpg">
+                <img class="tab_product_detail_img" src="/img/pp.jpg">
             </div>
             <!-- -------------------------구매 안내 정보-------------------------  -->
             <div class="tab_purchase_detail content" id="tab2">
-                <img class="tab_purchase_detail_img" src="img/purchase_info.png"/>
+                <img class="tab_purchase_detail_img" src="/img/${product.instruction }"/>
             </div>
             <!-- -------------------------------리뷰------------------------- -->
             <div class="tab_review content" id="tab3">
@@ -117,8 +118,7 @@
                                 <span class="review_star_rating"><span style ="width:80%"></span></span>
                                 <span class="review_regdate">(2020.02.10. 03:20)</span>
                                 <p class="review_detail">
-                                    먼저, 처음 사용해서 그런걸 수도 있지만 같은 온도에서 조리시간이 오래걸리는 느낌이 있어요. 그리고 바닥 망이 분리가 되서 세척이 편하지만 식기세척기 사용은 안되는 제품인걸 알고 사셔야해요(기존 제품은 가능) 또한 바닥망이 꽉 고정되지 않다보니 음식(고구마, 감튀 등) 뒤집을때 손목 스냅을 이용해서 한번에 뒤집을 수 없고 일일이 집게로 뒤집어 줘야함. 생각보다 에어프라이가 무겁기도 하구요. 기존제품은 오래사용하다보니 손잡이 쇠부분에 녹이 슬었는데, 이 모델도 그런지는 장기간 사용해야만 판단이 되는 부분일것 같구요.
-                                    먼저, 처음 사용해서 그런걸 수도 있지만 같은 온도에서 조리시간이 오래걸리는 느낌이 있어요. 그리고 바닥 망이 분리가 되서 세척이 편하지만 식기세척기 사용은 안되는 제품인걸 알고 사셔야해요(기존 제품은 가능) 또한 바닥망이 꽉 고정되지 않다보니 음식(고구마, 감튀 등) 뒤집을때 손목 스냅을 이용해서 한번에 뒤집을 수 없고 일일이 집게로 뒤집어 줘야함. 생각보다 에어프라이가 무겁기도 하구요. 기존제품은 오래사용하다보니 손잡이 쇠부분에 녹이 슬었는데, 이 모델도 그런지는 장기간 사용해야만 판단이 되는 부분일것 같구요.
+                              
                                 </p>
                                 <!--//review_detail-->
                             </div>
@@ -146,7 +146,7 @@
 </body>
 
 <!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■이제부터 자바스크립트 영역■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-<script src="js/tui-date-picker.min.js"></script>
+<script src="/js/tui-date-picker.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
@@ -199,7 +199,7 @@
                 => 나중에 서버에서 기버가 배송 가능한 날짜 선택하면
                 그 값 받아서 나타내면 될 듯!
              */
-            minDate: 3,
+            minDate: ${product.dateAvail},
             /* 뭔가 이거는 다같이 얘기 해봐야 하지 않을까? 최대 기간 정해두는 게 나을 것 같다. */
             maxDate: 14
         });
