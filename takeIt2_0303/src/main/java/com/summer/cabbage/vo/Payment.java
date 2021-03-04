@@ -5,6 +5,9 @@ import java.sql.Timestamp;
 public class Payment {
 	private int no, cost, cardNo, subNo;
 	private Timestamp regdate;
+	public Payment() {
+		
+	}
 	public int getNo() {
 		return no;
 	}

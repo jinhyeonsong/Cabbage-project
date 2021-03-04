@@ -19,42 +19,47 @@
 
         <!-- 필터들이 담긴 box     -->
         <div class="io_filter_box">
-            <form action="" method="">
+            <form method="get">
+      
             <div class="io_filter_term">
                 <h2>조회 기간</h2>
                 <ul class="io_term_list">
                     <li>
-                        <input type="radio" id="termItem1" name="term_item" class="term_radio" value="">
+                        <input type="radio" id="termItem1" name="startDate" class="term_radio" value="${days7 }">
                         <label for="termItem1">최근 7일</label>
                     </li>
                     <li>
-                        <input type="radio" id="termItem2" name="term_item" class="term_radio" value="">
+                        <input type="radio" id="termItem2" name="startDate" class="term_radio" value="${days30 }">
                         <label for="termItem2">30일</label>
                     </li>
                     <li>
-                        <input type="radio" id="termItem3" name="term_item" class="term_radio" value="">
+                        <input type="radio" id="termItem3" name="startDate" class="term_radio" value="${days90 }">
                         <label for="termItem3">90일</label>
                     </li>
                     <li>
-                        <input type="radio" id="termItem4" name="term_item" class="term_radio" value="">
+                        <input type="radio" id="termItem4" name="startDate" class="term_radio" value="${days180 }">
                         <label for="termItem4">180일</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="termItem5" name="startDate" class="term_radio" value="">
+                        <label for="termItem5">전체</label>
                     </li>
 
                 </ul><!--io_term_list-->
-                <div class="calendar_box">
+               <!--  <div class="calendar_box">
                     <input type="date" name="">
                     <span>~</span>
                     <input type="date" name="">
-                </div><!--calendar_box-->
+                </div>calendar_box -->
             </div><!--io_filter_box-->
 
             <!--id_filter_condition-->
             <div class="id_filter_condition">
                 <h2>상세조건</h2>
-                <select>
-                    <option name="productName" value="">전체</option>
+                <select name="productNo" >
+                    <option value="">전체</option>
                     <c:forEach items="${options }" var="option">
-                    	<option name="productName">${option.name }</option>
+                    <option value="${option.no }">${option.name }</option>
                     </c:forEach>
                 </select>
                 <button id="ioFilterBtn">적용</button>
@@ -65,7 +70,7 @@
         <div class="io_goods_box">
             <div class="io_goods_box_top">
                 <div>목록 (총 ${count}개)</div>
-                <button type="button" id="ioSubscribeCancel">구독 취소</button>
+                <button form="deleteSub" type="submit" id="ioSubscribeCancel">구독 취소</button>
             </div><!--io_goods_box_top-->
 
             <div class="content_goods_list_box">
@@ -87,42 +92,33 @@
                         <tbody>
                         <c:forEach items="${list}" var="subscribe">
                             <tr>
-                                <td><input type="checkbox" name="chk_item"></td>
+                                <td><input form="deleteSub" type="checkbox" name="no" value="${subscribe.no }"></td>
                                 <td>${subscribe.productName }</td>
                                 <td>${subscribe.deliveryStart }</td>
                                 <td><c:forEach items="${subscribe.days}" var="day" >${day.deliveryDay} </c:forEach></td>
                                 <td>${subscribe.addr} ${subscribe.addrDetail }</td>
-                                <td>무슨 옵션을 넣을까용?</td>
+                                <td>${subscribe.addrOpt }</td>
                                 <td><p>${subscribe.takerMsg }</p></td>
                                 <td>${subscribe.id }</td>
                                 <td>${subscribe.phoneTotal }</td>
                             </tr>
                        </c:forEach>
-                         <!--    <tr>
-                                <td><input type="checkbox" name="chk_item"></td>
-                                <td>네고왕 마스크 구독</td>
-                                <td>2021-02-21</td>
-                                <td>월,화,수,목,금,토,일</td>
-                                <td>서울시 동작구 대금로 아이에라루오타워 41층 104호</td>
-                                <td>01-02 프리미엄 상품 심플베이직 +L 사이즈 *40 너두나두 야나두</td>
-                                <td><p>인간의 이것이야말로 고동을 소담스러운 수 운다. 이상의 청춘의 바로 예가 불러 밝은 그것은 사람은 힘있다. 고동을 인간의 같이, 원대하고, 들어 있으며,</p></td>
-                                <td>wlsgus1568@naver.com</td>
-                                <td>010-1234-1234</td>
-                            </tr> -->
-                        </tbody>
+                       </tbody>
                     </table>
                 </div><!--table감싸기-->
             </div><!--content_goods_list_box-->
         </div><!--io_goods_box-->
-
     </div><!--container-->
-
+	<div class="popupWrap"></div>
     <!-- 업체요청 메세지 Detail 팝업창-->
     <!-- companyRequestMessage==crm으로 줄임-->
     <div id="crmDetailPopUp">
         <div><i class="fas fa-times"></i></div>
         <p></p>
     </div>
+<form id="deleteSub" method="post">
+	<input type="hidden" name="_method" value="put">
+</form>
 
     <script src="/js/jquery.js"></script>
     <script>
@@ -136,25 +132,48 @@
         $crmDetailPopUp = $("#crmDetailPopUp");
         //배송요청 메세지 팝업창 닫기버튼
         $close = $("#crmDetailPopUp div");
+        const $popupWrap = $(".popupWrap");
 
         //모두선택 클릭시 items 모두 체크/체크해제
         $allCheck.click(function () {
             if($("#allCheck").is(":checked")){
-                $("input[name=chk_item]").prop("checked",true);
+                $("input[name=no]").prop("checked",true);
             }
             else{
-                $("input[name=chk_item]").prop("checked",false);
+                $("input[name=no]").prop("checked",false);
             }
         });
         //요청메세지 나오게 하기
         $crm.click(function () {
             $crmDetailPopUp.css("display","block");
+            $popupWrap.css("display","block");
             $crmDetail.text($(this).text());
-        })
+        });
         //요청메세지 닫기버튼 클릭
         $close.click(function () {
             $crmDetailPopUp.css("display","none");
+            $popupWrap.css("display","none");
+        });
+        
+        //pop창 바깥부분 클릭시 popup 창 display none
+        $popupWrap.click(function (){
+            $crmDetailPopUp.css("display","none");
+            $popupWrap.css("display","none");
         })
+        
+        //구독취소버튼 누를시
+        $("#ioSubscribeCancel").click(function () {
+        	
+        	if($("input[name=no]").is(":checked")==false){
+        		alert("선택된 리스트가 없습니다.");
+        		return false;
+        	}else{
+        		confirm("구독을 취소하시겠습니까?");
+        	}
+        
+        	
+        });
+
 
         /* //필터적용 버튼
         $("#ioFilterBtn").click(function () {

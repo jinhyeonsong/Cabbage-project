@@ -14,11 +14,15 @@ public class SubscribesDAOImpl implements SubscribesDAO {
 	private SqlSession session;
 	
 	@Override
-	public List<Subscribe> selectOrderCheckList(int giverNo) {
-		return session.selectList("subscribes.selectOrderCheckList",giverNo);
+	public List<Subscribe> selectOrderCheckList(Subscribe subscribe) {
+		return session.selectList("subscribes.selectOrderCheckList",subscribe);
 	}
-	public int selectOrderCheckListCount(int giverNo) {
-		return session.selectOne("subscribes.selectOrderCheckListCount",giverNo);
+	public int selectOrderCheckListCount(Subscribe subscribe) {
+		return session.selectOne("subscribes.selectOrderCheckListCount",subscribe);
+	}
+	@Override
+	public int deleteOrderCheckList(int no) {
+		return session.update("subscribes.deleteOrderCheckList",no);
 	}
 	
 }

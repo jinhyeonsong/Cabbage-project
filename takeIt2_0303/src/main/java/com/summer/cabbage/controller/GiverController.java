@@ -2,12 +2,15 @@ package com.summer.cabbage.controller;
 
 import java.sql.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.summer.cabbage.service.GiversService;
 
@@ -27,18 +30,21 @@ public class GiverController {
 	
 	//03-03 강필규 추가
 	@RequestMapping(value = "/giver/{giverNo}/order/check",method = RequestMethod.GET )
-	private String name(@PathVariable int giverNo, Model model) {
-		
-		model.addAllAttributes(service.getGiverOrderCheckList(giverNo));
+	private String getSubList(@PathVariable int giverNo, Model model, @RequestParam(required = false)String startDate, @RequestParam(required = false)String productNo) {
+	
+		model.addAllAttributes(service.getGiverOrderCheckList(giverNo, startDate, productNo));
 		return "orderCheck";
 		
 	}
-	/*
-	 * @RequestMapping(value = "/giver/{giverNo}/order/check",method =
-	 * RequestMethod.GET ) private String name(@PathVariable int giverNo, Model
-	 * model, Date startDate, Date endDate) {
-	 * 
-	 * model.addAllAttributes(service.getGiverOrderCheckList(giverNo)); return
-	 * "orderCheck"; }
-	 */
+	
+	// 03-04 강필규 추가
+	@RequestMapping(value = "/giver/{giverNo}/order/check",method = RequestMethod.PUT)
+	private String SubDelete(@PathVariable int giverNo,@RequestParam(required = false) int[] no) {
+		
+		service.deleteOrderCheckList(no);
+		
+		return "redirect:/giver/"+giverNo+"/order/check";
+		
+	}
+
 }

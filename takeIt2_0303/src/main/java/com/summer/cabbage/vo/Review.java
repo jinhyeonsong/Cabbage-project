@@ -6,6 +6,9 @@ public class Review {
 	private int no, productNo, takerNo, star;
 	private String review;
 	private Timestamp regdate;
+	public Review() {
+		
+	}
 	public int getNo() {
 		return no;
 	}

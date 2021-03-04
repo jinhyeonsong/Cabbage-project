@@ -4,9 +4,11 @@ import java.sql.Timestamp;
 
 public class Product {
 	private int no, giverNo, categoryNo, price, discount, dateAvail, salesQty, subCount, star, revCount;
-	private String name, photo, reqMsg, details, instruction;
-	private char type;
+	private String name, photo, reqMsg, details, instruction, type, startDate;
 	private Timestamp regdate;
+	public Product() {
+		
+	}
 	public int getNo() {
 		return no;
 	}
@@ -97,18 +99,25 @@ public class Product {
 	public void setInstruction(String instruction) {
 		this.instruction = instruction;
 	}
-	public char getType() {
-		return type;
-	}
-	public void setType(char type) {
-		this.type = type;
-	}
 	public Timestamp getRegdate() {
 		return regdate;
 	}
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	
 	
 	
 }

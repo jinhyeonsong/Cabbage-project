@@ -4,9 +4,14 @@ import java.sql.Date;
 
 public class Taker {
 	private int no;
-	private String name;
+	private String name, nickname, gender;
 	private Date birthDate;
-	private char gender;
+
+	
+	public Taker() {
+		
+	}
+	
 	public int getNo() {
 		return no;
 	}
@@ -25,11 +30,22 @@ public class Taker {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-	public char getGender() {
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(char gender) {
+
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	
 }

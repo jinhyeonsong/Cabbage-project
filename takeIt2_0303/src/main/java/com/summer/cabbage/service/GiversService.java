@@ -9,7 +9,9 @@ public interface GiversService {
 
 	Map<String,Object> getGiverDetail(int no);
 
-	public Map<String,Object> getGiverOrderCheckList(int giverNo);
+	public Map<String, Object> getGiverOrderCheckList(int giverNo, String startDate, String productNoStr);
+
+	public void deleteOrderCheckList(int[] no);
 
 
 }

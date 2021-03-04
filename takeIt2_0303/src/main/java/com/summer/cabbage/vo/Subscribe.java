@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Subscribe {
 	private int no, productNo, takerNo, price, zipCode, giverNo;
-	private String takerMsg, addr, addrDetail, delLocation, receiver, addrOpt, phone, productName, id, status; 
+	private String takerMsg, addr, addrDetail, delLocation, receiver, addrOpt, phone, productName, id, status, startDate; 
 	private Date deliveryStart, cancelDate;
 	private Timestamp regdate;
 	private List<DeliveryDay> days;
@@ -14,7 +14,13 @@ public class Subscribe {
 	public Subscribe() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
+	public Subscribe(int giverNo, String startDate, int productNo) {
+		this.giverNo = giverNo;
+		this.startDate = startDate;
+		this.productNo = productNo;
+	}
+
 	public List<DeliveryDay> getDays() {
 		return days;
 	}
@@ -192,6 +198,17 @@ public class Subscribe {
 		
 	}
 	// 03-03 강필규 추가 end
+	
+	// 03-04 강필규 추가
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	// 03-04 강필규 추가 end
 	
 	
 }

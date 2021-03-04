@@ -6,6 +6,9 @@ public class TakerCard {
 	private int no, takerNo;
 	private String cardNum, cvc;
 	private Timestamp regdate;
+	public TakerCard() {
+		
+	}
 	public int getNo() {
 		return no;
 	}

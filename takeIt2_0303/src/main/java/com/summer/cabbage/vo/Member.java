@@ -7,6 +7,9 @@ public class Member {
 	private String id, password, profileImg;
 	private String type;
 	private Timestamp regdate;
+	public Member() {
+		
+	}
 	public int getNo() {
 		return no;
 	}
