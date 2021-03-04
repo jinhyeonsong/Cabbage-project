@@ -6,4 +6,5 @@ public interface GiversDAO {
 
 	Giver selectDetail(int no);
 	Giver selectbusinessNum(Giver giver);
+	public int insertGiver(Giver giver);
 }

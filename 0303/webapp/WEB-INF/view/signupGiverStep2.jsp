@@ -29,6 +29,7 @@ alert("${msg }");
 </c:if>
     $businessNumInput = $('#businessNumInput'); //사업자번호 입력공간
     $nextBtn = $('.nextBtn'); //다음 버튼
+    myStorage = window.localStorage;
 
     
     $businessNumInput.on('keyup',(function () { //사업자 번호 input의 키보드 이벤트
@@ -49,5 +50,11 @@ alert("${msg }");
         	})
         }//end else
     }))//end $businessNumInput.on()
+    
+    //$nextBtn.click(function() {
+        //let nu = $businessNumInput.val(); //input의 값
+    	//localStorage.setItem('businessNum', nu);
+	//})Window.localStorage 활용하기 좋다.
+	
 </script>
 </html>

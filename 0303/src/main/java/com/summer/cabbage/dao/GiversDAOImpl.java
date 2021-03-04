@@ -22,4 +22,10 @@ public class GiversDAOImpl implements GiversDAO {
 		// TODO Auto-generated method stub
 		return session.selectOne("givers.selectbusinessNum",giver);
 	}
+	
+	@Override
+	public int insertGiver(Giver giver) {
+		// TODO Auto-generated method stub
+		return session.insert("givers.insertGiver",giver);
+	}
 }

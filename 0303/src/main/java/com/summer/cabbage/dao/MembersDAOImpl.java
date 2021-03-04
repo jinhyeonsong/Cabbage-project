@@ -16,4 +16,21 @@ public class MembersDAOImpl implements MembersDAO {
 		// TODO Auto-generated method stub
 		return session.selectOne("members.selectLogin",member);
 	}
+
+	@Override
+	public int selectBusinessName(String businessName) {
+		return session.selectOne("members.selectBusinessName",businessName);
+	}
+	
+	@Override
+	public int selectId(String id) {
+		// TODO Auto-generated method stub
+		return session.selectOne("members.selectId",id);
+	}
+	
+	@Override
+	public int insertMember(Member member) {
+		// TODO Auto-generated method stub
+		return session.insert("members.insertMember",member);
+	}
 }

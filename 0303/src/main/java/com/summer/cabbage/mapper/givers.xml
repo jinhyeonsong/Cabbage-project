@@ -22,5 +22,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from givers
 		where business_num = #{businessNum}
 	</select>
+	
+	<insert id="insertGiver" parameterType="Giver">
+		INSERT INTO givers(no,business_num,company,phone)
+		VALUES(#{no},#{businessNum},#{company},#{phone})
+	</insert>
+	
 </mapper>
 

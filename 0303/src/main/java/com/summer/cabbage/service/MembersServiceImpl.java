@@ -28,4 +28,29 @@ public class MembersServiceImpl implements MembersService {
 		// TODO Auto-generated method stub
 		return giversDAO.selectbusinessNum(giver);
 	}
+	
+	@Override
+	public boolean checkBusinessName(String businessName) {
+		// TODO Auto-generated method stub
+		return 1==membersDAO.selectBusinessName(businessName);
+	}
+	@Override
+	public boolean checkId(String id) {
+		// TODO Auto-generated method stub
+		return 1==membersDAO.selectId(id);
+	}
+	
+	@Override
+	public void singUpGiver(Member member, Giver giver) {
+		 membersDAO.insertMember(member);
+		 	
+		 giver.setNo(member.getNo());
+		 System.out.println(member.getNo());
+		 
+		 System.out.println(giver.getBusinessNum());
+		 System.out.println(giver.getCompany()  );
+		 System.out.println(giver.getPhone());
+		 System.out.println(giver.getNo());
+		 giversDAO.insertGiver(giver);
+	}
 }

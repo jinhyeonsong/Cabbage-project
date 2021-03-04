@@ -16,42 +16,113 @@
         <div class="sign_up_title"><span>Take It</span></div>
         <div class="sign_up_sub_title"><span>기버 회원가입</span></div>
     </div><!--//signUpTitleBox end-->
-    <form action="" method="post"><!--//form start-->
+    <form action="signupGiverStep3" method="post"><!--//form start-->
         <div id="signUpInputContent"><!--sign_up_input_container start-->
             <div class="business_name_input_box"><!--business_name_input_box start-->
                 <div class="business_name_input_title"><span>상호명</span></div>
-                <input class="business_name_input" name="business_name" />
+<input class="business_name_input" placeholder="2~10글자" name="company" />
+                <div class="business_name_notice"><span>2~10글자</span></div>
             </div><!--//business_name_input_box end-->
             <div class="business_number_input_box"><!--business_name_input_box start-->
                 <div class="business_number_input_title"><span>사업자등록번호</span></div>
-                <div class="business_number">${giver.businessNum }</div>
+                <div class="business_number">${giver.businessNum} </div>
+<input type="hidden" value="${giver.businessNum}" name="businessNum"/>
             </div><!--//business_name_input_box end-->
             <div class="id_input_box"><!--idInputBox start-->
                 <div class="id_input_title"><span>아이디</span></div>
-                <input class="id_input" name="id" />
+<input class="id_input" name="id" />
+                <div class="id_notice"><span>이메일 형식으로 해주세요</span></div>
             </div><!--//idInputBox end-->
             <div class="password_input_box"><!--passwordInputBox start-->
                 <div class="password_input_title"><span>비밀번호</span></div>
-                <input class="password_input" name="password" type="password" placeholder="영문 및 숫자, 특수문자 8~12자를 입력하세요"/>
+<input class="password_input" maxlength="12" name="password" type="password" placeholder="영문 및 숫자, 특수문자 8~12자를 입력하세요"/>
                 <div class="password_notice"><span></span></div>
             </div><!--//passwordInputBox end-->
             <div class="password_confirm_input_box"><!--passwordConfirmInputBox start-->
                 <div class="password_confirm_input_title"><span>비밀번호 확인</span></div>
-                <input class="password_confirm_input"  type="password" name="passwordConfirm" />
+				<input class="password_confirm_input" maxlength="12" type="password" />
                 <div class="password_confirm_notice"><span></span></div>
             </div><!--//passwordConfirmInputBox end-->
+
+            <div class="phone_input_box"><!--passwordConfirmInputBox start-->
+                <div class="phone_input_title"><span>연락처</span></div>
+ <input class="phone_input" maxlength="20" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="'-'를 빼고 입력해주세요"/>
+                <div class="phone_notice"><span></span></div>
+            </div><!--//passwordConfirmInputBox end-->
+
             <div class="profile_img_input_box"><!--profileImg_input_box start-->
                 <i class="far fa-times-circle"></i>
                 <div class="profile_img_input_title"><span>프로필</span></div>
-                <label class="profile_img_input" for="profileImgInput"><i class="far fa-plus-square"></i></label>
-                <input id="profileImgInput" name="profileImg" type="file" accept="image/*" />
-                <div class="profile_img_notice"><span>이미지 미입력시 기본이미지로 자동설정됩니다.</span></div>
+                <label class="profile_img_input" for="profileImgInput" ><i class="far fa-plus-square"></i></label>
+<input id="profileImgInput" name="profileImg" type="file" accept="image/*"/>       
             </div><!--//profileImg_input_box end-->
         </div><!--//sign_up_input_container end-->
         <button class="sign_up_btn" type="submit">회원가입 하기</button>
     </form><!--//form end-->
 </div><!---container end-->
-<script src="js/jquery.js"></script>
+
 <script src="js/signUpGiver.js"></script>
+<script>
+let $id = $(".id_input");
+
+function chkEmail(str) {
+    var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    if (regExp.test(str)) return true;
+    else return false;
+}
+
+$id.on("keyup",function () {
+    let emailChk = chkEmail($id.val());
+    if(emailChk==true){
+    	$.ajax({
+			url:"/ajax/check/id",//주소
+			type:"get",//방식
+			data:{"id":$id.val()},//파라미터
+			dataType:"json",//응답의 자료형
+			error:function(xhr,error){
+				alert("서버 점검중!");
+				console.log(error);
+			},
+			success:function(json){
+				if(json.result) {
+				
+				}else {
+					
+				}//if~else end
+			}//end success
+		});//end ajax 
+    }
+    else{
+       
+    }
+})//end $id.on()
+
+let $businessName = $(".business_name_input");
+
+$businessName.on("keyup",function () {
+    if ($businessName.val().length <= 1) {
+       
+    }else{
+    	$.ajax({
+			url:"/ajax/check/businessName",//주소
+			type:"get",//방식
+			data:{"businessName":$businessName.val()},//파라미터
+			dataType:"json",//응답의 자료형
+			error:function(xhr,error){
+				alert("서버 점검중!");
+				console.log(error);
+			},
+			success:function(json){
+				if(json.result) {
+				
+				}else {
+					
+				}//if~else end
+			}//end success
+		});//end ajax 
+    }//end else
+})//end $businessName.on()
+
+</script>
 </body>
 </html>

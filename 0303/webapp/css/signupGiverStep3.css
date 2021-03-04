@@ -152,7 +152,6 @@
     height: 100px;
     background-color: #EDEDED;
     border-radius: 5px;
-    /*background-image: url("../../img/5.jpg");*/
     background-size: cover;
     cursor: pointer;
 }
@@ -192,7 +191,46 @@
 .sign_up_btn:hover{
     color: #f4fffd;
 }
+ .phone_input_box{
+        position: relative;
+        width: 1100px;
+        height: 60px;
 
+    }
+    .phone_input_title{
+        position: absolute;
+        top: 16px;
+        left: 380px;
+    }
+    .phone_input{
+        position: absolute;
+        top: 8px;
+        left: 510px;
+    }
+    .phone_notice{
+        position: absolute;
+        top: 48px;
+        left: 510px;
+        font-size: 13px;
+        color: crimson;
+        display: none;
+    }
 
+    .business_name_notice{
+        position: absolute;
+        top: 48px;
+        left: 510px;
+        font-size: 13px;
+        color: crimson;
+        display: none;
+    }
+    .id_notice{
+        position: absolute;
+        top: 48px;
+        left: 510px;
+        font-size: 13px;
+        color: crimson;
+        display: none;
+    }
 
 

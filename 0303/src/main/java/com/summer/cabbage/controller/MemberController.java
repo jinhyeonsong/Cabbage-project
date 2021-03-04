@@ -1,5 +1,9 @@
 package com.summer.cabbage.controller;
 
+import java.io.File;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.summer.cabbage.service.GiversService;
 import com.summer.cabbage.service.MembersService;
+import com.summer.cabbage.util.FileRenameUtil;
+import com.summer.cabbage.util.ResizeImageUtil;
 import com.summer.cabbage.vo.Giver;
 import com.summer.cabbage.vo.Member;
 
@@ -80,6 +88,67 @@ public class MemberController {
 			model.addAttribute("giver", giver);
 			return "signupGiverStep3";
 		}
+	}
+	@RequestMapping(value="/ajax/check/businessName", 
+			method=RequestMethod.GET,
+			produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String checkBusinessName(String businessName) {
+		return "{\"result\":"+service.checkBusinessName(businessName)+"}";
+	}
 	
+	@RequestMapping(value="/ajax/check/id", 
+			method=RequestMethod.GET,
+			produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String checkId(String id) {
+		return "{\"result\":"+service.checkId(id)+"}";
+	}
+	
+	@RequestMapping(value="/ajax/profile",
+			method=RequestMethod.POST,
+			produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	private String uploadProfile(String type, 
+			MultipartFile profile, 
+			HttpServletRequest request) throws Exception {
+		
+		// 서버
+		ServletContext application = request.getServletContext();
+
+		// 기본경로
+		String rootPath = application.getRealPath("/");
+
+		// 업로드 폴더 경로
+		String uploadPath = rootPath + "img" + File.separator + "upload" + File.separator;
+
+		// 파일의 실제 이름
+		String fileName = profile.getOriginalFilename();
+
+		// 파일 객체 생성
+		File file = new File(uploadPath + fileName);
+
+		// 파일이름이 같다면 숫자가 붙음
+		file = FileRenameUtil.rename(file);
+
+		System.out.println(file);
+
+		// 임시폴더에 우리 업로드폴더로 이동
+		profile.transferTo(file);
+
+		// 리사이즈가 필요한 경우 하면 됨
+		String resizePath = rootPath + "img" +
+		File.separator + "members" + File.separator;
+
+		// 리사이즈
+		ResizeImageUtil.resize(file.toString(), resizePath + file.getName(), 200);
+		
+		return "{\"profileName\":\""+file.getName()+"\"}";
+	}
+	
+	@RequestMapping(value="/signupGiverStep3", method=RequestMethod.POST)
+	public String sdfwewesf(Member member, Giver giver) {
+		service.singUpGiver(member,giver);
+		return "index";
 	}
 }

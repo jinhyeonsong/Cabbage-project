@@ -2,7 +2,7 @@ package com.summer.cabbage.vo;
 
 public class Giver {
 	private int no;
-	private String businessNum, company, phone,profileImg;
+	private String businessNum, company, phone;
 	
 	public Giver() {
 		// TODO Auto-generated constructor stub
@@ -10,14 +10,6 @@ public class Giver {
 
 	public int getNo() {
 		return no;
-	}
-
-	public String getProfileImg() {
-		return profileImg;
-	}
-
-	public void setProfileImg(String profileImg) {
-		this.profileImg = profileImg;
 	}
 
 	public void setNo(int no) {
