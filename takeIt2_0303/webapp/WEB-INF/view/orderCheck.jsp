@@ -57,7 +57,7 @@
                     	<option name="productName">${option.name }</option>
                     </c:forEach>
                 </select>
-                <button type="button" id="ioFilterBtn">적용</button>
+                <button id="ioFilterBtn">적용</button>
             </div>
             </form>
         </div><!--io_filter_box-->
@@ -85,17 +85,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${lists}" var="list">
+                        <c:forEach items="${list}" var="subscribe">
                             <tr>
                                 <td><input type="checkbox" name="chk_item"></td>
-                                <td>${list.productName }</td>
-                                <td>${list.deliveryStart }</td>
-                                <td><c:forEach items="${days}" var="day" >${day.day },</c:forEach></td>
-                                <td>${list.addr} ${list.addrDetail }</td>
+                                <td>${subscribe.productName }</td>
+                                <td>${subscribe.deliveryStart }</td>
+                                <td><c:forEach items="${subscribe.days}" var="day" >${day.deliveryDay} </c:forEach></td>
+                                <td>${subscribe.addr} ${subscribe.addrDetail }</td>
                                 <td>무슨 옵션을 넣을까용?</td>
-                                <td><p>${list.takerMsg }</p></td>
-                                <td>${list.id }</td>
-                                <td>${list.phoneTotal }</td>
+                                <td><p>${subscribe.takerMsg }</p></td>
+                                <td>${subscribe.id }</td>
+                                <td>${subscribe.phoneTotal }</td>
                             </tr>
                        </c:forEach>
                          <!--    <tr>

@@ -2,18 +2,27 @@ package com.summer.cabbage.vo;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Subscribe {
 	private int no, productNo, takerNo, price, zipCode, giverNo;
-	private String takerMsg, addr, addrDetail, delLocation, receiver, addrOpt, phone, productName, id; 
-	private char status;
+	private String takerMsg, addr, addrDetail, delLocation, receiver, addrOpt, phone, productName, id, status; 
 	private Date deliveryStart, cancelDate;
 	private Timestamp regdate;
+	private List<DeliveryDay> days;
 	
 	public Subscribe() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public List<DeliveryDay> getDays() {
+		return days;
+	}
+
+	public void setDays(List<DeliveryDay> days) {
+		this.days = days;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -134,11 +143,11 @@ public class Subscribe {
 		this.receiver = receiver;
 	}
 
-	public char getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(char status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -182,7 +191,7 @@ public class Subscribe {
 		return getPhonenum1()+"-"+getPhonenum2()+"-"+getPhonenum3();
 		
 	}
-	// 03 - 03 강필규 추가 end
+	// 03-03 강필규 추가 end
 	
 	
 }

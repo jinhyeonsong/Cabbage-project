@@ -2,7 +2,7 @@ package com.summer.cabbage.vo;
 
 public class DeliveryDay {
 	private int no, productNo, day;
-	
+	private String deliveryDay;
 	public DeliveryDay() {
 		// TODO Auto-generated constructor stub
 	}
@@ -31,5 +31,17 @@ public class DeliveryDay {
 		this.day = day;
 	}
 	
+	public String getDeliveryDay() {
+		
+		String[] arr = {"일", "월", "화", "수", "목", "금", "토"};
+		
+		return arr[day];
+		
+	}
+
+	public void setDeliveryDay(String deliveryDay) {
+		this.deliveryDay = deliveryDay;
+	}
 	
+ 	
 }

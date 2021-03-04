@@ -40,21 +40,29 @@
 
         <!-- 로그인 -->
         <div class="hcb_login">
-            <div class="hcb_login_btn"><a href="/log">로그인</a></div>
+        <c:choose>
+        	<c:when test="${loginMember==null }">
+            <div class="hcb_login_btn">
+               <a href="/log">로그인</a>
+            </div>
+         	</c:when>
+         	<c:otherwise>
             <div class="hcb_profile">
-                <p>
-                    <i class="fas fa-bars"></i>
-                    <i class="far fa-user-circle"></i>
-                </p>
+               <p>
+                  <i class="fas fa-bars"></i> <i class="far fa-user-circle"></i>
+               </p>
             </div>
             <div class="hcb_mypage_and_logout">
-                <ul>
-                    <li><a href="">마이페이지</a></li>
-                    <li><a href="">로그아웃</a></li>
-                </ul>
+               <ul>
+                  <li><a href="">마이페이지</a></li>
+                  <form id="logOutForm" action="/log" method="post">
+                  <input type="hidden" name="_method" value="delete"/>
+                  </form>
+                  <li><button form="logOutForm" class="logout btn">로그아웃</button></li>
+               </ul>
             </div>
-        </div>
-
+         	</c:otherwise>
+     	</c:choose>
         <!-- end hcb_login-->
     </div>
     <!-- end header_contents_box -->

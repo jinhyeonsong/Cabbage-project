@@ -1,5 +1,7 @@
 package com.summer.cabbage.controller;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,4 +33,12 @@ public class GiverController {
 		return "orderCheck";
 		
 	}
+	/*
+	 * @RequestMapping(value = "/giver/{giverNo}/order/check",method =
+	 * RequestMethod.GET ) private String name(@PathVariable int giverNo, Model
+	 * model, Date startDate, Date endDate) {
+	 * 
+	 * model.addAllAttributes(service.getGiverOrderCheckList(giverNo)); return
+	 * "orderCheck"; }
+	 */
 }

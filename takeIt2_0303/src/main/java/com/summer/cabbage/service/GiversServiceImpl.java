@@ -46,19 +46,18 @@ public class GiversServiceImpl implements GiversService {
 		
 		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
 		
-		map.put("lists",subscribesDAO.selectOrderCheckList(giverNo));
-		map.put("count",subscribesDAO.selectOrderCheckListCount(giverNo));
 		List<Subscribe> list = subscribesDAO.selectOrderCheckList(giverNo);
-		map.put("options",productsDAO.selectByGiverNo(giverNo));
 		
 		for (Subscribe subscribe : list) {
-			
-			map.put("days",deliveryDaysDAO.selectOrderCheckListDays(subscribe.getProductNo()));
-			
+			subscribe.setDays(deliveryDaysDAO.selectOrderCheckListDays(subscribe.getProductNo()));
 		}
+		
+		map.put("count",subscribesDAO.selectOrderCheckListCount(giverNo));
+		map.put("list",list);
+		map.put("options",productsDAO.selectByGiverNo(giverNo));
 		
 		return map;
 	}
-	// //03-03 강필규 등록 
+	// 03-03 강필규 등록 end
 	
 }
