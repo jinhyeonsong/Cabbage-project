@@ -1,5 +1,7 @@
 package com.summer.cabbage.service;
 
-public interface SubscribesService {
+import java.util.Map;
 
+public interface SubscribesService {
+	public Map<String, Object> getProductDetail(int productNo);
 }

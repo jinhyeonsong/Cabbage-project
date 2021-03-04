@@ -1,5 +1,9 @@
 package com.summer.cabbage.dao;
 
-public interface DeliveryDaysDAO {
+import java.util.List;
 
+import com.summer.cabbage.vo.DeliveryDay;
+
+public interface DeliveryDaysDAO {
+	public List<DeliveryDay> selectListDay(int productNo);
 }

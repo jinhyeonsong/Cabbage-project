@@ -28,10 +28,10 @@ public class MemberController {
 	private MembersService service;
 	
 
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String index() {
-		return "index";
-	}
+	@RequestMapping(value={"/","/index"}, method=RequestMethod.GET)
+	   public String index() {
+	      return "index";
+	   }
 	
 	@RequestMapping(value="/log",method=RequestMethod.GET)
 	public String loginForm() {
@@ -47,14 +47,15 @@ public class MemberController {
 		Member loginMember=(Member)session.getAttribute("loginMember");
 		
 		if(loginMember!=null) {
-			if(loginMember.getType()=="G") {
+			if(loginMember.equals("G")) {
 				// 회원의 유형이 기버일 경우 
 				// 기버 마이페이지로 가자 
 				System.out.println("기버마이페이지 아직 페이지 없어서 잘되나 그냥 확인용");
 				return "redirect:/giver/"+member.getNo();
 			}else{
 				// 회원의 유형이 테이커 일 경우 
-				return "redirect:/index";
+				System.out.println("테이커 페이지 없어서 잘되나 그냥 확인용");
+				return "redirect:/index";	
 			}
 		}
 		else {

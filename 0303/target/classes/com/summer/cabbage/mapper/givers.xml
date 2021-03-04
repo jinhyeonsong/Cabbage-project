@@ -28,5 +28,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{no},#{businessNum},#{company},#{phone})
 	</insert>
 	
+	<select id="selectDetailOne" parameterType="int" resultType="Giver">
+		select company
+		from givers g, products p
+		where p.no=#{productNo} AND p.giver_no=g.no
+	</select>
+	
 </mapper>
 

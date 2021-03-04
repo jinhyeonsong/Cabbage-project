@@ -1,5 +1,7 @@
 package com.summer.cabbage.dao;
 
-public interface ProductsDAO {
+import com.summer.cabbage.vo.Product;
 
+public interface ProductsDAO {
+	public Product selectDetailOne(int productNo);
 }

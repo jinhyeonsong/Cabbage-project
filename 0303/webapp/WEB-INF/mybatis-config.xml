@@ -34,6 +34,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper resource="/com/summer/cabbage/mapper/givers.xml" />
 		<mapper resource="/com/summer/cabbage/mapper/members.xml" />
+		<mapper resource="/com/summer/cabbage/mapper/products.xml" />
+		<mapper resource="/com/summer/cabbage/mapper/deliveryDays.xml" />
+		<mapper resource="/com/summer/cabbage/mapper/deliveryRegions.xml" />
+		<mapper resource="/com/summer/cabbage/mapper/reviews.xml" />
 	</mappers>
 
 </configuration>

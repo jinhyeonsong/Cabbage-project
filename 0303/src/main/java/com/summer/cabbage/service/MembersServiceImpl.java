@@ -45,12 +45,7 @@ public class MembersServiceImpl implements MembersService {
 		 membersDAO.insertMember(member);
 		 	
 		 giver.setNo(member.getNo());
-		 System.out.println(member.getNo());
-		 
-		 System.out.println(giver.getBusinessNum());
-		 System.out.println(giver.getCompany()  );
-		 System.out.println(giver.getPhone());
-		 System.out.println(giver.getNo());
+		
 		 giversDAO.insertGiver(giver);
 	}
 }

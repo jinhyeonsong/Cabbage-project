@@ -8,5 +8,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM delivery_regions
 		WHERE no=#{no}	
 	</select>
+	
+	<select id="selectListRegion" parameterType="int" resultType="DeliveryRegion">
+	select no,product_no,area_no,price,regdate
+	from delivery_regions
+	where product_no=#{productNo}
+	</select>
 </mapper>
 

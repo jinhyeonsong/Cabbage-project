@@ -4,9 +4,33 @@ import java.sql.Timestamp;
 
 public class Product {
 	private int no, giverNo, categoryNo, price, discount, dateAvail, salesQty, subCount, star, revCount;
-	private String name, photo, reqMsg, details, instruction;
-	private char type;
+	private String name, photo, reqMsg, details, instruction, type;
 	private Timestamp regdate;
+	
+	//20210304 카테고리 멤버필드 setter/getter 추가 
+	private String primaryCategoryName, categoryName;
+	
+	public String getPrimaryCategoryName() {
+		return primaryCategoryName;
+	}
+	public void setPrimaryCategoryName(String primaryCategoryName) {
+		this.primaryCategoryName = primaryCategoryName;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	
+	
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -97,12 +121,6 @@ public class Product {
 	public void setInstruction(String instruction) {
 		this.instruction = instruction;
 	}
-	public char getType() {
-		return type;
-	}
-	public void setType(char type) {
-		this.type = type;
-	}
 	public Timestamp getRegdate() {
 		return regdate;
 	}
@@ -110,5 +128,7 @@ public class Product {
 		this.regdate = regdate;
 	}
 	
-	
+	public Product() {
+		// TODO Auto-generated constructor stub
+	}
 }

@@ -1,5 +1,9 @@
 package com.summer.cabbage.dao;
 
-public interface ReviewsDAO {
+import java.util.List;
 
+import com.summer.cabbage.vo.Review;
+
+public interface ReviewsDAO {
+	public List<Review> selectListreview(int productNo);
 }

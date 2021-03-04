@@ -5,13 +5,20 @@ import java.sql.Timestamp;
 
 public class Subscribe {
 	private int no, productNo, takerNo, addrOptNo, price, zipCode;
-	private String takerMsg, addr, addrDetail, delLocation, receiver; 
+	private String takerMsg, addr, addrDetail, delLocation, receiver,phone; 
 	private char status;
 	private Date deliveryStart, cancelDate;
 	private Timestamp regdate;
 	
 	public Subscribe() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public int getNo() {

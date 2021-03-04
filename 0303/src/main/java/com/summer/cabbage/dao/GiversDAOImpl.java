@@ -28,4 +28,10 @@ public class GiversDAOImpl implements GiversDAO {
 		// TODO Auto-generated method stub
 		return session.insert("givers.insertGiver",giver);
 	}
+	
+	@Override
+	public Giver selectDetailOne(int productNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("givers.selectDetailOne",productNo);
+	}
 }
