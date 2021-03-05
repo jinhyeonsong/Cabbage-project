@@ -13,6 +13,7 @@ public class DeliveryRegionsDAOImpl implements DeliveryRegionsDAO {
 	@Autowired
 	private SqlSession session;
 	
+	//배송지역 옵션들 - 송진현
 	@Override
 	public List<DeliveryRegion> selectListRegion(int productNo) {
 		// TODO Auto-generated method stub

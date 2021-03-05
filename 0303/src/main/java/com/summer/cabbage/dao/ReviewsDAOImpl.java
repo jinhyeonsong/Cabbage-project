@@ -13,6 +13,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 	@Autowired
 	private SqlSession session;
 	
+	//구독상품번호로 리뷰
 	@Override
 	public List<Review> selectListreview(int productNo) {
 		// TODO Auto-generated method stub

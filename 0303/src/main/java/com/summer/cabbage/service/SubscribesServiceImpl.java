@@ -26,6 +26,7 @@ public class SubscribesServiceImpl implements SubscribesService {
 	@Autowired
 	private ReviewsDAO reviewsDAO;
 	
+	//송진현 구독상품 detail//
 	@Override
 	public Map<String, Object> getProductDetail(int productNo) {
 		Map<String, Object> map= new ConcurrentHashMap<String, Object>();
@@ -38,4 +39,5 @@ public class SubscribesServiceImpl implements SubscribesService {
 		
 		return map;
 	}
+	//송진현//
 }

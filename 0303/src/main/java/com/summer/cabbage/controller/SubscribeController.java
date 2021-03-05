@@ -18,6 +18,8 @@ public class SubscribeController {
 	@Autowired
 	private SubscribesService service;
 
+	//-- 송진현 --//
+	//구독상품 detail
 	@RequestMapping(value="/subscribe/{productNo}",method=RequestMethod.GET)
 	public String adad(Model model,@PathVariable int productNo) {
 		
@@ -25,4 +27,5 @@ public class SubscribeController {
 		
 		return "subscribeDetail";
 	}
+	//-- 송진현 --//
 }
