@@ -117,7 +117,7 @@
         <p></p>
     </div>
 <form id="deleteSub" method="post">
-	<input type="hidden" name="_method" value="put">
+	<input type="hidden" name="_method" value="delete">
 </form>
 
     <script src="/js/jquery.js"></script>

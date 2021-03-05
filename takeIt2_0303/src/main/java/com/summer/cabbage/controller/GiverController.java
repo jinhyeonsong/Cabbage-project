@@ -28,7 +28,7 @@ public class GiverController {
 		return "giverInform";
 	}
 	
-	//03-03 강필규 추가
+	//03-03 강필규 추가 주문조회 페이지
 	@RequestMapping(value = "/giver/{giverNo}/order/check",method = RequestMethod.GET )
 	private String getSubList(@PathVariable int giverNo, Model model, @RequestParam(required = false)String startDate, @RequestParam(required = false)String productNo) {
 	
@@ -37,8 +37,8 @@ public class GiverController {
 		
 	}
 	
-	// 03-04 강필규 추가
-	@RequestMapping(value = "/giver/{giverNo}/order/check",method = RequestMethod.PUT)
+	// 03-04 강필규 추가 구독취소
+	@RequestMapping(value = "/giver/{giverNo}/order/check",method = RequestMethod.DELETE)
 	private String SubDelete(@PathVariable int giverNo,@RequestParam(required = false) int[] no) {
 		
 		service.deleteOrderCheckList(no);
