@@ -63,33 +63,37 @@ public class MemberController {
 			return "redirect:/log";
 		}
 	}
-	
-	@RequestMapping(value="/signupSelect", method=RequestMethod.GET)
+	//-- 송진현 --//
+	//회원가입 giver인지 taker인지 선택하는 jsp
+	@RequestMapping(value="/signUp", method=RequestMethod.GET)
 	public String sdfsf() {
 		return "signupSelect";
 	}
-	@RequestMapping(value="/signupGiverStep1", method=RequestMethod.GET)
+	//giver 회원가입 시작
+	@RequestMapping(value="/giver/signUp/step1", method=RequestMethod.GET)
 	public String sdfqsf() {
 		return "signupGiverStep1";
 	}
-	@RequestMapping(value="/signupGiverStep2", method=RequestMethod.GET)
+	//giver 사업자번호 등록여부 확인 JSP
+	@RequestMapping(value="/giver/signUp/step2", method=RequestMethod.GET)
 	public String sdfswf() {
 		return "signupGiverStep2";
 	}
-	@RequestMapping(value="/signupGiverStep3", method=RequestMethod.GET)
+	//giver 사업자번호 등록여부 확인 후 
+	//등록 된 번호이면 리다이렉트, 등록되지 않은 번호이면 다음 JSP
+	@RequestMapping(value="/giver/signUp/step3", method=RequestMethod.GET)
 	public String sdfesf(Model model, Giver giver,RedirectAttributes ra) {
 		
 		Giver giverBusinessNum = service.getGiverBusinessNum(giver);
 		if(giverBusinessNum!=null) {
-			System.out.print("성공");
 			ra.addFlashAttribute("msg", "이미 등록된 사업자 번호입니다.");
 			return "redirect:/signupGiverStep2";
 		}else {
-			System.out.print("실패");
 			model.addAttribute("giver", giver);
 			return "signupGiverStep3";
 		}
 	}
+	//giver 회원가입 중 상호명 중복확인
 	@RequestMapping(value="/ajax/check/businessName", 
 			method=RequestMethod.GET,
 			produces = "application/json; charset=UTF-8")
@@ -97,7 +101,7 @@ public class MemberController {
 	public String checkBusinessName(String businessName) {
 		return "{\"result\":"+service.checkBusinessName(businessName)+"}";
 	}
-	
+	//giver 회원가입 중 ID 중복확인
 	@RequestMapping(value="/ajax/check/id", 
 			method=RequestMethod.GET,
 			produces = "application/json; charset=UTF-8")
@@ -105,7 +109,7 @@ public class MemberController {
 	public String checkId(String id) {
 		return "{\"result\":"+service.checkId(id)+"}";
 	}
-	
+	//giver 회원가입 중 프로필 사진 업로드
 	@RequestMapping(value="/ajax/profile",
 			method=RequestMethod.POST,
 			produces = "application/json;charset=UTF-8")
@@ -113,43 +117,32 @@ public class MemberController {
 	private String uploadProfile(String type, 
 			MultipartFile profile, 
 			HttpServletRequest request) throws Exception {
-		
 		// 서버
 		ServletContext application = request.getServletContext();
-
 		// 기본경로
 		String rootPath = application.getRealPath("/");
-
 		// 업로드 폴더 경로
 		String uploadPath = rootPath + "img" + File.separator + "upload" + File.separator;
-
 		// 파일의 실제 이름
 		String fileName = profile.getOriginalFilename();
-
 		// 파일 객체 생성
 		File file = new File(uploadPath + fileName);
-
 		// 파일이름이 같다면 숫자가 붙음
 		file = FileRenameUtil.rename(file);
-
-		System.out.println(file);
-
 		// 임시폴더에 우리 업로드폴더로 이동
 		profile.transferTo(file);
-
 		// 리사이즈가 필요한 경우 하면 됨
 		String resizePath = rootPath + "img" +
 		File.separator + "members" + File.separator;
-
 		// 리사이즈
 		ResizeImageUtil.resize(file.toString(), resizePath + file.getName(), 200);
-		
 		return "{\"profileName\":\""+file.getName()+"\"}";
 	}
-	
-	@RequestMapping(value="/signupGiverStep3", method=RequestMethod.POST)
+	//giver Insert
+	@RequestMapping(value="/giver/signUp/step3", method=RequestMethod.POST)
 	public String sdfwewesf(Member member, Giver giver) {
 		service.singUpGiver(member,giver);
 		return "index";
 	}
+	//-- 송진현 --//
 }

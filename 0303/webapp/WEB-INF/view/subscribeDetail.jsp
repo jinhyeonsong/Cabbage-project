@@ -8,6 +8,7 @@
     <title>제품의 상세 페이지</title>
 	<c:import url="/WEB-INF/view/template/link.jsp"></c:import>
 	  <link rel="stylesheet" href="/css/subscribeDetail.css"/>
+	  <link rel="stylesheet" href="/css/datepicker.css" />
 </head>
 <body>
     <div class="product_detail_page_container">
@@ -22,7 +23,7 @@
                         <div class="subs_num">100 &nbsp;</div>
                         <!-- 평점 & 리뷰 수 -->
                         <div class="star_review_num">
-                            <img class="star" src="img/green_star.png"><div class="star_review">4.2 (36)</div>
+                            <img class="star" src="/img/green_star.png"><div class="star_review">${product.star} (36)</div>
                         </div>
                     </div>
                 </div>
@@ -31,7 +32,7 @@
                 <div class="giver_information_box">
                     <div class="giver_information">
                         <!-- taker 가 보는 giver 상세 페이지로 이동 -->
-                        <a href=""><img class="giver_profile_img" src="img/walle.png"></a>
+                        <a href=""><img class="giver_profile_img" src="/img/walle.png"></a>
                         <a href=""><span>${giver.company }</span></a>
                     </div>
                 </div>
@@ -42,7 +43,7 @@
                 <img class="product_thumbnail_img" src="/img/${product.photo }">
             </div>
             <div class="product_detail_page_content_right">
-                <h2 class="subs_title">귀염뽀짝 양말 구독하기</h2>
+                <h2 class="subs_title">${product.name }</h2>
                 <div class="item_info_box">
                     <dl>
                         <dt>배송 시작일</dt>
@@ -53,11 +54,53 @@
                         <dt>배송일</dt>
                         <dd><!--월화수목금 표기.-->
                             <div class="deliver_date_box">
-                                <div class="delivery_date selected">월</div>
-                                <div class="delivery_date ">화</div>
-                                <div class="delivery_date">수</div>
-                                <div class="delivery_date">목</div>
-                                <div class="delivery_date">금</div>
+                        
+                            	<div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==0}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">일</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==1}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">월</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==2}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">화</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==3}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">수</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==4}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">목</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==5}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">금</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==6}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">토</div>
+                                
+                                
+                               
+                                
                             </div>
                         </dd>
                     </dl>
@@ -113,7 +156,7 @@
                     <li class="review_item">
                         <div class="review_wrap">
                             <div class="review_profile_box">
-                                <img class="review_profile_img" src="img/walle.png" width="50" height="50"/>
+                                <img class="review_profile_img" src="/img/walle.png" width="50" height="50"/>
                                 <span class="review_user_nickname">가나다라마바사</span>
                                 <span class="review_star_rating"><span style ="width:80%"></span></span>
                                 <span class="review_regdate">(2020.02.10. 03:20)</span>

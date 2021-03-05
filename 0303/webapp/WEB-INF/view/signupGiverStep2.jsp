@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="/WEB-INF/view/template/link.jsp"></c:import>
-<link rel="stylesheet" href="css/signupGiverStep2.css"/>
+<link rel="stylesheet" href="/css/signupGiverStep2.css"/>
 </head>
 <body>
 <div id="container"><!--container start-->
@@ -16,7 +16,7 @@
     </div><!--//signUpTitleContent end-->
     <div id="singUpReadyContent"><!--singUpReadyContent start-->
         <div class="head_sentence"><span>사업자 등록번호를 입력하세요.</span><span>사업자 번호로 등록여부를 확인합니다.</span></div>
-        <form action="signupGiverStep3" method="GET">
+        <form action="/giver/signUp/step3" method="GET">
         	<input id="businessNumInput" name="businessNum" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
        		<button class="nextBtn">다음</button>
         </form>
@@ -31,7 +31,6 @@ alert("${msg }");
     $nextBtn = $('.nextBtn'); //다음 버튼
     myStorage = window.localStorage;
 
-    
     $businessNumInput.on('keyup',(function () { //사업자 번호 input의 키보드 이벤트
 
         let nu = $businessNumInput.val(); //input의 값
@@ -50,11 +49,5 @@ alert("${msg }");
         	})
         }//end else
     }))//end $businessNumInput.on()
-    
-    //$nextBtn.click(function() {
-        //let nu = $businessNumInput.val(); //input의 값
-    	//localStorage.setItem('businessNum', nu);
-	//})Window.localStorage 활용하기 좋다.
-	
 </script>
 </html>

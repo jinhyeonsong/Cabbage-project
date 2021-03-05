@@ -120,9 +120,4 @@ $profile.on("change",function(){
 		});//ajax() end
 		
 	});//change() end
-
-$profileCancleBtn.click(function(){
-    $profileImg.css("background-image", "");
-    $profileImg.val("");
-});
 //2021/02/28 박형우 작성---------------------------------------------------------------

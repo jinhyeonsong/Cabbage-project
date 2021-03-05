@@ -8,7 +8,6 @@
     <title>회원가입 유형 선택</title>
     <c:import url="/WEB-INF/view/template/link.jsp"></c:import>
     <link rel="stylesheet" href="/css/signupSelect.css"/>
-  
 </head>
 <body>
 <div id="wrap">
@@ -27,11 +26,11 @@
                 내 동네 구독 서비스를 한 눈에 볼 수 있고</br>
                 편리하게 관리할 수 있습니다.
             </span>
-            <a href="" class="btn">next ></a>
+            <a href="/taker/signUp" class="btn">next ></a>
         </div>
         <div class="giverIntroduce">
             <img src="img/giverIntroduce.JPG" width="1000px" height="650px" />
-            <a href="" class="btn">next ></a>
+            <a href="/giver/signUp/step1" class="btn">next ></a>
         </div>
     </div>
 </div>

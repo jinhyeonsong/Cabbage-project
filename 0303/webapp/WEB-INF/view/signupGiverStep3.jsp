@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="/WEB-INF/view/template/link.jsp"></c:import>
-<link rel="stylesheet" href="css/signupGiverStep3.css"/>
+<link rel="stylesheet" href="/css/signupGiverStep3.css"/>
 </head>
 <body>
 
@@ -16,12 +16,12 @@
         <div class="sign_up_title"><span>Take It</span></div>
         <div class="sign_up_sub_title"><span>기버 회원가입</span></div>
     </div><!--//signUpTitleBox end-->
-    <form action="signupGiverStep3" method="post"><!--//form start-->
+    <form action="/giver/signUp/step3" method="post"><!--//form start-->
         <div id="signUpInputContent"><!--sign_up_input_container start-->
             <div class="business_name_input_box"><!--business_name_input_box start-->
                 <div class="business_name_input_title"><span>상호명</span></div>
 <input class="business_name_input" placeholder="2~10글자" name="company" />
-                <div class="business_name_notice"><span>2~10글자</span></div>
+                <div class="business_name_notice"><span></span></div>
             </div><!--//business_name_input_box end-->
             <div class="business_number_input_box"><!--business_name_input_box start-->
                 <div class="business_number_input_title"><span>사업자등록번호</span></div>
@@ -31,7 +31,7 @@
             <div class="id_input_box"><!--idInputBox start-->
                 <div class="id_input_title"><span>아이디</span></div>
 <input class="id_input" name="id" />
-                <div class="id_notice"><span>이메일 형식으로 해주세요</span></div>
+                <div class="id_notice"><span></span></div>
             </div><!--//idInputBox end-->
             <div class="password_input_box"><!--passwordInputBox start-->
                 <div class="password_input_title"><span>비밀번호</span></div>
@@ -51,7 +51,7 @@
             </div><!--//passwordConfirmInputBox end-->
 
             <div class="profile_img_input_box"><!--profileImg_input_box start-->
-                <i class="far fa-times-circle"></i>
+
                 <div class="profile_img_input_title"><span>프로필</span></div>
                 <label class="profile_img_input" for="profileImgInput" ><i class="far fa-plus-square"></i></label>
 <input id="profileImgInput" name="profileImg" type="file" accept="image/*"/>       
@@ -61,16 +61,19 @@
     </form><!--//form end-->
 </div><!---container end-->
 
-<script src="js/signUpGiver.js"></script>
+<script src="/js/signUpGiver.js"></script>
 <script>
 let $id = $(".id_input");
 
+//이메일 유효성 검사
 function chkEmail(str) {
     var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     if (regExp.test(str)) return true;
     else return false;
 }
-
+$idNotice = $(".id_notice");
+$idNoticeSpan = $(".id_notice span");
+//id 유효성 검사
 $id.on("keyup",function () {
     let emailChk = chkEmail($id.val());
     if(emailChk==true){
@@ -85,23 +88,29 @@ $id.on("keyup",function () {
 			},
 			success:function(json){
 				if(json.result) {
-				
+					$idNotice.css("display","block");
+					$idNoticeSpan.text("이미 등록된 아이디 입니다.");
 				}else {
-					
+					$idNotice.css("display","block");
+					$idNoticeSpan.text("좋은 아이디 입니다.");
 				}//if~else end
 			}//end success
 		});//end ajax 
     }
     else{
-       
+    	$idNotice.css("display","block");
+		$idNoticeSpan.text("이메일 형식으로 해주세요");
     }
 })//end $id.on()
-
+//상호명 유효성 검사
 let $businessName = $(".business_name_input");
+let $businessNameNotice = $(".business_name_notice");
+let $businessNameNoticeSpan = $(".business_name_notice span");
 
 $businessName.on("keyup",function () {
     if ($businessName.val().length <= 1) {
-       
+    	 $businessNameNotice.css("display","block");
+		 $businessNameNoticeSpan.text("2글자 이상으로 해주세요!");
     }else{
     	$.ajax({
 			url:"/ajax/check/businessName",//주소
@@ -113,12 +122,13 @@ $businessName.on("keyup",function () {
 				console.log(error);
 			},
 			success:function(json){
-				if(json.result) {
-				
-				}else {
-					
-				}//if~else end
+			if(json.result) {
+				$businessNameNoticeSpan.text("이미 등록된 상호명입니다.");
 			}//end success
+			else{
+				$businessNameNoticeSpan.text("좋은 상호명입니다.");
+				}
+			}
 		});//end ajax 
     }//end else
 })//end $businessName.on()
