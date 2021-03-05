@@ -3,7 +3,7 @@ package com.summer.cabbage.vo;
 import java.sql.Date;
 
 public class Taker {
-	private int no;
+	private int no,totalPrice;
 	private String name, nickname, gender;
 	private Date birthDate;
 
@@ -12,6 +12,17 @@ public class Taker {
 		
 	}
 	
+	
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+
 	public int getNo() {
 		return no;
 	}

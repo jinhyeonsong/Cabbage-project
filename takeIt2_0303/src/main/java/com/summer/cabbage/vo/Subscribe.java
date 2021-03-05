@@ -10,7 +10,18 @@ public class Subscribe {
 	private Date deliveryStart, cancelDate;
 	private Timestamp regdate;
 	private List<DeliveryDay> days;
+	//03-04 오승주 추가
+	private String photo;
+	private List<Integer> deliveryDays;
+	private String deliveryDaysStr;
+	private String thisPayment,nextPayment;
+	//03-04오승주 추가 end
 	
+	//정진하 20210304 풀캘린더 addResource 때문에 멤버필드 추가함
+	private String title;//product name
+	private Date start;//delivery start date
+	private String name;//product name 
+
 	public Subscribe() {
 		// TODO Auto-generated constructor stub
 	}
@@ -19,6 +30,54 @@ public class Subscribe {
 		this.giverNo = giverNo;
 		this.startDate = startDate;
 		this.productNo = productNo;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getTitle() {
+		return name;
+	}
+
+	public void setTitle(String name) {
+		this.name = name;
+	}
+
+	public Date getStart() {
+		return deliveryStart;
+	}
+
+	public void setStart(Date deliveryStart) {
+		this.deliveryStart = deliveryStart;
+	}
+	
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getThisPayment() {
+		return thisPayment;
+	}
+
+	public void setThisPayment(String thisPayment) {
+		this.thisPayment = thisPayment;
+	}
+
+	public String getNextPayment() {
+		return nextPayment;
+	}
+
+	public void setNextPayment(String nextPayment) {
+		this.nextPayment = nextPayment;
 	}
 
 	public List<DeliveryDay> getDays() {
@@ -207,8 +266,50 @@ public class Subscribe {
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
-
 	// 03-04 강필규 추가 end
+	
+	//03-04 오승주 추가
+	public String getDeliveryDaysStr() {
+		
+		String delivery="";
+		
+		for(int day:this.deliveryDays) {
+			
+			if(day==0) {
+				delivery+="일";
+			}else if(day==1) {
+				delivery+="월";
+			}else if(day==2) {
+				delivery+="화";
+			}else if(day==3) {
+				delivery+="수";
+			}else if(day==4) {
+				delivery+="목";
+			}else if(day==5) {
+				delivery+="금";
+			}else if(day==6) {
+				delivery+="토";
+			}
+			
+			delivery+=",";
+		}
+		
+		
+		return delivery.substring(0,delivery.length()-1);
+	}
+
+	public void setDeliveryDaysStr(String deliveryDaysStr) {
+		this.deliveryDaysStr = deliveryDaysStr;
+	}
+
+	public List<Integer> getDeliveryDays() {
+		return deliveryDays;
+	}
+
+	public void setDeliveryDays(List<Integer> deliveryDays){
+		this.deliveryDays = deliveryDays;
+	}
+	//03-04 오승주 추가 end
 	
 	
 }

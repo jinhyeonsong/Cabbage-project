@@ -23,11 +23,18 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.summer.cabbage.vo.TakerAddr" alias="TakerAddr"/>
 		<typeAlias type="com.summer.cabbage.vo.TakerCard" alias="TakerCard"/>
 		<typeAlias type="com.summer.cabbage.vo.Taker" alias="Taker"/>
-		
-		
 		<!-- ReviewAvg VO 추가 0303 오승주 -->
 		<typeAlias type="com.summer.cabbage.vo.ReviewAvg" alias="ReviewAvg"/>
 		<!-- =============================== -->
+		<!-- PageVO 추가  -->
+		<typeAlias type="com.summer.cabbage.vo.PageVO" alias="PageVO"/>
+		<!-- TakerPageVO 추가 -->
+		<typeAlias type="com.summer.cabbage.vo.TakerPageVO" alias="TakerPageVO"/>
+		<!-- =============================== -->
+		<!-- 03-04 정진하 추가  -->
+		<typeAlias type="com.summer.cabbage.vo.SubscriptionDay" alias="SubscriptionDay"/>
+		
+		
 	</typeAliases>
 
 	<!-- mapper 경로 설정 -->

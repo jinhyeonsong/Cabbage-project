@@ -8,5 +8,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM delivery_regions
 		WHERE no=#{no}	
 	</select>
+	<!-- 20210304 방 구독 상품 배송 옵션  -->
+	<select id="selectDeliveryOptions" parameterType="int" resultType="DeliveryRegion">
+		SELECT (SELECT name
+				FROM regions
+				WHERE (SELECT DISTINCT r.prior_no
+						FROM delivery_regions dr, regions r, products p
+						WHERE dr.area_no = r.no
+						AND dr.product_no = p.no
+						AND p.no = #{productNo}) = no) primaryRegionName , 
+				r.name regionName, dr.price price, r.no
+	
+		FROM products p, delivery_regions dr, regions r
+		WHERE p.no = dr.product_no
+		AND dr.area_no = r.no
+		AND p.no = #{productNo}
+	</select>
+	<!-- 03-04 송진현 추가  -->
+	<select id="selectListRegion" parameterType="int" resultType="DeliveryRegion">
+		select no,product_no,area_no,price,regdate
+		from delivery_regions
+		where product_no=#{productNo}
+	</select>
+	
+	
 </mapper>
 

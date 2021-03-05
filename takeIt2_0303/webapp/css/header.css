@@ -4,7 +4,9 @@
             width: 100%;
             background:#fff;
             border-bottom: 1px solid #8c8c8c;
+            z-index: 10;
         }
+        
         .header_contents_box{
             width: 1100px;
             height: 80px;
@@ -30,9 +32,7 @@
 
         /*카테고리*/
         .hcb_category{margin-left: 200px}
-        .hcb_category ul{
-            /*display: none;*/
-        }
+        
         .hcb_category ul>li>a{
             float: left;
             width: 80px;
@@ -75,6 +75,7 @@
             color: #424242;
             cursor: pointer;
             background-color: transparent;
+            border: none;
         }
 
         /*로그인*/

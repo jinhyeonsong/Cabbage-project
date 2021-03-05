@@ -3,12 +3,141 @@ package com.summer.cabbage.vo;
 import java.sql.Timestamp;
 
 public class Product {
-	private int no, giverNo, categoryNo, price, discount, dateAvail, salesQty, subCount, star, revCount;
-	private String name, photo, reqMsg, details, instruction, type, startDate;
+	private int no, giverNo, categoryNo, price, discount, dateAvail, salesQty, subCount, star, revCount,productNo, takerNo, reviewStar, priorNo, realPrice;
+	private String name, photo, reqMsg, details, instruction, type, startDate, review, addrOpt, company, productName, memberProfileImg, takerNickname;
 	private Timestamp regdate;
+	//20210304 카테고리 멤버필드 setter/getter 추가 
+	private String primaryCategoryName, categoryName;
+	
+	
 	public Product() {
 		
 	}
+	
+	public int getProductNo() {
+		return productNo;
+	}
+
+	public void setProductNo(int productNo) {
+		this.productNo = productNo;
+	}
+
+	public int getTakerNo() {
+		return takerNo;
+	}
+
+
+	public void setTakerNo(int takerNo) {
+		this.takerNo = takerNo;
+	}
+
+
+	public int getReviewStar() {
+		return reviewStar;
+	}
+
+
+	public void setReviewStar(int reviewStar) {
+		this.reviewStar = reviewStar;
+	}
+
+
+	public int getPriorNo() {
+		return priorNo;
+	}
+
+
+	public void setPriorNo(int priorNo) {
+		this.priorNo = priorNo;
+	}
+
+
+	public int getRealPrice() {
+		return realPrice;
+	}
+
+
+	public void setRealPrice(int realPrice) {
+		this.realPrice = realPrice;
+	}
+
+
+	public String getReview() {
+		return review;
+	}
+
+
+	public void setReview(String review) {
+		this.review = review;
+	}
+
+
+	public String getAddrOpt() {
+		return addrOpt;
+	}
+
+
+	public void setAddrOpt(String addrOpt) {
+		this.addrOpt = addrOpt;
+	}
+
+
+	public String getCompany() {
+		return company;
+	}
+
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+
+	public String getProductName() {
+		return productName;
+	}
+
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+
+	public String getMemberProfileImg() {
+		return memberProfileImg;
+	}
+
+
+	public void setMemberProfileImg(String memberProfileImg) {
+		this.memberProfileImg = memberProfileImg;
+	}
+
+
+	public String getTakerNickname() {
+		return takerNickname;
+	}
+
+
+	public void setTakerNickname(String takerNickname) {
+		this.takerNickname = takerNickname;
+	}
+
+
+	public String getPrimaryCategoryName() {
+		return primaryCategoryName;
+	}
+
+	public void setPrimaryCategoryName(String primaryCategoryName) {
+		this.primaryCategoryName = primaryCategoryName;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
 	public int getNo() {
 		return no;
 	}

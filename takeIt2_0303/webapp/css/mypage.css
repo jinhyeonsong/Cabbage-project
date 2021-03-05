@@ -1,0 +1,829 @@
+@charset "utf-8";
+
+
+body{
+    font-family: "Noto Sans KR",sans-serif;
+    /*(조에서) 지정한 폰트 색상*/
+    color:  rgb(61, 50, 34);
+}
+
+.mypage_wrap{
+    margin:auto;
+    position: relative;
+    width: 1000px;
+
+}
+
+#mypage{
+    display: table;
+    user-select: none;
+    height: 180px;
+    align-content: unset;
+}
+/*profile start*/
+.profile_wrap{
+    position:relative;
+    width: 100px;
+    padding: 0;
+}
+
+
+.profile_img{
+    cursor: pointer;
+}
+
+.profile_img_big{
+    position: relative;
+    margin-top:30px;
+    width: 96px;
+    height:96px;
+    border-radius: 100px;
+    border: 2px solid rgb(184, 152, 120);
+    color:#fff;
+    font-size: 60px;
+    line-height: 95px;
+    text-align: center;
+    object-fit: cover;
+    z-index: -1;
+}
+
+
+
+
+#mypage .profile_img::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position:absolute;
+    width:26px;
+    height: 26px;
+
+
+    font-size: 20px;
+    text-align: center;
+    line-height: 26px;
+
+    border: 2px solid #cca872;
+    border-radius: 30px;
+
+    content: "\f030";
+    color: #3d3222;
+    background-color: #fff;
+    left:0;
+    bottom: 40px;
+}
+
+
+
+.info_management{
+    border-radius: 4px;
+    background-color: rgb(204, 168, 114);
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    font-size: 15px;
+    margin-top:10px;
+}
+/*profile end*/
+
+
+/*userInfo & userAddress start*/
+
+.user_info_wrap{
+    display: table-cell;
+    position:relative;
+    width: 300px;
+    height: 150px;
+    padding: 0;
+}
+
+#mypage .user_info{
+    position: absolute;
+    top:40px;
+    left:15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.user_info .marketkeeper {
+    position: relative;
+    top:-5px;
+    width: 50px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    font-size: 8px;
+    border: 2px solid #cca872;
+    margin: 5px auto;
+    cursor: default;
+}
+
+
+.user_info .grade_img{
+    display: inline-block;
+    background : url("../img/iconDiamondSmall.png") no-repeat;
+    background-size: 100%;
+    width:22px;
+    height: 22px;
+    position: absolute;
+    right: -25px;
+}
+
+
+.nickname_box{
+    position:absolute;
+    top:20px;
+    left: 0;
+    z-index: 1;
+}
+
+#nickname{
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 20px;
+    width: 140px;
+}
+
+#userAddress {
+    margin: 50px 15px;
+    float:left;
+    position: absolute;
+    top:60px;
+    left: 100px;
+
+    font-size: 15px;
+    cursor: pointer;
+
+}
+
+#userAddress h3::after, #mypage .user_info em::after{
+    content: "\f013";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 8px;
+    position : relative;
+    top:5px;
+    color: #cca872;
+}
+
+#userAddress h3, .user_info em{
+    border: 3px solid transparent;
+}
+
+
+#userAddress h3:hover, #mypage .user_info em:hover{
+    border: 3px solid #cca872;
+    border-radius: 2px;
+}
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■userInfo & userAddress end■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■user_point start ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+
+.user_point_wrap{
+    display: table-cell;
+    width: 300px;
+    vertical-align: top;
+    margin-top:50px;
+}
+
+.user_point{
+    position:relative;
+    top:60px;
+}
+
+.user_point div{
+    display: inline-block;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.user_point span:hover{
+    text-decoration: underline;
+}
+
+
+.cumulative_point span:before{
+    content: "누적";
+}
+
+.point span:before{
+    content: "보유";
+}
+
+
+.user_point span:before{
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    background-color: #cca872;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.user_point_wrap dd:nth-child(2){
+    margin-left: 10px;
+}
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■user_point end ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■service_idx ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+.service_idx_wrap, .user_ranking_wrap{
+    display: table-cell;
+    width: 100px;
+    text-align: center;
+    vertical-align: top;
+    font-size: 25px;
+
+}
+
+.user_ranking_wrap{
+    width: 200px;
+}
+
+.service_idx_wrap .service_idx, .ranking_weekly, .ranking_total{
+    display: inline-block;
+    position: relative;
+    top: 90px;
+    width: 60px;
+    border-top:3px solid #3d3222;
+    margin:0 15px;
+    cursor: pointer;
+}
+
+
+
+
+
+.service_idx_wrap .service_idx::before, .ranking_weekly::before, .ranking_total::before {
+    content: "서비스 지수";
+    width: 80px;
+    position: absolute;
+    font-size: 13px;
+    top:-20px;
+    left:-10px;
+
+}
+
+.ranking_weekly::before{
+    content: "주간";
+}
+
+.ranking_total::before{
+    content: "전체";
+}
+
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■service_idx end ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■user_ranking  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+
+
+
+.service_idx_wrap .service_idx::after, .cumulative_point:after {
+    content: "\f05a";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    display: inline-block;
+    color: #cca872;
+    font-size: 15px;
+    position: absolute;
+    width:10px;
+    height:10px;
+}
+
+.service_idx_wrap .service_idx::after{
+    top:-30px;
+    left:60px;
+
+}
+
+/*userRank & serviceIdx end*/
+
+.cumulative_point:after{
+    top:-10px;
+}
+
+#mypageTab{
+    position:relative;
+    width: 1000px;
+
+    border-top: 2px solid #3d3222;
+    border-bottom: 2px solid #3d3222;
+    margin: auto;
+    top:5px;
+
+    background-color: #fafafa;
+
+    font-size: 20px;
+    line-height: 40px;
+
+    cursor: pointer;
+    user-select: none;
+
+    clear: both;
+}
+
+#mypageTab .mypage_tab{
+    display: inline-block;
+    width: 246px;
+    text-align: center;
+}
+
+
+#mypageTab i, #mypageTab h4{
+    width: 50px;
+}
+
+#mypageTab em{
+    display: inline-block;
+    width: 100px;
+}
+
+#mypageTab h4{
+    display: inline-block;
+    width: 50px;
+}
+
+.tab_click{
+}
+
+#layerWrap{
+    position:fixed;
+    top:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,.75);
+}
+
+.tab_under_bar{
+    position: relative;
+    height: 5px;
+    width: 100px;
+    background-color: #cca872;
+    left:72px;
+    transition: .2s ease;
+}
+
+
+/*----------임시 헤더---start-----*/
+
+#header{
+    width:1100px;
+    height: 60px;
+    background-color: black;
+    margin: auto;
+}
+/*----------임시 헤더----end------*/
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■등급박스 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+
+.grade_info_box{
+    position:fixed;
+    top:0px;
+    left:0;
+    right: 0;
+    width: 400px;
+    border: 40px solid #fff;
+    background-color: #fff;
+    transform: scale(.9);
+    margin: auto;
+}
+
+.grade_info_box h2{
+    width: 80px;
+    height: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 5px solid #cca872;
+}
+
+.grade_info_box h3{
+    width: 400px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.grade_info{
+    display: table;
+    border-top: 2px solid #dfdfdf;
+}
+
+.grade_info:first-child{
+    border : 0;
+}
+
+
+.grade_icon{
+    display: table-cell;
+    font-size: 30px;
+    width: 96px;
+    text-align: center;
+    position: relative;
+}
+
+.grade_icon img{
+    display: inline-block;
+    height: 40px;
+    margin : 10px;
+}
+
+.grade_detail{
+    display: table-cell;
+    vertical-align: top;
+    width: 300px;
+    text-align: center;
+    position: relative;
+}
+
+.grade_detail p{
+    font-size: 13px;
+}
+
+.grade_detail p:first-child{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.grade_detail div{
+    display: inline-block;
+}
+
+.two_line p{
+    margin-top: 10px;
+}
+
+.two_line p:first-child{
+    margin-top: 15px;
+}
+
+.one_line p{
+    margin-top: 20px;
+}
+
+.close_btn{
+    position: absolute;
+    font-size: 30px;
+    font-weight: 900;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.close_btn:hover{
+    color: #b89878;
+}
+
+.profile_wrap .close_btn{
+    text-align: center;
+    font-size: 20px;
+    line-height: 26px;
+    top:20px;
+    right:-10px;
+    color: #fff;
+    width:26px;
+    height: 26px;
+    background-color: #3d3222;
+    border-radius: 26px;
+}
+
+.grade_info_box .close_btn{
+    top:-30px;
+    right: -30px;
+}
+
+.point_history_box .close_btn{
+    top:-50px;
+    right:-40px;
+}
+
+
+
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■등급박스 css end■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■포인트박스 css ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+
+
+.point_history_box{
+    position:fixed;
+    top:50px;
+    left:0;
+    right:0;
+    width: 700px;
+    border: 50px solid #fff;
+    background-color: #fff;
+    margin: auto;
+    font-size: 18px;
+}
+
+.point_history_box h2{
+    height: 25px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.point_history_box h3{
+    font-size: 16px;
+    color: #cca872;
+    width: 400px;
+}
+
+.point_now{
+    border: 5px solid #cca872;
+    position: relative;
+    width: 690px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.point_tab{
+    margin: 10px 0;
+}
+
+.filter_radio{
+    display: none;
+}
+
+.point_tab input + span{
+    background-color: #f4f4f4;
+    display: inline-block;
+    width: 346px;
+    height: 30px;
+    border: 2px solid transparent;
+    border-bottom: 2px solid #BDBDBD;
+
+    text-align: center;
+    line-height: 28px;
+    cursor:pointer;
+}
+.point_tab input:checked + span{
+    background-color: #fff;
+    border: 2px solid #BDBDBD;
+    border-bottom: #fff;
+    transition: .2s ease;
+}
+
+.point_use_tab{
+    border-left: 2px solid #bdbdbd;
+    position: relative;
+
+}
+
+
+.point_history_menu, .point_history_data{
+    display: block;
+    width: 700px;
+}
+
+.point_history_box li{
+    display: inline-block;
+    height: 30px;
+    margin: 5px 0;
+    padding: 0;
+
+}
+
+.point_history_box li:first-child{
+    width: 350px;
+    text-align: center;
+}
+
+.point_history_box li:nth-child(2),.point_history_box li:nth-child(3) {
+    width: 170px;
+    text-align: center;
+}
+
+.point_history_menu li{
+    border-bottom: 2px solid #f4f4f4;
+    margin-bottom: 10px;
+}
+
+.point_history_wrap{
+    height: 300px;
+
+}
+
+.hidden{
+    display: none;
+}
+
+.paginate_box{
+    height: 50px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.link_page{
+    display: inline-block;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    background-color: #efefef;
+    border-radius: 10px;
+    font-size:18px;
+
+    text-decoration: none;
+    color: #3d3222;
+}
+
+.link_page .on{
+    background-color : #cca872;
+    color:#fff;
+}
+
+.line{
+    width: 700px;
+    height: 2px;
+    background-color: #fafafa;
+
+}
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■포인트박스 css end ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■서비스 지수 박스 css ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+
+.service_idx_box{
+    position: fixed;
+    background-color: #fff;
+    width: 540px;
+    height: 440px;
+    top:50%;
+    left:0;
+    right:0;
+    border: 30px solid #fff;
+    margin:-250px auto;
+    clear:both;
+}
+
+.service_idx_box .profile_wrap{
+    width: 270px;
+    height: 220px;
+    float: left;
+    text-align: center;
+    position: relative;
+}
+
+.service_idx_box .profile_img_big{
+    margin-top:10px;
+}
+
+.service_idx_box .user_info{
+    width: 270px;
+}
+
+.service_idx_box .marketkeeper{
+    top:0;
+}
+
+.service_idx_box .service_idx{
+    color : #ffc000;
+    font-size: 20px;
+    font-weight: 700;
+    position: relative;
+    top:5px;
+}
+
+
+/*--- 마켓 카드 ----*/
+
+.service_idx_box .market_card {
+    top:-15px;
+    float: left;
+    position: relative;
+    width: 270px;
+    transform: scale(0.8);
+}
+
+/*네임카드 이미지*/
+.market_card_img {
+    width: 270px;
+    height: 151.88px;
+}
+
+.service_idx_box .market_info{
+    width: 270px;
+}
+
+
+/*네임카드 장소 이름*/
+.market_card_name {
+    /**/
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    margin: 5px 0;
+    height: 32.3px;
+    /*background-color: green;*/
+    line-height: 32.3px;
+}
+/*네임카드 장터 시간대*/
+.market_card_market_time {
+    font-size: 15px;
+    height:28px;
+    line-height: 28px;
+    text-align: center;
+    /*background-color: white;*/
+    color: #cca872;
+}
+
+.market_card_a {
+    text-decoration: none;
+    color: #3d3222;
+
+}
+
+.service_idx_box .star_rate_wrap,.service_idx_box .star_idx_wrap {
+    float: left;
+    width:270px;
+    height: 220px;
+}
+
+.service_idx_box .close_btn{
+    top:-30px;
+    right: -20px;
+}
+
+.service_idx_box .star_rate{
+    background-image: url("../img/starRateImg.png");
+    background-repeat: no-repeat;
+    height: 40px;
+}
+
+.grade_star{
+    width : 220px;
+    margin: 3px 25px;
+}
+
+.inner_star{
+    width : 0px;
+    background-position-y: -40px;
+}
+
+
+.star_idx{
+    width: 270px;
+    height: 43px;
+}
+
+
+
+
+.star_graph{
+    float: left;
+    width : 170px;
+    height: 20px;
+    margin: 14px 15px 0 25px;
+    background-color: #cca872;
+    display: inline-block;
+    transition: width 1s;
+
+}
+
+.star_idx_num{
+    float: left;
+    width: 30px;
+    height: 43px;
+    line-height: 43px;
+
+    font-weight: 700;
+}
+
+/*--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■유효성 검사를 위한 클래스■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■--*/
+
+.nickname_regex{
+    font-size : 10px;
+    width: 200px;
+}
+
+.hidden{
+    display: none;
+}
+
+
+.box{
+    z-index: 100;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

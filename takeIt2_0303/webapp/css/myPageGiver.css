@@ -1,0 +1,219 @@
+@charset "UTF-8";
+body {
+            font-family: AppleSDGothic, sans-serif;
+            font-weight: 300;
+            user-select: none;
+        }
+        btn, input, select {
+            font-family: AppleSDGothic, sans-serif;
+            font-weight: 300;
+        }
+        /* 전체 화면 감싸는 container*/
+        .container {
+            width: 1100px;
+            overflow: hidden;
+            margin: auto;
+        }
+        /* ====================왼쪽의 공통 탭==================*/
+        .list_content {
+            width: 190px;
+            height: 700px;
+            background-color:#3c7166;
+            float: left;
+        }
+
+        .list_content_giver_wrap {
+            height: 162px;
+            text-align: center;
+        }
+        .list_content_giver_box {
+            top: 40px;
+            position: relative;
+        }
+        #giverProfileImg  {
+            width: 70px;
+            height: 70px;
+            border-radius: 100%;
+            line-height: 70px;
+        }
+
+        .management_list {
+            width: 170px;
+            height: 66px;
+            line-height: 66px;
+            background-color: #4c9384;
+            color: #fff;
+            padding: 0 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        .management_list:hover {
+            background-color: #3c7166;
+        }
+        .management_list.on {
+            background-color: #264a43;
+        }
+        .fas.fa-chevron-right {
+            right: 0;
+            top: 25px;
+            width: 30px;
+            height: 30px;
+            display: none;
+            position: absolute;
+        }
+        .fas.fa-chevron-right.on {
+            display: block;
+        }
+        /* 문의하기 */
+        .qna {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+
+        /*========================================*/
+        .contents {
+            width: 910px;
+            background-color: #edf0f5;
+            float: left;
+        }
+        .content {
+            display: none;
+        }
+        .content.on {
+            display: block;
+        }
+
+        /* ====================오른쪽 탭 / 1. 상품 관리 ====================*/
+        .product_management {
+        }
+        /* ====================오른쪽 탭 / 2. 판매 관리 ====================*/
+        .sell_management {
+        }
+        /* ====================오른쪽 탭 / 3. 매출 관리 ====================*/
+        .sales_management {
+        }
+        /* ====================오른쪽 탭 / 4. 판매자 정보 ====================*/
+
+
+
+        /* ============================4. 판매자 정보=================================== */
+        .giver_information.content {
+            width: 910px;
+            height: 700px;
+            /*background-color: #edf0f5;*/
+            float: left;
+        }
+        .content_giver_information_wrap {
+            margin: auto;
+            width: 910px;
+        }
+        .giver_information_head_box {
+            width: 850px;
+            height: 60px;
+            line-height: 60px;
+            background-color: #fff;
+            margin: 20px auto 15px auto;
+            /*position: relative;*/
+        }
+        .giver_information_head_box_text {
+            padding: 0 15px;
+            font-size: 22px;
+            font-weight: 700;
+
+        }
+        .giver_information_body_box {
+            width: 850px;
+            height: 420px;
+            background-color: #fff;
+            margin: auto;
+        }
+
+        .giver_information_profile_box {
+            position: relative;
+            width: 150px;
+
+        }
+
+        .filter_radio{
+            display: none;
+        }
+        /* 기버 프로필 이미지 */
+        .giver_profile_img{
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+            padding: 30px 35px;
+            position: relative;
+        }
+        /* 기버 프로필 이미지 변경하기 위한 카메라 모양 버튼*/
+        .fas.fa-camera {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            bottom: 13px;
+            left: 40px;
+            background: #9E9E9E;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 40px;
+            cursor: pointer;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+        /* 기버 프로필 이미지 삭제를 위한 버튼 */
+        .close_btn{
+            position: absolute;
+            font-size: 30px;
+            font-weight: 900;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .close_btn:hover{
+            color: #b89878;
+        }
+
+        .giver_information_profile_box .close_btn{
+            text-align: center;
+            font-size: 20px;
+            line-height: 26px;
+            top:20px;
+            right: -35px;
+            color: #fff;
+            width:26px;
+            height: 26px;
+            background-color: #3d3222;
+            border-radius: 26px;
+        }
+        .giver_information_box_body dt{
+            width: 170px;
+            height: 40px;
+            line-height: 40px;
+            /*background-color: #c0392b;*/
+            float: left;
+            padding-left: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .giver_information_box_body dd {
+            width: 660px;
+            height: 40px;
+            line-height: 40px;
+            /*background-color: #3C7166;*/
+            float: left;
+            font-size: 16px;
+        }
+        .giver_information.btn {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .giver_information_change_phone_num {
+            display: inline-block;
+        }
+        .change_phone_num_input {
+           width: 220px;
+        }
+        .hidden {
+            display: none;
+        }

@@ -8,5 +8,80 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM payments
 		WHERE no=#{no}
 	</select>
+	<!--0304 이성정 날짜별 결제 건수 받아오는 sql -->
+	<select id="selectPaymentCountByDate" parameterType="int"
+		resultType="map">
+		SELECT to_char(pay.regdate,'yyyymmdd') "DATE", count(*)
+		total
+		FROM subscribes s
+		JOIN payments pay
+		ON pay.sub_no = s.no
+		JOIN
+		products p
+		ON p.no = s.product_no
+		where p.giver_no = #{giverNo}
+		group by
+		to_char(pay.regdate,'yyyymmdd')
+	</select>
+	
+	<!-- 0304 이성정 날짜별 결제금액 받아오는 sql -->
+	<select id="selectPriceSumByDate" parameterType="int"
+		resultType="map">
+		SELECT to_char(pay.regdate,'yyyymmdd') "DATE",
+		sum(pay.price) total
+		FROM subscribes s
+		JOIN payments pay
+		ON pay.sub_no =
+		s.no
+		JOIN products p
+		ON p.no = s.product_no
+		where p.giver_no = #{giverNo}
+		group by to_char(pay.regdate,'yyyymmdd')
+	</select>
+
+
+	<!-- 0305이성정 총 매출 -->
+	<select id="selectTotalSales" parameterType="int"
+		resultType="int">
+		SELECT sum(pay.price) total
+		FROM subscribes s
+		JOIN payments
+		pay
+		ON pay.sub_no = s.no
+		JOIN products p
+		ON p.no = s.product_no
+		where
+		p.giver_no =#{giverNo}
+	</select>
+
+	<!-- 0305이성정 오늘의 매출 -->
+	<select id="selectTodaySales" parameterType="int"
+		resultType="int">
+		SELECT sum(pay.price) total
+		FROM subscribes s
+		JOIN payments pay
+		ON pay.sub_no =
+		s.no
+		JOIN products p
+		ON p.no = s.product_no
+		where p.giver_no = #{giverNo}
+		AND TO_CHAR(pay.regdate, 'yyyy-mm-dd') =
+		TO_CHAR(current_date,'yyyy-mm-dd')
+	</select>
+	
+		<!-- ////////월별 매출 금액 -->
+	<select id="selectSalesByMonth" parameterType="int" resultType="map">
+		SELECT to_char(pay.regdate,'yyyymm') "MONTH",
+		sum(pay.price) total
+		FROM subscribes s
+		JOIN payments pay
+		ON pay.sub_no =
+		s.no
+		JOIN products p
+		ON p.no = s.product_no
+		where p.giver_no = #{giverNo}
+		group by to_char(pay.regdate,'yyyymm')
+	</select>
+	
 </mapper>
 

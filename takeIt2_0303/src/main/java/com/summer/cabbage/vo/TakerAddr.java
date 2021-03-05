@@ -4,14 +4,16 @@ import java.sql.Timestamp;
 
 public class TakerAddr {
 	private int no, takerNo;
-	private String name, addr, addrDetail, phone, zipCode, receiver;
-	private char type;
+	private String name, addr, addrDetail, phone, zipCode, receiver, type;
 	private Timestamp regdate;
 	
 	public TakerAddr() {
 		// TODO Auto-generated constructor stub
 	}
-
+	// 작성자 방, 20210303
+	 public String getPhoneNum() { 
+	 return phone.substring(0,3)+"-"+phone.substring(3,7)+"-"+phone.substring(7, phone.length()); }
+	
 	public int getNo() {
 		return no;
 	}
@@ -76,11 +78,11 @@ public class TakerAddr {
 		this.receiver = receiver;
 	}
 
-	public char getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(char type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
@@ -91,5 +93,6 @@ public class TakerAddr {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
+	
 	
 }

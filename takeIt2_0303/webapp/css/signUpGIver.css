@@ -1,0 +1,198 @@
+#container{
+    width: 1100px;
+    height: auto;
+    margin: 0 auto;
+    font-family: AppleSDGothic, sans-serif;
+    position: relative;
+}
+#container input{
+    border: 1px solid #bababa;
+    border-radius: 5px;
+    width: 260px;
+    height: 30px;
+    font-size: 16px;
+    outline-color: #3C7166;
+    font-family: AppleSDGothic, sans-serif;
+}
+#container input::placeholder{
+    font-size: 14px;
+}
+#signUpTitleContent{
+    width: 1100px;
+    text-align: center;
+}
+.sign_up_title{
+    font-size: 35px;
+}
+.sign_up_sub_title{
+    font-size: 19px;
+}
+#signUpInputContent{
+    position: relative;
+    margin-top: 40px;
+    width: 1100px;
+    font-size: 18px;
+}
+.business_name_input_box{
+     position: relative;
+     width: 1100px;
+     height: 60px;
+}
+.business_name_input_title{
+    position: absolute;
+    top: 16px;
+    left: 380px;
+}
+.business_name_input{
+    position: absolute;
+    top: 8px;
+    left: 510px;
+}
+.business_number_input_box{
+    position: relative;
+    width: 1100px;
+    height: 60px;
+}
+.business_number_input_title{
+    position: absolute;
+    top: 16px;
+    left: 380px;
+}
+.business_number{
+    position: absolute;
+    top: 16px;
+    left: 510px;
+}
+.id_input_box{
+    position: relative;
+    width: 1100px;
+    height: 60px;
+}
+.id_input_title{
+    position: absolute;
+    top: 16px;
+    left: 380px;
+}
+.id_input{
+    position: absolute;
+    top: 8px;
+    left: 510px;
+}
+.password_input_box{
+    position: relative;
+    width: 1100px;
+    height: 60px;
+}
+.password_input_title{
+    position: absolute;
+    top: 16px;
+    left: 380px;
+}
+.password_input{
+    position: absolute;
+    top: 8px;
+    left: 510px;
+}
+.password_notice{
+    position: absolute;
+    top: 48px;
+    left: 510px;
+    font-size: 13px;
+    color: crimson;
+    display: none;
+}
+.password_confirm_input_box{
+    position: relative;
+    width: 1100px;
+    height: 60px;
+}
+.password_confirm_input_title{
+    position: absolute;
+    top: 16px;
+    left: 380px;
+}
+.password_confirm_input{
+    position: absolute;
+    top: 8px;
+    left: 510px;
+}
+.password_confirm_notice{
+    position: absolute;
+    top: 48px;
+    left: 510px;
+    font-size: 13px;
+    display: none;
+}
+.profile_img_input_box{
+    position: relative;
+    width: 1100px;
+    height: 120px;
+}
+.profile_img_input_box>i{
+    position: absolute;
+    font-size: 20px;
+    top: 3px;
+    left: 600px;
+    z-index: 1;
+    cursor: pointer;
+}
+.profile_img_input_box>i:hover{
+    color: #3C7166;
+}
+.profile_img_input_title{
+    position: absolute;
+    top: 16px;
+    left: 380px;
+}
+.profile_img_input{
+    position: absolute;
+    top: 8px;
+    left: 510px;
+    width: 100px;
+    height: 100px;
+    background-color: #EDEDED;
+    border-radius: 5px;
+    /*background-image: url("../../img/5.jpg");*/
+    background-size: cover;
+    cursor: pointer;
+}
+.profile_img_input>i{
+    position: absolute;
+    font-size: 30px;
+    top:50%;
+    left: 50%;
+    margin: -15px 0 0 -15px;
+}
+.profile_img_input:hover>i{
+    color: #f4fffd;
+}
+#profileImgInput{
+    display: none;
+    color: #3C7166;
+}
+.profile_img_notice{
+    position: absolute;
+    top: 93px;
+    left: 620px;
+    font-size: 13px;
+}
+.sign_up_btn{
+    display: block;
+    width: 300px;
+    height: 40px;
+    margin: 40px auto;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: AppleSDGothic;
+    background-color: #3C7166;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.sign_up_btn:hover{
+    color: #f4fffd;
+}
+
+
+
+

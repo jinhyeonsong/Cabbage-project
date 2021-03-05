@@ -3,12 +3,62 @@ package com.summer.cabbage.vo;
 import java.sql.Timestamp;
 
 public class Review {
-	private int no, productNo, takerNo, star;
-	private String review;
+	private int no, productNo, takerNo, star, giverNo;
+	private String review, productName, takerName, MemberProfileImg, takerNickname;
 	private Timestamp regdate;
+	private Reply reply;
 	public Review() {
 		
 	}
+	
+	public int getGiverNo() {
+		return giverNo;
+	}
+
+	public void setGiverNo(int giverNo) {
+		this.giverNo = giverNo;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getTakerName() {
+		return takerName;
+	}
+
+	public void setTakerName(String takerName) {
+		this.takerName = takerName;
+	}
+
+	public String getMemberProfileImg() {
+		return MemberProfileImg;
+	}
+
+	public void setMemberProfileImg(String memberProfileImg) {
+		MemberProfileImg = memberProfileImg;
+	}
+
+	public String getTakerNickname() {
+		return takerNickname;
+	}
+
+	public void setTakerNickname(String takerNickname) {
+		this.takerNickname = takerNickname;
+	}
+
+	public Reply getReply() {
+		return reply;
+	}
+
+	public void setReply(Reply reply) {
+		this.reply = reply;
+	}
+
 	public int getNo() {
 		return no;
 	}

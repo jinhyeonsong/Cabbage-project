@@ -79,13 +79,9 @@
 }
 
 .login_form input{
-	font-family: AppleSDGothic, sans-serif;
-    margin-top: 5px;
-    font-size:14px;
-    line-height:30px;
-    width: 275px;
+    margin-top: 10px;
+    width: 290px;
     height: 30px;
-    padding: 10px 10px 5px 10px;
 }
 
 .logo_title{

@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <div id="header">
 
     <!-- 헤더 내용들 -->
@@ -64,6 +63,7 @@
             </div>
          	</c:otherwise>
      	</c:choose>
+     	</div>
         <!-- end hcb_login-->
     </div>
     <!-- end header_contents_box -->

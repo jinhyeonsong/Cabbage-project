@@ -8,5 +8,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM replies
 		WHERE no=#{no}
 	</select>
+	<!-- 03-04 이소현 추가 -->
+	<!-- 0303 이소현 _ (리뷰관리) 답글 받아오기 -->
+	<select id="selectOneReply" parameterType="int" resultType="Reply">
+		SELECT no, giver_no giverNo, reply, regdate
+		FROM replies
+		WHERE no = #{no}
+	</select>
+	
+	<!-- 0304 이소현 _ (리뷰 관리) 답글 등록 -->
+	<insert id="insertReply" parameterType="Reply">
+		INSERT INTO replies(no, giver_no, reply, regdate)
+		VALUES(200, #{giverNo}, #{reply}, systimestamp)
+	</insert>
+	
+	<!-- 0304 이소현 _ (리뷰 관리) 답글 수정 -->
+	<update id="updateReply" parameterType="Reply">
+		UPDATE replies
+		SET reply = #{reply}, regdate= systimestamp
+		WHERE no = #{no}
+	</update>
+	
+	<!-- 0305 이소현 _ (리뷰 관리) 답글 삭제 -->
+	<delete id="deleteReply" parameterType="int">
+		DELETE replies
+		WHERE no = #{no}
+	</delete>
+	<!-- 03-04 이소현 추가 end -->
+	
 </mapper>
 
