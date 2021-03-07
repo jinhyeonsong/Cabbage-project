@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.summer.cabbage.vo.Category" alias="Category"/>
+		<typeAlias type="com.summer.cabbage.vo.DeliveryDay" alias="DeliveryDay"/>
+		<typeAlias type="com.summer.cabbage.vo.DeliveryRegion" alias="DeliveryRegion"/>
+		<typeAlias type="com.summer.cabbage.vo.Giver" alias="Giver"/>
+		<typeAlias type="com.summer.cabbage.vo.Member" alias="Member"/>
+		<typeAlias type="com.summer.cabbage.vo.Payment" alias="Payment"/>
+		<typeAlias type="com.summer.cabbage.vo.Product" alias="Product"/>
+		<typeAlias type="com.summer.cabbage.vo.Region" alias="Region"/>
+		<typeAlias type="com.summer.cabbage.vo.Reply" alias="Reply"/>
+		<typeAlias type="com.summer.cabbage.vo.Review" alias="Review"/>
+		<typeAlias type="com.summer.cabbage.vo.Subscribe" alias="Subscribe"/>
+		<typeAlias type="com.summer.cabbage.vo.TakerAddr" alias="TakerAddr"/>
+		<typeAlias type="com.summer.cabbage.vo.TakerCard" alias="TakerCard"/>
+		<typeAlias type="com.summer.cabbage.vo.Taker" alias="Taker"/>
+		<!-- ReviewAvg VO 추가 0303 오승주 -->
+		<typeAlias type="com.summer.cabbage.vo.ReviewAvg" alias="ReviewAvg"/>
+		<!-- =============================== -->
+		<!-- PageVO 추가  -->
+		<typeAlias type="com.summer.cabbage.vo.PageVO" alias="PageVO"/>
+		<!-- TakerPageVO 추가 -->
+		<typeAlias type="com.summer.cabbage.vo.TakerPageVO" alias="TakerPageVO"/>
+		<!-- =============================== -->
+		<!-- 03-04 정진하 추가  -->
+		<typeAlias type="com.summer.cabbage.vo.SubscriptionDay" alias="SubscriptionDay"/>
+		
+		
+	</typeAliases>
+
+	<!-- mapper 경로 설정 -->
+	<mappers>
+		<mapper resource="com/summer/cabbage/mapper/categories.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/deliveryDays.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/deliveryRegions.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/givers.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/members.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/payments.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/products.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/regions.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/replies.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/reviews.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/subscribes.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/takerAddrs.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/takerCards.xml"/>
+	    <mapper resource="com/summer/cabbage/mapper/takers.xml"/>
+	</mappers>
+
+</configuration>
+
+

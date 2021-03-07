@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="takers">
+	<select id="selectNo" parameterType="int" resultType="Taker">
+		SELECT NO,BIRTH_DATE birthDate,GENDER,NAME	
+		FROM takers
+		WHERE no=#{no}
+	</select>
+	
+	<select id="selectOneByNo" parameterType="int" resultType="Taker">
+		SELECT no, birth_date birthDate, gender , name, nickname,(select sum(price)
+		from subscribes 
+		where taker_no =#{no} and cancel_date is null) 	totalPrice
+		FROM takers
+		WHERE no=#{no}
+	</select>
+	
+	<select id="selectCheckNickname" resultType="int" parameterType="string">
+		select count(*)
+		from takers
+		where nickname= #{nickname}
+	</select>
+	
+	<update id="updateNickname" parameterType="Taker">
+		update takers
+		set nickname = #{nickname}
+		where no = #{no}
+	</update>
+	
+	<!-- 03-04 이아림 추가 -->
+	<select id="selectNickname" resultType="int"
+		parameterType="string">
+		SELECT COUNT(*)
+		FROM takers
+		WHERE nickname=#{nickname}
+	</select>
+	
+</mapper>
+

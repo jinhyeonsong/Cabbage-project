@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="subscribes">
+	<select id="selectNo" parameterType="int" resultType="Subscribe">
+		SELECT NO,PRODUCT_NO productNo,TAKER_NO takerNo,STATUS,ADDR_OPT addrOpt,DELIVERY_START deliveryStart,PRICE,TAKER_MSG takerMsg,CANCEL_DATE cancelDate,ZIP_CODE zipCode,ADDR,ADDR_DETAIL addrDetail,DEL_LOCATION delLocation,RECEIVER,REGDATE				
+		FROM subscribes
+		WHERE no=#{no}		
+	</select>
+	<!-- 03-03 강필규 추가 -->
+	
+	<!-- 총 주문조회 상품리스트 -->
+	<select id="selectOrderCheckList" parameterType="Subscribe" resultType="Subscribe">
+		SELECT s.NO,s.PRODUCT_NO productNo,s.TAKER_NO takerNo,s.STATUS,s.ADDR_OPT addrOpt,s.DELIVERY_START deliveryStart,s.PRICE,s.TAKER_MSG takerMsg,s.CANCEL_DATE cancelDate,s.ZIP_CODE zipCode,s.ADDR,s.ADDR_DETAIL addrDetail,s.DEL_LOCATION delLocation,s.RECEIVER,s.phone,p.name productName,m.id id,s.REGDATE regdate, p.regdate pRegdate 
+	FROM subscribes s, products p, members m
+	WHERE m.no = s.taker_no AND s.PRODUCT_NO = p.NO AND p.giver_no = #{giverNo} AND s.status = 'Y'
+	<choose>
+    	<when test='startDate != null and productNo == 0'>
+			AND (p.regdate BETWEEN TO_DATE(#{startDate}, 'YYYYMMDD') AND systimestamp)
+		</when>
+    	<when test='startDate == null and productNo != 0'>
+			AND p.no = #{productNo}
+		</when>
+		<when test ='startDate != null and productNo != 0'> 
+			AND (p.regdate BETWEEN TO_DATE(#{startDate}, 'YYYYMMDD') AND systimestamp) AND p.no = #{productNo}
+		</when>
+	</choose>
+	</select>
+	<!-- 총 주문조회 갯수 count -->
+	<select id="selectOrderCheckListCount" parameterType="int" resultType="int">
+		SELECT count(*) 
+		FROM subscribes s, products p, members m
+		WHERE m.no = s.taker_no AND s.PRODUCT_NO = p.NO AND p.giver_no = #{giverNo} AND s.status = 'Y'
+	<choose>
+    	<when test='startDate != null and productNo == 0'>
+			AND (p.regdate BETWEEN TO_DATE(#{startDate}, 'YYYYMMDD') AND systimestamp)
+		</when>
+    	<when test='startDate == null and productNo != 0'>
+			AND p.no = #{productNo}
+		</when>
+		<when test ='startDate != null and productNo != 0'> 
+			AND (p.regdate BETWEEN TO_DATE(#{startDate}, 'YYYYMMDD') AND systimestamp) AND p.no = #{productNo}
+		</when>
+	</choose>
+	</select>
+	<!-- //03-03 강필규 추가 -->
+	<!-- 03-04 강필규 추가  -->
+	<update id="deleteOrderCheckList" parameterType="int">
+		UPDATE subscribes
+		SET status = 'N'
+		WHERE no = #{no}
+	</update>
+	<!-- //03-04 강필규 추가  -->
+	
+	<!-- 0304 이성정 수정 시작 -->
+
+	<!-- 현재 구독자수 얻어오는 sql구문 -->
+	<select id="selectSubscriberCount" parameterType="int"
+		resultType="int">
+		SELECT count(*)
+		FROM products p
+		JOIN subscribes s
+		ON p.no =
+		s.product_no
+		WHERE p.giver_no =#{giverNo} AND s.status ='Y' AND
+		cancel_date is null
+
+
+	</select>
+
+	<!-- 오늘의 구독자수 얻어오는 sql구문 -->
+	<select id="selectTodaySubscriberCount" parameterType="int"
+		resultType="int">
+
+		SELECT count(*)
+		FROM products p
+		JOIN subscribes s
+		ON p.no =
+		s.product_no
+		WHERE p.giver_no = #{giverNo} AND s.status ='Y' AND
+		cancel_date is null AND
+		TO_CHAR(s.regdate, 'yyyy-mm-dd') =
+		TO_CHAR(current_date,'yyyy-mm-dd')
+
+
+	</select>
+
+	<!-- 판매중인 구독상품 수 얻어오는 sql구문 -->
+	<select id="selectNowProductCount" parameterType="int"
+		resultType="int">
+		SELECT count(*)
+		FROM products
+		WHERE type= 'N' and giver_no =
+		#{giverNo}
+	</select>
+
+	<!-- 날짜별로 구독자수 얻어오는 sql구문 -->
+	<select id="selectProductCountByDate" parameterType="int"
+		resultType="map">
+		SELECT to_char(s.regdate,'yyyymmdd') "DATE", count(*) total
+		FROM products p
+		JOIN subscribes s
+		ON p.no = s.product_no
+		where p.giver_no=#{giverNo}
+		group by to_char(s.regdate,'yyyymmdd')
+	</select>
+
+	<!-- 0304 이성정 수정 끝 -->
+	
+	<!-- selectItemCount 03-04 오승주-->
+	<select id="selectItemCount" parameterType="int" resultType="int">
+	SELECT COUNT(*)
+	FROM subscribes s, products p
+	WHERE s.taker_no=#{takerNo} AND s.product_no=p.no 
+	ORDER BY 1 DESC
+	</select>
+	
+	<!-- selectSubList 03-04 오승주 -->
+	<select id="selectSubList" parameterType="TakerPageVO" resultType="Subscribe">
+	SELECT no,productNo,status,price,addr,addrDetail,startDate,takerNo,photo,productName,deliveryStart
+	FROM(SELECT no,productNo,status,price,addr,addrDetail,startDate,takerNo,photo,productName, rownum r,deliveryStart
+	FROM(SELECT s.no,s.product_no productNo,s.status,s.price,s.addr,s.addr_detail addrDetail,s.regdate startDate
+   ,s.taker_no takerNo,p.photo photo,p.name productName, s.delivery_start deliveryStart
+	FROM subscribes s, products p
+	WHERE s.taker_no=#{takerNo} AND s.product_no=p.no 
+	ORDER BY 1 DESC))
+	WHERE r BETWEEN #{start} AND #{end} 
+	<choose>
+      <when test='status=="current"'>
+      AND status='Y'
+      </when>
+   </choose>
+	</select>
+	
+	<!-- 정진하 2021 03 04 테이커 월간 구독 리스트 가져오기 -->
+	<select id="selectMonthlySubscriptions" resultType="Subscribe" parameterType="int">
+		select s.delivery_start as "start", p.name as "title"
+		from subscribes s, products p
+		where s.taker_no = #{takerNo} and s.cancel_date is null and s.product_no = p.no
+	</select>
+	
+	<!-- 정진하 2021 03 04 테이커 월간 구독 리스트 가져오기 -->
+	<select id="selectSubscriptionDays" resultType="SubscriptionDay" parameterType="int">
+		select s.delivery_start as "start", p.name as "title", p.no as "productNo"
+		from subscribes s, products p
+		where s.taker_no = #{takerNo} and s.cancel_date is null and s.product_no = p.no
+	</select>
+	
+	<!-- /////월별 구독자수 -->
+	<select id="selectSubscribersByMonth" parameterType="int" resultType="map">
+		SELECT to_char(s.regdate,'yyyymm') "MONTH", count(*) total
+		FROM products p
+		JOIN subscribes s
+		ON p.no = s.product_no
+		where
+		p.giver_no=#{giverNo}
+		group by
+		to_char(s.regdate,'yyyymm')
+	</select>
+	
+	
+</mapper>
+
