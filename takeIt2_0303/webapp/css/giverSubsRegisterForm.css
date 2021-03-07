@@ -1,0 +1,326 @@
+html, body {
+    font-family: "AppleSDGothic";
+}
+
+input:focus {
+    outline: 1px solid #3C7166;
+}
+
+#registerFormContent {
+    width: 800px;
+    margin: auto;
+    padding-bottom: 10px;
+}
+#container{
+	padding-top: 90px;
+	padding-bottom: 90px;
+}
+#container .subtitle {
+    background: #3C7166;
+    width: 220px;
+    height: 40px;
+    font-size: 28px;
+    color: white;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 400;
+    padding: 2px 5px;
+    margin: 15px 0;
+}
+
+#container .purchase_guide {
+    width: 610px;
+}
+
+#registerFormContent fieldset {
+    margin-bottom: 20px;
+}
+
+#registerFormContent legend {
+    font-size: 26px;
+
+}
+
+.subscribe_title {
+    height: 145px;
+}
+
+.subscribe_title_input {
+    width: 500px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.subscribe_title .countNum {
+    width: 70px;
+    border: none;
+    text-align: center;
+    padding: 0;
+    outline: none;
+    cursor: default;
+}
+
+.subscribe_caution {
+    font-size: 10px;
+    margin-top: 15px;
+    color: #0B4D40;
+}
+
+/*移댄뀒怨좊━ �엯�젰�뤌 �넂�씠吏��젙*/
+.category {
+    height: 105px;
+}
+
+.category input[type="radio"] {
+    display: none;
+}
+
+.category input[type="radio"]:checked + label {
+    background: #3C7166;
+}
+
+.category label {
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    background: #999999;
+    text-align: center;
+    font-weight: 400;
+    color: white;
+    border-radius: 14px;
+    margin-top: 10px;
+    margin-right: 1px;
+    cursor: pointer;
+}
+
+/*媛�寃� 諛� 諛곗넚�넚 �엯�젰�뤌 �넂�씠�젙*/
+.delivery_price {
+    padding-bottom: 0;
+}
+
+.delivery_price input {
+    height: 20px;
+    text-align: right;
+}
+
+.subscribe_price, .discount_price {
+    height: 30px;
+    margin-top: 10px;
+}
+
+.subscribe_price input, .discount_price input {
+
+    margin-left: 10px;
+    width: 100px;
+}
+
+#stateSelectWrap {
+    margin-top: 10px;
+}
+
+#stateInputBox {
+    height: 30px;
+    margin-top: 10px;
+}
+
+#stateInputBox select {
+    height: 26px;
+}
+
+#selectedStateBox {
+    margin-bottom: 10px;
+    width: 250px;
+    margin-left: 105px;
+    margin-top: 10px;
+}
+
+#selectedStateBox li {
+    text-align: center;
+    margin-top: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 8px;
+    background: #3C7166;
+    color: white;
+    position: relative;
+}
+
+.list_delete_btn {
+    margin-left: 10px;
+    position: absolute;
+    top: 3px;
+
+}
+
+.list_delete_btn i {
+    font-size: 20px;
+
+}
+
+.list_delete_btn:hover {
+    transform: scale(1.1);
+}
+
+
+/*諛곗넚�씪 �엯�젰�뤌 �넂�씠吏��젙*/
+.delivery_checkbox {
+
+}
+
+.available_region_title, .delivery_checkbox_title {
+    margin-right: 10px;
+}
+
+#deliveryCheckboxWrap {
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+}
+
+.day_checkbox + label {
+    font-size: 20px;
+    color: #727272;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.day_checkbox {
+    display: none;
+}
+
+.delivery_checkbox input:checked + label {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+.delivery_checkbox .delivery_checkbox_title {
+    font-size: 18px;
+}
+
+#availableDay, #salesQuantity {
+    width: 50px;
+    text-align: right;
+    margin: 10px 10px;
+    height: 20px;
+}
+
+
+/*�뾽泥� �슂泥� 硫붿꽭吏� �엯�젰�뤌 �넂�씠吏��젙*/
+.request_message {
+    height: 130px;
+}
+
+#requestMessage {
+    resize: none;
+    width: 730px;
+    height: 65px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#editorContent {
+    width: 100%;
+}
+
+
+input:focus {
+    outline: 1px solid #3C7166;
+}
+
+#mainPhoto {
+    display: none;
+}
+
+.main_photo_title {
+    margin-right: 10px;
+}
+
+#purchaseGuide {
+    display: none;
+}
+
+.photo_btn {
+    border: 1px dotted #424242;
+    font-size: 25px;
+    color: #424242;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    margin: 10px 10px;
+    cursor: pointer;
+    background: none;
+    background-size: 100%;
+}
+
+#buttonWrap {
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+
+}
+
+#buttonWrap button {
+    width: 120px;
+    height: 30px;
+    border: none;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 0;
+    cursor: pointer;
+    font-family: "AppleSDGothic";
+}
+
+#buttonWrap button:focus {
+    outline: none;
+}
+
+#buttonWrap .cancel_btn {
+    background: white;
+    border: 1px solid #0B4D40;
+}
+
+#buttonWrap .cancel_btn a {
+    width: 120px;
+    height: 30px;
+    display: block;
+    text-decoration: none;
+    color: #424242;
+    line-height: 30px;
+
+}
+
+#buttonWrap .register_btn {
+    background: #0B4D40;
+    color: white;
+}
+
+/*quilleditor �엯�젰 �뤌*/
+#editorWrap {
+    /* 湲곕낯 �룿�듃 �꽕�젙 */
+    font-family: "AppleSDGothic";
+    font-size: 20px;
+    height: 600px;
+}
+
+input {
+    font-family: "AppleSDGothic";
+}
+
+select {
+    font-family: "AppleSDGothic";
+}
+
+textarea {
+    font-family: "AppleSDGothic";
+}
+
+/* �쑀�슚�꽦寃��궗 鍮④컙�몴�떆 */
+.fa-circle{
+    color: red;
+    font-size: 8px;
+    display: none;
+}

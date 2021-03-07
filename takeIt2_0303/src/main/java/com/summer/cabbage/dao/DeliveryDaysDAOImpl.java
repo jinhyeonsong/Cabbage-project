@@ -41,4 +41,11 @@ public class DeliveryDaysDAOImpl implements DeliveryDaysDAO {
 		return session.selectList("deliveryDays.selectListDay",productNo);
 	}
 	
+	//구독 등록하기 210304 박형우
+	@Override
+	public int insertDeliveryDays(DeliveryDay deliveryDay) {
+		return session.insert("deliveryDays.insertDeliveryDays", deliveryDay);
+	}
+
+	
 }

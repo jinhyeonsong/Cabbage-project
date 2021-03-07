@@ -1,5 +1,7 @@
 package com.summer.cabbage.service;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletResponse;
 
 import com.summer.cabbage.vo.Giver;
@@ -23,5 +25,9 @@ public interface MembersService {
 	public boolean checkGiverId(String id);
 	public void singUpGiver(Member member, Giver giver);
 	//03-04 송진현 추가 end
+	
+	//메인 폼 서비스
+	public Map<String, Object> showMainForm();
+	//210305 박형우-------------------------------------------------------
 
 }

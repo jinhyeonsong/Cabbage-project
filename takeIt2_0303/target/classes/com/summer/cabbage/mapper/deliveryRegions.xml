@@ -31,6 +31,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where product_no=#{productNo}
 	</select>
 	
+	<!-- 구독등록하기 -->
+	<insert id="insertDeliveryRegions" parameterType="DeliveryRegion">
+		INSERT INTO delivery_regions(NO, PRODUCT_NO, AREA_NO, PRICE, REGDATE)
+		VALUES(delivery_regions_seq.nextval, #{productNo}, #{areaNo}, #{price}, systimestamp)
+	</insert>
+	<!-- 210304 박형우 -->
+	
 	
 </mapper>
 

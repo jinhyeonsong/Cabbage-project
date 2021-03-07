@@ -64,5 +64,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!-- 03-04 이소현 추가 end -->
 	
+	<!--구독 등록하기 -->
+	<insert id="insertProduct" parameterType="Product">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT products_seq.nextval
+			FROM dual
+		</selectKey>
+		INSERT INTO products(NO, GIVER_NO, CATEGORY_NO, NAME, PRICE, DISCOUNT, DATE_AVAIL, PHOTO, SALES_QTY, REQ_MSG, DETAILS, INSTRUCTION, TYPE, SUB_COUNT, STAR, REV_COUNT, REGDATE)
+		VALUES(#{no}, #{giverNo}, #{categoryNo}, #{name}, #{price}, #{discount}, #{dateAvail}, #{photo}, #{salesQty}, #{reqMsg}, #{details}, #{instruction}, 'N', 0, 0, 0, systimestamp)
+	</insert>
+	<!--210304 박형우 -->
+	
+	<!-- List에 보여줄 정보 가져오기 -->
+	<select id="selectProductCard" parameterType="int" resultType="Product">
+		SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company
+		FROM products p JOIN givers g ON p.giver_no = g.no
+		WHERE p.no=#{no}	
+	</select>
+	<!-- 210306 박형우 -->
+	<!-- 최신 상품들 가져오기 -->
+	<select id="selectRecentProducts" resultType="Product">
+		SELECT NO,giverNo,categoryNo,NAME,PRICE,DISCOUNT,dateAvail,PHOTO,salesQty,reqMsg,DETAILS,INSTRUCTION,TYPE,subCount,STAR,revCount,REGDATE,company
+		FROM (SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company
+			  FROM products p JOIN givers g ON p.giver_no = g.no
+			  ORDER BY regdate DESC)
+		WHERE rownum &lt; 10
+	</select>
+	<!-- 210306 박형우 -->
+	
 </mapper>
 

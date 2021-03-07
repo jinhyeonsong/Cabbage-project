@@ -24,4 +24,10 @@ public class DeliveryRegionsDAOImpl implements DeliveryRegionsDAO {
 		// TODO Auto-generated method stub
 		return session.selectList("deliveryRegions.selectListRegion",productNo);
 	}
+	//구독 등록하기 210304 박형우
+	@Override
+	public int insertDeliveryRegions(DeliveryRegion deliveryRegion) {
+		return session.insert("deliveryRegions.insertDeliveryRegions", deliveryRegion);
+	}
+	
 }

@@ -28,10 +28,10 @@ public class MemberController {
 	private MembersService service;
 
 	@RequestMapping(value={"/","/index"}, method=RequestMethod.GET)
-	public String index() {
+	public String index(Model model) {
+		model.addAllAttributes(service.showMainForm());
 		return "index";
 	}
-	
 	
 	@RequestMapping(value="/log",method=RequestMethod.GET)
 	public String loginForm() {

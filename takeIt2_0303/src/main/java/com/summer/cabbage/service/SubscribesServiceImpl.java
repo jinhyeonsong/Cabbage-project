@@ -13,11 +13,17 @@ import com.summer.cabbage.dao.DeliveryDaysDAO;
 import com.summer.cabbage.dao.DeliveryRegionsDAO;
 import com.summer.cabbage.dao.GiversDAO;
 import com.summer.cabbage.dao.ProductsDAO;
+import com.summer.cabbage.dao.RegionsDAO;
 import com.summer.cabbage.dao.ReviewsDAO;
 import com.summer.cabbage.dao.SubscribesDAO;
 import com.summer.cabbage.dao.TakerAddrsDAO;
 import com.summer.cabbage.util.PaginateUtil;
+import com.summer.cabbage.vo.DeliveryDay;
+import com.summer.cabbage.vo.DeliveryRegion;
+import com.summer.cabbage.vo.Member;
 import com.summer.cabbage.vo.PageVO;
+import com.summer.cabbage.vo.Product;
+import com.summer.cabbage.vo.Region;
 import com.summer.cabbage.vo.Subscribe;
 import com.summer.cabbage.vo.SubscriptionDay;
 import com.summer.cabbage.vo.TakerAddr;
@@ -51,7 +57,12 @@ public class SubscribesServiceImpl implements SubscribesService {
 	// 03-04 이소현 추가
 	@Autowired
 	private CategoriesDAO categoriesDAO; 
-
+	//03-04 박형우 추가
+	@Autowired
+	private RegionsDAO regionsDAO;
+	@Autowired
+	private ProductsDAO productDAO;
+	
 	
 	// 03-04 정진하 추가
 	@Override
@@ -201,5 +212,57 @@ public class SubscribesServiceImpl implements SubscribesService {
 		
 		return map;
 	}
+	
+	//구독 등록 폼 서비스
+	@Override
+	public Map<String, Object> showRegisterSubsForm(int category) {
+		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
+
+		map.put("categories", categoriesDAO.selectSecondCategories(category));
+		map.put("states", regionsDAO.selectStates());
+		
+		return map;
+	}
+	//210304 박형우------------------------------------------------------
+	
+	//해당 시,군의 속하는 Json
+	@Override
+	public List<Region> getSubStateJson(int stateNo) {
+		return regionsDAO.selectSubStates(stateNo);
+	}
+	//210304 박형우------------------------------------------------------
+
+	//구독 등록하기
+	@Override
+	@Transactional
+	public boolean registerProduct(Member loginMember, Product product, String editorContent, int[] days, int[] deliveryAvailSubState,
+			int[] deliveryAvailTax) {
+		product.setGiverNo(loginMember.getNo());
+		product.setDetails(editorContent);
+		
+		System.out.println(product.getDetails()+" : 서비스에서 상세");
+		
+		int result1 = productDAO.insertProduct(product);
+		
+		DeliveryDay tempDelDay = new DeliveryDay();
+		tempDelDay.setProductNo(product.getNo());
+		int result2 = 1;
+		for(int day : days) {
+			tempDelDay.setDay(day);
+			result2 *= deliveryDaysDAO.insertDeliveryDays(tempDelDay);
+		}
+		
+		DeliveryRegion tempDelRegion = new DeliveryRegion();
+		tempDelRegion.setProductNo(product.getNo());
+		int result3 = 1;
+		for(int i=0; i<deliveryAvailSubState.length; i++) {
+			tempDelRegion.setAreaNo(deliveryAvailSubState[i]);
+			tempDelRegion.setPrice(deliveryAvailTax[i]);
+			result3 *= deliveryRegionsDAO.insertDeliveryRegions(tempDelRegion);
+		}
+		
+		return 1==result1*result2*result3;
+	}
+	//210304 박형우------------------------------------------------------
 	
 }

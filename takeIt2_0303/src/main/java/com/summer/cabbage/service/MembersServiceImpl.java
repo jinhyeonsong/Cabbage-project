@@ -1,16 +1,25 @@
 package com.summer.cabbage.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.summer.cabbage.dao.CategoriesDAO;
 import com.summer.cabbage.dao.GiversDAO;
 import com.summer.cabbage.dao.MembersDAO;
+import com.summer.cabbage.dao.PaymentsDAO;
+import com.summer.cabbage.dao.ProductsDAO;
 import com.summer.cabbage.util.SendEmailUtil;
 import com.summer.cabbage.vo.Giver;
 import com.summer.cabbage.vo.Member;
+import com.summer.cabbage.vo.Product;
 
 @Service
 public class MembersServiceImpl implements MembersService {
@@ -21,6 +30,13 @@ public class MembersServiceImpl implements MembersService {
 	//03-04 송진현추가
 	@Autowired
 	private GiversDAO giversDAO;
+	//03-05 박형우 추가
+	@Autowired
+	private CategoriesDAO categoriesDAO;
+	@Autowired
+	private PaymentsDAO paymentsDAO;
+	@Autowired
+	private ProductsDAO productDAO;
 	
 	@Override
 	public Member login(Member member) {
@@ -81,5 +97,41 @@ public class MembersServiceImpl implements MembersService {
 		 giversDAO.insertGiver(giver);
 	}
 	//03-04 송진현 추가 end
+	
+	//메인 폼 서비스 03-05 박형우 추가
+	@Override
+	public Map<String, Object> showMainForm() {
+		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
+		
+		map.put("categories", categoriesDAO.selectFirstCategories());
+		
+		List<Integer> listC = paymentsDAO.selectThisWeekProductNoC();
+		List<Integer> listF = paymentsDAO.selectThisWeekProductNoF();
+		List<Integer> listH = paymentsDAO.selectThisWeekProductNoH();
+		
+		List<Product> hotCProducts = new ArrayList<Product>();
+		List<Product> hotFProducts = new ArrayList<Product>();
+		List<Product> hotHProducts = new ArrayList<Product>();
+		for(int i=0; i<5; i++) {
+			if(listC.size()>i) {
+				hotCProducts.add(productDAO.selectProductCard(listC.get(i)));
+			}
+			if(listF.size()>i) {
+				hotFProducts.add(productDAO.selectProductCard(listF.get(i)));
+			}
+			if(listH.size()>i) {
+				hotHProducts.add(productDAO.selectProductCard(listH.get(i)));
+			}
+		}
+		
+		map.put("hotCProducts", hotCProducts);
+		map.put("hotFProducts", hotFProducts);
+		map.put("hotHProducts", hotHProducts);
+		
+		List<Product> currentProducts = productDAO.selectRecentProducts();
+		map.put("currentProducts", currentProducts);
+		
+		return map;
+	}
 } 
 

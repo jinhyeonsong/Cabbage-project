@@ -83,5 +83,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		group by to_char(pay.regdate,'yyyymm')
 	</select>
 	
+	<!-- 금주의 핫 아이템(의) 번호 가져오는 -->
+	<select id="selectThisWeekProductNoC" resultType="int">
+		SELECT s.product_no
+		FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no
+		WHERE sysdate &lt; p.regdate+7 AND pr.category_no BETWEEN 5 AND 6  
+		GROUP BY s.product_no
+		ORDER BY count(s.product_no) DESC
+	</select>
+	<!-- 210305 박형우 -->
+	<!-- 금주의 핫 아이템(식) 번호 가져오는 -->
+	<select id="selectThisWeekProductNoF" resultType="int">
+		SELECT s.product_no
+		FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no
+		WHERE sysdate &lt; p.regdate+7 AND pr.category_no BETWEEN 7 AND 9  
+		GROUP BY s.product_no
+		ORDER BY count(s.product_no) DESC
+	</select>
+	<!-- 210306 박형우 -->
+	<!-- 금주의 핫 아이템(주) 번호 가져오는 -->
+	<select id="selectThisWeekProductNoH" resultType="int">
+		SELECT s.product_no
+		FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no
+		WHERE sysdate &lt; p.regdate+7 AND pr.category_no BETWEEN 10 AND 11  
+		GROUP BY s.product_no
+		ORDER BY count(s.product_no) DESC
+	</select>
+	<!-- 210306 박형우 -->
+	
 </mapper>
 

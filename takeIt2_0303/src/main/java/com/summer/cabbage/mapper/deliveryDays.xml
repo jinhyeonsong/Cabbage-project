@@ -43,5 +43,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where product_no=#{productNo}
 	</select>
 	
+	<!--구독 등록하기 -->
+	<insert id="insertDeliveryDays" parameterType="DeliveryDay">
+		INSERT INTO delivery_days(NO, PRODUCT_NO, DAY)
+		VALUES(delivery_days_seq.nextval, #{productNo}, #{day})
+	</insert>
+	<!--210304 박형우 -->
+	
 </mapper>
 

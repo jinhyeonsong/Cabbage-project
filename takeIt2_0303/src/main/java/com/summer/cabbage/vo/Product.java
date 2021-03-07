@@ -6,9 +6,9 @@ public class Product {
 	private int no, giverNo, categoryNo, price, discount, dateAvail, salesQty, subCount, star, revCount,productNo, takerNo, reviewStar, priorNo, realPrice;
 	private String name, photo, reqMsg, details, instruction, type, startDate, review, addrOpt, company, productName, memberProfileImg, takerNickname;
 	private Timestamp regdate;
+	
 	//20210304 카테고리 멤버필드 setter/getter 추가 
 	private String primaryCategoryName, categoryName;
-	
 	
 	public Product() {
 		

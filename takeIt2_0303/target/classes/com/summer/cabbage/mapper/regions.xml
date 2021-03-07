@@ -8,5 +8,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM regions
 		WHERE no=#{no}
 	</select>
+	
+	<!--시,도들만 가져오는 -->
+	<select id="selectStates" resultType="Region">
+		SELECT no, name, prior_no priorNo
+		FROM regions 
+		WHERE prior_no is null
+	</select>
+	<!--210304 박형우 -->
+	<!-- 해당 시,도에 해당하는 구들 가져오기 -->
+	<select id="selectSubStates" resultType="Region">
+		SELECT no, name, prior_no priorNo
+		FROM regions
+		WHERE prior_no=#{no}
+	</select>
+	<!--210304 박형우 -->
 </mapper>
 

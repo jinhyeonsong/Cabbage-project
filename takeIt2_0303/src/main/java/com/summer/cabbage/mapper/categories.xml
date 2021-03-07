@@ -23,5 +23,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE no = #{priorNo}
 	</select>
 	<!-- 03-04 이소현 추가 end -->
+	
+	<!--210304 박형우 -->
+	<!--해당 카테고리의 하위 카테고리 가져오는 -->
+	<select id="selectSecondCategories" parameterType="int" resultType="Category">
+		SELECT no, name, prior_no priorNo, regdate
+		FROM categories 
+		WHERE prior_no=#{no}
+	</select>
+	<!--1차 카테고리 가져오는 -->	
+	<select id="selectFirstCategories" resultType="Category">
+		SELECT no, name, prior_no priorNo, regdate
+		FROM categories
+		WHERE prior_no is null
+	</select>
+	<!-- 210305 박형우 end -->
 </mapper>
 

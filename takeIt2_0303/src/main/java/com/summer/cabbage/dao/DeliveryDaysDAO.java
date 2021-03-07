@@ -17,5 +17,7 @@ public interface DeliveryDaysDAO {
 	public List<DeliveryDay> selectListDays(int productNo);
 	//구독상품 배송가능한 요일들 받아오기 - 송진현 03-04
 	public List<DeliveryDay> selectListDay(int productNo);
+	//구독 등록하기 03-04 박형우
+	public int insertDeliveryDays(DeliveryDay deliveryDay);
 
 }

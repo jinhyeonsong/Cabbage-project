@@ -29,6 +29,16 @@ public interface ProductsDAO {
 	//0304 이소현 _ 상품 전체 크기를 얻어오기
 	public int selectTotal();
 	//03-04 이소현 추가 end
+	
+	//구독 등록하기 210304 박형우
+	public int insertProduct(Product product);
+	//상품 가져오기
+	public Product selectNo(int no);
+	//최신 상품 가져오기
+	public List<Product> selectRecentProducts();
+	//List에 보여줄 정보 가져오기
+	public Product selectProductCard(int no);
+	//210306 박형우 end
 
 
 }

@@ -25,4 +25,20 @@ public class CategoriesDAOImpl implements CategoriesDAO {
 		
 		return session.selectOne("categories.selectSecondCategory",priorNo);
 	}
+	
+	//03-05 박형우 추가
+	//해당 카테고리의 하위 카테고리 가져오는
+	@Override
+	public List<Category> selectSecondCategories(int category) {
+		return session.selectList("categories.selectSecondCategories", category);
+	}
+	//210304 박형우
+	
+	//1차 카테고리 가져오는
+	@Override
+	public List<Category> selectFirstCategories() {
+		return session.selectList("categories.selectFirstCategories");
+	}
+	//210305 박형우 ---------------------------------------
+	//03-05 박형우 추가 end
 }

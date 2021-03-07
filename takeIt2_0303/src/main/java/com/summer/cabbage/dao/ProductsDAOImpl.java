@@ -59,4 +59,29 @@ public class ProductsDAOImpl implements ProductsDAO {
 		return session.selectOne("products.selectTotal");
 	}
 	//03-04 이소현 추가 end
+	
+	//구독 등록하기 03-06 박형우
+	@Override
+	public int insertProduct(Product product) {
+		return session.insert("products.insertProduct", product);
+	}
+	
+	//상품 가져오기
+	@Override
+	public Product selectNo(int no) {
+		return session.selectOne("products.selectNo", no);
+	}
+	
+	//최신 상품 가져오기
+	@Override
+	public List<Product> selectRecentProducts() {
+		return session.selectList("products.selectRecentProducts");
+	}
+ 
+	@Override
+	public Product selectProductCard(int no) {
+		return session.selectOne("selectProductCard", no);
+	}
+	//구독 등록하기 03-06 박형우 end
+	
 }
