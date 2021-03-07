@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="products">
+	<select id="selectNo" parameterType="int" resultType="Product">
+		SELECT NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE			
+		FROM products
+		WHERE no=#{no}	
+	</select>
+	<!-- 03-03 강필규 추가 주문조회 상품 목록 필터 옵션 -->
+	<select id="selectByGiverNo" parameterType="int" resultType="Product">
+		SELECT NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE
+		FROM products 
+		WHERE giver_no = #{giverNo}
+	</select>
+	<!-- //03-03 강필규 추가  -->
+	<!-- 03-04 방현수 추가  -->
+	 <select id="selectProduct" parameterType="int" resultType="Product">
+		SELECT p.no, p.giver_no giverNo, p.category_no categoryNo, p.price price, p.discount discount, p.date_avail dateAvail, p.sales_qty salesQty, p.sub_count subCount, p.star star, p.rev_count revCount, p.name name, p.photo photo, p.req_msg reqMsg, p.details details, p.instruction instruction, p.type type, p.regdate regdate,
+		c.name categoryName, (SELECT name
+		FROM categories
+		WHERE (SELECT c.prior_no
+				FROM categories c, products p
+				WHERE c.no = p.category_no
+				AND p.no = #{productNo}) = no) primaryCategoryName
+		
+		FROM products p, categories c
+		WHERE p.category_no = c.no
+		AND p.no = #{productNo}	
+	</select>
+	<!-- //03-04 방현수 추가  -->
+	<!-- 03-04 송진현 추가 -->
+	<select id="selectDetailOne" resultType="Product" parameterType="int">
+		SELECT NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE
+		FROM products
+		WHERE no = #{productNo}
+	</select>
+	<!-- //03-04 송진현 추가 -->
+	
+	<!-- 03-04 이소현 추가  -->
+	<!-- 03-03 이소현 _ 기버번호로 제품 리스트와 리뷰 받아오기 -->
+	<select id="selectProductListByGiverNo" resultType="Product" parameterType="int">
+		SELECT no, giver_no giverNo, name
+		FROM products
+		WHERE giver_no = #{giverNo}
+	</select>
+	
+	<!-- 03-04 이소현 _ 카테고리별로(category_no) 제품 리스트 받아오기 + 페이징처리 -->
+	<select id="selectProductListByCategory" resultType="Product" parameterType="PageVO">
+		SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
+		FROM(SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
+			FROM(SELECT p.no no, giver_no giverNo, p.name name, price, discount, price-discount realPrice, photo, sales_qty salesQty, type, sub_count subCount, star, rev_count revCount, p.regdate regdate,
+					g.company company, c.prior_no priorNo, c.no categoryNo, c.name categoryName
+				FROM products p, givers g, categories c
+				WHERE p.giver_no = g.no AND c.no = p.category_no AND c.no = #{categoryNo}))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 0304 이소현 _ 페이징 처리 시 필요한 목록 전체 크기 -->
+	<select id="selectTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM products
+	</select>
+	<!-- 03-04 이소현 추가 end -->
+	
+	<!--구독 등록하기 -->
+	<insert id="insertProduct" parameterType="Product">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT products_seq.nextval
+			FROM dual
+		</selectKey>
+		INSERT INTO products(NO, GIVER_NO, CATEGORY_NO, NAME, PRICE, DISCOUNT, DATE_AVAIL, PHOTO, SALES_QTY, REQ_MSG, DETAILS, INSTRUCTION, TYPE, SUB_COUNT, STAR, REV_COUNT, REGDATE)
+		VALUES(#{no}, #{giverNo}, #{categoryNo}, #{name}, #{price}, #{discount}, #{dateAvail}, #{photo}, #{salesQty}, #{reqMsg}, #{details}, #{instruction}, 'N', 0, 0, 0, systimestamp)
+	</insert>
+	<!--210304 박형우 -->
+	
+	<!-- List에 보여줄 정보 가져오기 -->
+	<select id="selectProductCard" parameterType="int" resultType="Product">
+		SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company
+		FROM products p JOIN givers g ON p.giver_no = g.no
+		WHERE p.no=#{no}	
+	</select>
+	<!-- 210306 박형우 -->
+	<!-- 최신 상품들 가져오기 -->
+	<select id="selectRecentProducts" resultType="Product">
+		SELECT NO,giverNo,categoryNo,NAME,PRICE,DISCOUNT,dateAvail,PHOTO,salesQty,reqMsg,DETAILS,INSTRUCTION,TYPE,subCount,STAR,revCount,REGDATE,company
+		FROM (SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company
+			  FROM products p JOIN givers g ON p.giver_no = g.no
+			  ORDER BY regdate DESC)
+		WHERE rownum &lt; 10
+	</select>
+	<!-- 210306 박형우 -->
+	
+</mapper>
+

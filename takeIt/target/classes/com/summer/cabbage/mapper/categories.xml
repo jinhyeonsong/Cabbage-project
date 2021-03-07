@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="categories">
+	<select id="selectNo" parameterType="int" resultType="Category">
+		SELECT NO,NAME,PRIOR_NO priorNo,REGDATE
+		FROM categories
+		WHERE no=#{no}	
+	</select>
+	<!-- 03-04 이소현 추가  -->
+	<!-- 0304 이소현 _ 2차 카테고리 목록얻어오기 위해 사용  -->
+	<select id="selectListByCategory" parameterType="int" resultType="Category">
+		SELECT no,name,prior_no priorNo, regdate
+		FROM categories
+		WHERE prior_no = #{priorNo}
+	</select>
+	
+	<!-- 0304 이소현 _ ?   -->
+	<select id="selectSecondCategory" parameterType="int" resultType="Category">
+		SELECT no,name,prior_no priorNo, regdate
+		FROM categories
+		WHERE no = #{priorNo}
+	</select>
+	<!-- 03-04 이소현 추가 end -->
+	
+	<!--210304 박형우 -->
+	<!--해당 카테고리의 하위 카테고리 가져오는 -->
+	<select id="selectSecondCategories" parameterType="int" resultType="Category">
+		SELECT no, name, prior_no priorNo, regdate
+		FROM categories 
+		WHERE prior_no=#{no}
+	</select>
+	<!--1차 카테고리 가져오는 -->	
+	<select id="selectFirstCategories" resultType="Category">
+		SELECT no, name, prior_no priorNo, regdate
+		FROM categories
+		WHERE prior_no is null
+	</select>
+	<!-- 210305 박형우 end -->
+</mapper>
+

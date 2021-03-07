@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviews">
+	<select id="selectNo" parameterType="int" resultType="Review">
+		SELECT NO,PRODUCT_NO productNo,TAKER_NO takerNo,REVIEW,STAR,REGDATE			
+		FROM reviews
+		WHERE no=#{no}			
+	</select>
+	<!-- 03-04  송진현  추가 -->
+	<select id="selectListreview" resultType="Review" parameterType="int">
+		select no,taker_no takerNo, review, star, regdate
+		from reviews
+		where product_no=#{productNo}
+	</select>
+	<!--  03-03 이소현 _ 리뷰 받아오기   -->
+	<select id="selectReviewsByProductNo" parameterType="int" resultType="Review">
+		SELECT r.no no, p.name productName, p.no productNo, r.review, r.star, r.taker_no takerNo, t.name takerName, r.regdate, m.profile_img MemberProfileImg,
+				 t.nickname takerNickname, p.giver_no giverNo
+		FROM products p, reviews r, takers t, members m
+		WHERE p.no=r.product_no AND r.taker_no=t.no AND m.no =t.no  AND p.no = #{productNo}
+	</select>
+</mapper>
+
