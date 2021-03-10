@@ -19,12 +19,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 <select id="selectProduct" parameterType="int" resultType="Product">
 		SELECT p.no, p.giver_no giverNo, p.category_no categoryNo, p.price price, p.discount discount, p.date_avail dateAvail, p.sales_qty salesQty, p.sub_count subCount, p.star star, p.rev_count revCount, p.name name, p.photo photo, p.req_msg reqMsg, p.details details, p.instruction instruction, p.type type, p.regdate regdate,
 		c.name categoryName, (SELECT name
-		FROM categories
-		WHERE (SELECT c.prior_no
-				FROM categories c, products p
-				WHERE c.no = p.category_no
-				AND p.no = #{productNo}) = no) primaryCategoryName
-		
+							  FROM categories
+							  WHERE (SELECT c.prior_no
+								     FROM categories c, products p
+									 WHERE c.no = p.category_no
+								     AND p.no = #{productNo}) = no) primaryCategoryName
 		FROM products p, categories c
 		WHERE p.category_no = c.no
 		AND p.no = #{productNo}	
@@ -32,7 +31,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- //03-04 방현수 추가  -->
 	<!-- 03-04 송진현 추가 -->
 	<select id="selectDetailOne" resultType="Product" parameterType="int">
-		SELECT NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE
+		SELECT NO,GIVER_NO giverNo,(select c.name
+			from products p, categories c
+			where p.no = #{productNo} AND p.category_no = c.no) categoryName,(
+			select c2.name
+			from categories c1, categories c2, products p
+			where c1.prior_no = c2.no AND p.no = #{productNo} AND p.category_no = c1.no) primaryCategoryName,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE
 		FROM products
 		WHERE no = #{productNo}
 	</select>

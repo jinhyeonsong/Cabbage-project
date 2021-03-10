@@ -10,9 +10,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!-- 03-04  송진현  추가 -->
 	<select id="selectListreview" resultType="Review" parameterType="int">
-		select no,taker_no takerNo, review, star, regdate
-		from reviews
-		where product_no=#{productNo}
+		select r.no No,r.taker_no takerNo, r.review review, r.star star, r.regdate regdate,t.name takerName, m.profile_img takerProfileImg, rp.reply giverReply, rp.regdate replyRegdate,(
+select m.profile_img profileImg
+from members m, products p
+where p.no=500 AND p.giver_no=m.no
+) giverProfileImg
+from reviews r, members m, replies rp,takers t
+where r.product_no=500 AND m.no=r.taker_no AND r.no=rp.no AND r.taker_no=t.no
 	</select>
 	<!--  03-03 이소현 _ 리뷰 받아오기   -->
 	<select id="selectReviewsByProductNo" parameterType="int" resultType="Review">

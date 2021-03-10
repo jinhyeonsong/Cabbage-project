@@ -4,13 +4,45 @@ import java.sql.Timestamp;
 
 public class Review {
 	private int no, productNo, takerNo, star, giverNo;
-	private String review, productName, takerName, MemberProfileImg, takerNickname;
-	private Timestamp regdate;
+	private String review, productName, takerName, MemberProfileImg, takerNickname, takerProfileImg, giverReply, giverProfileImg;
+	private Timestamp regdate, replyRegdate;
 	private Reply reply;
 	public Review() {
 		
 	}
 	
+	public String getTakerProfileImg() {
+		return takerProfileImg;
+	}
+
+	public void setTakerProfileImg(String takerProfileImg) {
+		this.takerProfileImg = takerProfileImg;
+	}
+
+	public String getGiverReply() {
+		return giverReply;
+	}
+
+	public void setGiverReply(String giverReply) {
+		this.giverReply = giverReply;
+	}
+
+	public String getGiverProfileImg() {
+		return giverProfileImg;
+	}
+
+	public void setGiverProfileImg(String giverProfileImg) {
+		this.giverProfileImg = giverProfileImg;
+	}
+
+	public Timestamp getReplyRegdate() {
+		return replyRegdate;
+	}
+
+	public void setReplyRegdate(Timestamp replyRegdate) {
+		this.replyRegdate = replyRegdate;
+	}
+
 	public int getGiverNo() {
 		return giverNo;
 	}

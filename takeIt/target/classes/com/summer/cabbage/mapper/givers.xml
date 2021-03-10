@@ -94,9 +94,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="selectDetailOne" parameterType="int" resultType="Giver">
-		select company
-		from givers g, products p
-		where p.no=#{productNo} AND p.giver_no=g.no
+		select g.no No,company, m.profile_img profileImg
+		from givers g, products p,members m
+		where p.no=500 AND p.giver_no=g.no AND g.no=m.no
 	</select>
 	<!--// 03-04 송진현 추가 end-->
 </mapper>

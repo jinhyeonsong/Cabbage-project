@@ -46,7 +46,7 @@
 
             <div class="phone_input_box"><!--passwordConfirmInputBox start-->
                 <div class="phone_input_title"><span>연락처</span></div>
- <input class="phone_input" maxlength="20" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="'-'를 빼고 입력해주세요"/>
+ <input class="phone_input" maxlength="11" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="'-'를 빼고 입력해주세요"/>
                 <div class="phone_notice"><span></span></div>
             </div><!--//passwordConfirmInputBox end-->
 
@@ -57,82 +57,10 @@
 <input id="profileImgInput" name="profileImg" type="file" accept="image/*"/>       
             </div><!--//profileImg_input_box end-->
         </div><!--//sign_up_input_container end-->
-        <button class="sign_up_btn" type="submit">회원가입 하기</button>
+        <button class="sign_up_btn" type="button">회원가입 하기</button>
     </form><!--//form end-->
 </div><!---container end-->
 
 <script src="/js/signUpGiver.js"></script>
-<script>
-let $id = $(".id_input");
-
-//이메일 유효성 검사
-function chkEmail(str) {
-    var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    if (regExp.test(str)) return true;
-    else return false;
-}
-$idNotice = $(".id_notice");
-$idNoticeSpan = $(".id_notice span");
-//id 유효성 검사
-$id.on("keyup",function () {
-    let emailChk = chkEmail($id.val());
-    if(emailChk==true){
-    	$.ajax({
-			url:"/ajax/giver/check/id",//주소
-			type:"get",//방식
-			data:{"id":$id.val()},//파라미터
-			dataType:"json",//응답의 자료형
-			error:function(xhr,error){
-				alert("서버 점검중!");
-				console.log(error);
-			},
-			success:function(json){
-				if(json.result) {
-					$idNotice.css("display","block");
-					$idNoticeSpan.text("이미 등록된 아이디 입니다.");
-				}else {
-					$idNotice.css("display","block");
-					$idNoticeSpan.text("좋은 아이디 입니다.");
-				}//if~else end
-			}//end success
-		});//end ajax 
-    }
-    else{
-    	$idNotice.css("display","block");
-		$idNoticeSpan.text("이메일 형식으로 해주세요");
-    }
-})//end $id.on()
-//상호명 유효성 검사
-let $businessName = $(".business_name_input");
-let $businessNameNotice = $(".business_name_notice");
-let $businessNameNoticeSpan = $(".business_name_notice span");
-
-$businessName.on("keyup",function () {
-    if ($businessName.val().length <= 1) {
-    	 $businessNameNotice.css("display","block");
-		 $businessNameNoticeSpan.text("2글자 이상으로 해주세요!");
-    }else{
-    	$.ajax({
-			url:"/ajax/check/businessName",//주소
-			type:"get",//방식
-			data:{"businessName":$businessName.val()},//파라미터
-			dataType:"json",//응답의 자료형
-			error:function(xhr,error){
-				alert("서버 점검중!");
-				console.log(error);
-			},
-			success:function(json){
-			if(json.result) {
-				$businessNameNoticeSpan.text("이미 등록된 상호명입니다.");
-			}//end success
-			else{
-				$businessNameNoticeSpan.text("좋은 상호명입니다.");
-				}
-			}
-		});//end ajax 
-    }//end else
-})//end $businessName.on()
-
-</script>
 </body>
 </html>
