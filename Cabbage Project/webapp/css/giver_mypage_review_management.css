@@ -1,0 +1,222 @@
+@charset "UTF-8";
+
+#container {
+	font-family: "AppleSDGothic", sans-serif;
+	width: 910px;
+	background-color: rgb(237, 240, 245);
+	padding-top: 100px;
+	margin-left: 190px;
+}
+
+.title_content {
+	position: relative;
+	margin: auto;
+	margin-bottom: 20px;
+	width: 850px;
+	height: 60px;
+	background-color: #fff;
+	line-height: 60px;
+	font-size: 22px;
+}
+
+.title_content h2 {
+	padding-left: 15px;
+}
+
+.review_content {
+	margin: auto;
+	width: 850px;
+	background-color: #fff;
+	color: #141414;
+}
+
+.review_star_rating {
+	width: 205px;
+	margin-left: 30px;
+}
+
+.review_star_rating, .review_star_rating span {
+	display: inline-block;
+	height: 39px;
+	overflow: hidden;
+	background: url("/img/star.png") no-repeat;
+}
+
+.review_star_rating span {
+	background-position: left bottom;
+	line-height: 0;
+	vertical-align: top;
+}
+
+.review_title {
+	display: inline-block;
+	font-size: 20px;
+	margin: 30px 0 10px 25px;
+}
+
+.category_title {
+	margin-left: 530px;
+}
+
+.product_select {
+	margin-left: 10px;
+	width: 135px;
+	padding: 5px;
+	outline-color: #3C7166;
+	transform: translateY(-2px);
+}
+
+.review_list {
+	color: black;
+	width: 700px;
+	margin: auto;
+}
+
+.review_profile_box {
+	margin-top: 15px;
+}
+
+.review_user_nickname {
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
+	line-height: 50px;
+	height: 50px;
+	width: 100px;
+}
+
+.review_profile_img {
+	display: inline-block;
+	float: left;
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+}
+
+.review_wrap {
+	width: 650px;
+	margin: auto;
+	padding: 10px;
+}
+
+.review_regdate {
+	float: right;
+	line-height: 50px;
+	font-size: 14px;
+	color: #424242;
+}
+
+.review_detail {
+	margin-top: 30px;
+	line-height: 25px;
+}
+
+.review_sub_product_name {
+	margin-bottom: 0;
+	font-size: 20px;
+}
+
+.review_sub_date {
+	margin-top: 10px;
+	font-size: 17px;
+}
+
+.review_item {
+	margin-top: 30px;
+	margin-bottom: 20px;
+	background-color: #b9b9b9;
+}
+
+.reply_detail_box, .reply_register_box, .reply_modify_box {
+	width: 650px;
+	margin: 20px 0 30px 10px;
+}
+
+.reply_text {
+	font-size: 16px;
+	resize: none;
+	width: 500px;
+	height: 80px;
+	padding: 15px;
+	line-height: 25px;
+	letter-spacing: 0.05em;
+	overflow-y: auto;
+	font-family: "AppleSDGothic", sans-serif;
+}
+
+.review_submit_btn, .review_modify_btn {
+	display: inline-block;
+	position: relative;
+	margin-left: 15px;
+	background-color: #3C7166;
+	color: #fff;
+	border: none;
+	width: 80px;
+	height: 30px;
+	outline: none;
+	cursor: pointer;
+	transform: translateY(-9px);
+}
+
+.reply_detail {
+	display: inline-block;
+	position: relative;
+	width: 570px;
+	background-color: #fff;
+	box-shadow: 2px 2px 2px #424242;
+}
+
+.reply_arrow {
+	vertical-align: top;
+	width: 50px;
+	height: 50px;
+}
+
+.reply_regdate {
+	float: right;
+}
+
+.reply_detail .btn {
+	position: absolute;
+	top: 3px;
+	border: none;
+	width: 30px;
+	height: 30px;
+	background-color: transparent;
+	cursor: pointer;
+	outline: none;
+}
+
+.reply_edit_btn {
+	right: 40px;
+	font-size: 20px;
+}
+
+.reply_delete_btn {
+	right: 5px;
+	font-size: 24px;
+}
+
+.reply_regdate {
+	position: absolute;
+	margin: 0;
+	font-size: 14px;
+	right: 10px;
+	bottom: 10px;
+}
+
+.reply {
+	padding: 20px;
+	margin-left: 10px;
+	margin-bottom: 30px;
+	display: inline-block;
+	width: 440px;
+	line-height: 22px;
+	letter-spacing: 0.03em;
+	word-spacing: 3px;
+}
+
+	/* 답글 수정 박스 */
+	.reply_modify_box {
+		display: none;	
+	}

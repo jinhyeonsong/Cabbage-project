@@ -1,0 +1,120 @@
+@charset "UTF-8";
+    body{
+            font-family: 'AppleSDGothic', sans-serif;
+        }
+        .sales_content{
+            width:910px;
+            height:1000px;
+            background-color: #f4fffd;
+            margin-left:190px;
+        }
+
+        .sales_wrap{
+            width:870px;
+            margin:20px auto;
+
+            position: relative;
+        }
+        .sales_wrap.cost{
+            height:100px;
+        }
+
+        .sales_wrap.bar{
+            height:50px;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 50px;
+        }
+
+        .cost_text_box{
+            float: left;
+            width: 360px;
+            height:60px;
+            padding:20px;
+
+        }
+        .row{
+            background-color: #fff;
+        }
+
+        .cost_text_box.total{
+            margin-left: 70px;
+        }
+
+        .sales_wrap.graph{
+            width:830px;
+            height:310px;
+            padding:20px;
+        }
+        dt{
+
+            float: left;
+        }
+
+        .graphBox{
+            margin-top: 50px;
+        }
+
+        .date_choice_btn{
+            position:absolute;
+            right:50px;
+            cursor:pointer;
+        }
+
+        .date_choice_popup{
+            display: none;
+            background: #fff;
+            width:200px;
+            height:120px;
+            padding:20px;
+            position:absolute;
+            right: 0px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+
+
+        .fas.fa-times{
+            position: absolute;
+            top:10px;
+            right:10px;
+        }
+
+
+        /*경력 시작일과 종료일 날짜 입력*/
+        .first_date select, .last_date select{
+            width:50px;
+            border:1px solid #3C7166;
+        }
+        /*end #firstDate input, #lastDate input(경력 시작일과 종료일 날짜 입력)*/
+
+        /*부터, 까지 문구*/
+        .first_date p, .last_date p{
+            float: right;
+            font-weight: 500;
+            color: #3C7166;
+        }
+        /*end #firstDate , #lastDate p (부터, 까지 문구)*/
+
+
+        /*시작일 div*/
+        .first_date{
+            margin-top: 5px;
+        }
+        /*end 시작일 div)*/
+
+        /* 종료일 div*/
+        .last_date{
+            margin-top: 30px;
+        }
+        /*end 종료일 div)*/
+
+        .date_choice{
+            margin-top:30px;
+        }
+
+        .date_choice_btn{
+            font-family: 'AppleSDGothic', sans-serif;
+            border:1px solid #3C7166;
+            background: #fff;
+        }

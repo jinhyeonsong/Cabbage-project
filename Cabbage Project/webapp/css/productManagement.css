@@ -1,0 +1,187 @@
+@charset "UTF-8";
+
+body, button, a, input, option {
+	font-family: 'AppleSDGothic', sans-serif;
+}
+
+#container {
+	position: relative;
+	width: 910px;
+	height: 1100px;
+	/* 	background-color: antiquewhite; */
+	padding-top: 30px;
+	margin-left: 190px;
+}
+
+/*title*/
+.pm_title {
+	width: 850px;
+	height: 50px;
+	margin: auto;
+	line-height: 50px;
+	font-size: 30px;
+	padding-left: 10px;
+	box-sizing: border-box;
+	background-color: white;
+	color: #424242;
+}
+
+/*두번 째 박스*/
+/*카운터 리스트*/
+.pm_count_list {
+	display: flex;
+	position: relative;
+	margin: 10px auto 0 auto;
+	width: 850px;
+	height: 100px;
+	background-color: white;
+	padding-top: 1px;
+}
+
+.count_box{
+	flex: 1;
+	text-align: center;
+	line-height: 100px;
+}
+
+.pm_count_list table {
+	color: #424242;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.pm_count_list table>thead>tr>th {
+	width: 212px;
+	font-size: 28px;
+}
+
+.pm_count_list table>tbody>tr {
+	font-size: 24px;
+}
+
+.pm_count_list table>tbody>tr>td {
+	padding-top: 15px;
+	border-right: 1px solid #8c8c8c;
+}
+
+.pm_count_list table>tbody>tr>td:nth-child(4) {
+	border-right: none;
+}
+
+.pm_count_list table>tbody>tr>td>span {
+	font-size: 30px;
+	color: #0B4D40;
+}
+
+/*pm_goods_box*/
+/*세번 째 박스*/
+.pm_goods_box {
+	width: 850px;
+	margin: 10px auto 0 auto;
+	background-color: white;
+	color: #424242;
+}
+
+.pm_goods_box_top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 30px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #8c8c8c;
+}
+
+.pm_goods_box_top button {
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	border: 1px solid #8c8c8c;
+	color: #8c8c8c;
+	border-radius: 2px;
+	outline: none;
+	cursor: pointer;
+}
+
+.pm_goods_box_top button:hover {
+	color: #424242;
+	border: 1px solid #424242;
+}
+
+.pm_goods_list_box {
+	width: 800px;
+	min-height: 600px;
+	margin: auto;
+	position: relative;
+	/*background-color: #3C7166;*/
+}
+
+/*테이블을 감싸고 있는 div*/
+.pm_goods_list_box div {
+	width: 800px;
+	height: 550px;
+	background-color: white;
+	margin: 30px auto 0 auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.pm_goods_table{
+	width: 100%;
+}
+
+.pm_goods_table thead{
+	margin-bottom: 20px;
+}
+
+.pm_goods_table th {
+	color: #0B4D40;
+	min-width: 150px;
+	height: 50px;
+	line-height: 50px;
+	/*border: 1px solid black;*/
+	font-weight: 900;
+	font-size: 20px;
+}
+
+.pm_goods_table td {
+	text-align: center;
+	padding: 20px 10px;
+	border-right: 1px solid #F5F5F5;
+	vertical-align: middle;
+}
+
+.pm_goods_table th {
+	/*스크롤 영역 기준으로 배치된다. !! 좋은 코드!!*/
+	position: sticky;
+	top: 0;
+}
+
+
+/* chk box */
+input.type_select {
+	display: none;
+}
+
+input.type_select+label {
+	margin: 0 5px 5px 0;
+	display: inline-block;
+	background-color: #f3f3f3;
+	width: 200px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	font-size: 24px;
+	cursor: pointer;
+	transition: .2s ease;
+}
+
+input.type_select+label:active {
+	transform:scale(1.1);
+	
+}
+
+input.type_select:checked+label {
+	background-color: #3C7166;
+	color: white;
+}
+

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="givers">
+	<select id="selectNo" parameterType="int" resultType="Giver">
+		SELECT NO,BUSINESS_NUM businessNum,COMPANY,PHONE	
+		FROM givers
+		WHERE no=#{no}			
+	</select>
+	
+	<!-- 0302 오승주 ===================================================================== -->
+	<select id="selectDetail" parameterType="int" resultType="Giver">
+		SELECT g.no, g.business_num businessNum,g.company,g.phone,m.profile_img profileImg
+		FROM givers g,members m
+		WHERE g.no=m.no AND g.no=#{no}		
+	</select>
+	<!-- 0302 오승주 ===================================================================== -->
+	
+	<!-- 0303 오승주 //////////////////////////////////////////////////////////////////////-->
+	<select id="selectAvgAndCount" parameterType="int" resultType="Giver">
+		SELECT AVG(r.star) reviewAvg,COUNT(*) reviewCount
+		FROM products p, reviews r
+		WHERE p.no=r.product_no AND p.giver_no=#{no}	
+	</select>
+	<!-- ///////////////////////////////////////////////////////////////////////////////// -->
+	
+	<!-- 0303 오승주 ///////////////////////////////////////////////////////////////////// -->
+	<select id="selectSubCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM products p, subscribes s
+		WHERE p.no=s.product_no AND s.status='Y' AND p.giver_no=#{no} 
+	</select>
+	<!-- ///////////////////////////////////////////////////////////////////////////////// -->
+	
+	<!-- 0304 오승주 : 기버의 아이템들 /////////////////////////////////////////////////// -->
+	<select id="selectGiverItems" parameterType="PageVO" resultType="Product">
+	SELECT no,giverNo,categoryNo,name,price,photo,subCount,star,revCount,regdate, r
+	FROM(SELECT no,giverNo,categoryNo,name,price,photo,subCount,star,revCount, regdate,rownum r
+	FROM (SELECT no,giver_no giverNo,category_no categoryNo,name,price,photo,sub_count subCount,star,rev_count revCount,regdate
+	FROM products))
+	WHERE r BETWEEN #{start} AND #{end} AND giverNo=#{giverNo}
+	<choose>
+      <when test='sort=="sub"'>
+      ORDER BY subCount DESC
+      </when>
+      <when test="sort=='date'">
+      ORDER BY regdate DESC
+      </when>   
+      <when test="sort=='lowPrice'">
+      ORDER BY price
+      </when>
+      <when test="sort=='highPrice'">
+      ORDER BY price DESC
+      </when>
+      <when test="sort=='score'">
+      ORDER BY star DESC
+      </when>
+   </choose>
+	</select>
+	<!-- end 기버의 아이템들================================================================ -->
+	
+	<!-- 0304 오승주 : 기버가 가진 아이템의 수 //////////////////////////////////////////// -->
+	<select id="selectItemCount" parameterType="int" resultType="int">
+	SELECT COUNT(*)
+	FROM products
+	WHERE giver_no=#{no}
+	</select>
+	
+	<!--0303 이아림 기버마이페이지 판매자정보 출력-->
+	<select id="selectGiverInfo" parameterType="int" resultType="Giver">
+	SELECT g.company, g.phone, m.id, m.profile_img profileImg ,g.no no
+	FROM givers g, members m
+	WHERE g.no = m.no AND g.no = #{no}
+	</select>
+
+	<!-- 0304 이아림 기버마이페이지 판매자정보 수정 -->
+	<update id="update" parameterType="Giver">
+	UPDATE givers
+	SET company = #{company},
+	phone = #{phone}
+	WHERE no = #{no}
+	</update>
+	<!-- 03-04 송진현 추가  -->
+	<select id="selectbusinessNum" parameterType="Giver" resultType="Giver">
+		select business_num businessNum
+		from givers
+		where business_num = #{businessNum}
+	</select>
+	
+	<insert id="insertGiver" parameterType="Giver">
+		INSERT INTO givers(no,business_num,company,phone)
+		VALUES(#{no},#{businessNum},#{company},#{phone})
+	</insert>
+	
+	<select id="selectDetailOne" parameterType="int" resultType="Giver">
+		select g.no No,company, m.profile_img profileImg
+		from givers g, products p,members m
+		where p.no=500 AND p.giver_no=g.no AND g.no=m.no
+	</select>
+	<!--// 03-04 송진현 추가 end-->
+	
+	<!--//03-16 이아림 추가 -->
+	<update id="updatePhone" parameterType="Giver">
+   update givers
+   set phone = #{phone}
+   where no = #{no}
+   </update>
+   <!--//03-16 이아림 추가 end -->
+</mapper>
+

@@ -1,0 +1,158 @@
+#giverMyPageMainContainer{
+    width: 910px;
+    height: auto;
+    margin-left: 190px;
+    font-family: AppleSDGothic, sans-serif;
+    position: relative;
+    background-color: #f0ffff;
+}
+button{
+    font-family: AppleSDGothic, sans-serif;
+}
+.product_register_content{
+    width: 910px;
+    height: 100px;
+    position: relative;
+}
+.product_register_box{
+    position: absolute;
+    width: 220px;
+    height: 50px;
+    top: 25px;
+    left: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #cacaca;
+}
+.product_register_title{
+    position: absolute;
+    font-size: 28px;
+    top: 11px;
+    left: 20px;
+}
+.product_register_box>.fa-registered{
+    position: absolute;
+    font-size: 25px;
+    top: 10px;
+    left: 120px;
+    color: #3C7166;
+}
+.product_register_box>.fa-chevron-right{
+    position: absolute;
+    font-size: 25px;
+    top: 10px;
+    right: 20px;
+    color: #3C7166;
+}
+.product_status_content{
+    width: 910px;
+    height: 200px;
+    position: relative;
+}
+.product_delivery_status_wrap{
+    position: absolute;
+    width: 385px;
+    height: 140px;
+    top: 25px;
+    left: 60px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #cacaca;
+}
+.product_current_status_wrap{
+    position: absolute;
+    width: 385px;
+    height: 140px;
+    top: 25px;
+    left: 465px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #cacaca;
+}
+.product_status_title_box{
+    width: 385px;
+    height: 40px;
+    position: relative;
+    border-bottom: 1px solid #424242;
+}
+.product_status_title{
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    font-size: 17px;
+}
+.product_status_box{
+    position: relative;
+}
+.product_status_box>i{
+    position: absolute;
+    font-size: 50px;
+    top: 15px;
+    left: 20px;
+    color: #3C7166;
+}
+.product_status_list{
+    position: absolute;
+    width: 280px;
+    top: 0;
+    right: 0;
+    padding: 10px 0;
+    font-size: 13px;
+}
+.product_status_list>li{
+    margin: 10px 0;
+}
+.product_status_list>li>span:nth-child(2){
+    position: absolute;
+    right: 20px;
+}
+.sales_statistics_content{
+    width: 910px;
+    height: 550px;
+    position: relative;
+}
+.sales_statistics_wrap{
+    width: 790px;
+    height: 540px;
+    position: absolute;
+    top: 0;
+    left: 60px;
+    background-color: white;
+    border: 1px solid #cacaca;
+}
+.sales_statistics_title_box{
+    width: 790px;
+    height: 40px;
+    position: relative;
+    border-bottom: 1px solid #424242;
+}
+.sales_statistics_title{
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    font-size: 17px;
+}
+.sales_statistics_box{
+    width: 790px;
+    height: 460px;
+    position: relative;
+}
+.chart_btn_list{
+    position: absolute;
+    top: 41px;
+    left: 50%;
+    margin-left: -115px;
+}
+.chart_btn_list>li{
+    display: inline-block;
+    margin-left: -5px;
+}
+.chart_btn_list>li>button{
+    width: 80px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #bababa;
+    border-radius: 5px;
+    cursor: pointer;
+}

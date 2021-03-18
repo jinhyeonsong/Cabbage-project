@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+/* ====================왼쪽의 공통 탭==================*/
+	.list_content {
+		width: 190px;
+		height: 700px;
+		background-color: #3c7166;
+		float: left;
+		padding-top: 100px;
+	}
+	
+	.list_content_giver_wrap {
+		height: 162px;
+		text-align: center;
+	}
+	
+	.list_content_giver_box {
+		top: 40px;
+		position: relative;
+	}
+	
+	#giverProfileImg {
+		width: 70px;
+		height: 70px;
+		border-radius: 100%;
+		line-height: 70px;
+	}
+	
+	.management_list {
+		width: 170px;
+		height: 66px;
+		line-height: 66px;
+		background-color: #4c9384;
+		color: #fff;
+		padding: 0 10px;
+
+		position: relative;
+		cursor: pointer;
+	}
+	.management_list>a{
+		cursor: pointer;
+		color:#fff;
+		display: block;
+		width: 170px;
+		height: 66px;
+	}
+	
+	.management_list:hover {
+		background-color: #3c7166;
+	}
+	
+	.management_list.on {
+		background-color: #264a43;
+	}
+	
+	.fas.fa-chevron-right {
+		right: 0;
+		top: 25px;
+		width: 30px;
+		height: 30px;
+		display: none;
+		position: absolute;
+	}
+	
+	.fas.fa-chevron-right.on {
+		display: block;
+	}
+	/* 문의하기 */
+	.qna {
+		text-align: center;
+		padding-top: 10px;
+	}
+	
+	/*========================================*/
+	.contents {
+		width: 910px;
+		background-color: #edf0f5;
+		float: left;
+	}
+	
+	.content {
+		display: none;
+	}
+	
+	.content.on {
+		display: block;
+	}

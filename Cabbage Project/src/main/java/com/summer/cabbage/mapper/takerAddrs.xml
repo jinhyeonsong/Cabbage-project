@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="takerAddrs">
+	<select id="selectNo" parameterType="int" resultType="TakerAddr">
+		SELECT NO,TAKER_NO takerNo,NAME,ADDR,ADDR_DETAIL addrDetail,PHONE,TYPE,ZIP_CODE zipCode,RECEIVER,REGDATE	
+		FROM taker_addrs
+		WHERE no=#{no}
+	</select>
+	<!--  작성자: 방현수 최초작성일: 20210303 유저 번호로 배송지 받아오기 -->
+	  
+	 <select id="selectTakerAddrs" parameterType="int" resultType="TakerAddr">
+	 	SELECT no,taker_no takerNo,name ,addr,addr_detail addrDetail, phone, type, zip_code zipCode,receiver,regdate	
+		FROM taker_addrs
+		WHERE taker_no =#{takerNo}
+	 </select>
+	 
+	 <select id="selectOneAddr" parameterType="int" resultType="TakerAddr">
+	 	SELECT no,TAKER_NO takerNo, name, addr, addr_detail addrDetail, phone, type, zip_code zipCode, receiver,regdate	
+		FROM taker_addrs
+		WHERE taker_no =#{takerNo}
+		AND type = 'Y'
+	 </select>
+	 
+	 <!--  20210304 방 유저 기본배송지로 입력-->
+	 
+	 <insert id="insertAddr" parameterType="TakerAddr">
+	 	INSERT INTO taker_addrs (no, taker_no, name, zip_code, addr, addr_detail, phone, type, receiver, regdate )
+	 	VALUES(taker_addrs_seq.nextval, #{takerNo}, #{name}, #{zipCode}, #{addr}, #{addrDetail}, #{phone}, #{type}, #{receiver}, systimestamp)
+	 </insert>
+	 
+	 <update id="updateSetOthersNormal" parameterType="int">
+	 	UPDATE taker_addrs 
+	 	SET type='N'
+	 	WHERE taker_no = #{takerNo}
+	 </update>
+	 <!-- //03-04 방현수   -->
+	
+</mapper>
+
