@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviews">
+	<select id="selectNo" parameterType="int" resultType="Review">
+		SELECT NO,PRODUCT_NO productNo,TAKER_NO takerNo,REVIEW,STAR,REGDATE			
+		FROM reviews
+		WHERE no=#{no}			
+	</select>
+	<!-- 03-04  송진현  추가 -->
+	<select id="selectListreview" resultType="Review" parameterType="int">
+		select r.no No,r.taker_no takerNo, r.review review, r.star star, r.regdate regdate,t.name takerName, m.profile_img takerProfileImg, rp.reply giverReply, rp.regdate replyRegdate,(
+select m.profile_img profileImg
+from members m, products p
+where p.no=500 AND p.giver_no=m.no
+) giverProfileImg
+from reviews r, members m, replies rp,takers t
+where r.product_no=500 AND m.no=r.taker_no AND r.no=rp.no AND r.taker_no=t.no
+	</select>
+	<!--  03-03 이소현 _ 리뷰 받아오기   -->
+	<select id="selectReviewsByProductNo" parameterType="int" resultType="Review">
+		SELECT r.no no, p.name productName, p.no productNo, r.review, r.star, r.taker_no takerNo, t.name takerName, r.regdate, m.profile_img MemberProfileImg,
+				 t.nickname takerNickname, p.giver_no giverNo
+		FROM products p, reviews r, takers t, members m
+		WHERE p.no=r.product_no AND r.taker_no=t.no AND m.no =t.no  AND p.no = #{productNo}
+	</select>
+	
+	
+	<!-- 0311 오승주 리뷰 등록 insertReview -->
+	<insert id="insertReview" parameterType="Review">
+	INSERT INTO reviews
+	(no,product_no,taker_no,review,star,regdate)
+	VALUES
+	(reviews_seq.nextval,#{productNo},#{takerNo},#{review},#{star},systimestamp)	
+	</insert>
+	
+	<!-- 0314 : 오승주 : 이미 등록된 리뷰가 있는지 없는지 확인용  -->
+	<!-- selectReviewOnOff -->
+	<select id="selectReviewOnOff" resultType="int" parameterType="Subscribe">
+	SELECT COUNT(*)
+	FROM reviews
+	WHERE product_no=#{productNo} AND taker_no =#{takerNo}
+	</select>
+	
+	<!-- 0314 : 오승주 : 이미 등록된 리뷰데이터 불러오기 용 -->
+	<!-- selectReview -->
+	<select id="selectReview" resultType="Review" parameterType="Review">
+	SELECT no,product_no productNo,taker_no takerNo,review,star,regdate
+	FROM reviews
+	WHERE product_no=#{productNo} AND taker_no=#{takerNo}
+	</select>
+	
+	<!-- 0314 : 리뷰 수정  -->
+	<update id="updateReview" parameterType="Review">
+	UPDATE reviews
+	SET review=#{review} ,
+	star=#{star} ,
+	regdate=systimestamp
+	WHERE product_no=#{productNo} AND taker_no=#{takerNo}
+	</update>
+	
+</mapper>
+

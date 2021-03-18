@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="deliveryRegions">
+	<select id="selectNo" parameterType="int" resultType="DeliveryRegion">
+		SELECT NO,PRODUCT_NO productNo,AREA_NO areaNo,PRICE,REGDATE	
+		FROM delivery_regions
+		WHERE no=#{no}	
+	</select>
+	<!-- 03-11 방 prior_no 여부로 지역 전체인지 판별하기 위한 구문(서울/경기인 경우) -->
+	<select id="selectWhether" parameterType="int" resultType="DeliveryRegion">
+		SELECT
+		DISTINCT
+		r.PRIOR_NO
+		FROM regions r
+		INNER JOIN delivery_regions dr ON dr.area_no = r.no
+		INNER JOIN products p ON dr.product_no = p.no
+		WHERE p.no = #{productNo}
+		AND r.prior_no IS NULL
+	</select>
+	
+	<!-- 지역이 여러 곳일 경우를 위해 배열 + for -->
+	<select id="selectOptsWithPrimaryRegion" parameterType="int" resultType="DeliveryRegion">
+		SELECT
+		r.no no
+		FROM regions r
+		INNER JOIN delivery_regions dr ON dr.area_no = r.no
+		INNER JOIN products p ON dr.product_no = p.no
+		WHERE p.no = #{productNo}
+		AND r.prior_no IS NULL
+	</select>
+	
+	<!-- 지역이름(시도)를 출력 -->
+	<select id="selectOptPrimaryRegionName" parameterType="DeliveryRegion" resultType="DeliveryRegion">
+		SELECT r.name primaryRegionName, r.no areaNo, dr.price
+		FROM regions r, delivery_regions dr, products p
+		WHERE r.no = #{no}
+		AND r.no = dr.area_no
+		AND p.no = dr.product_no
+		AND p.no = #{productNo}
+		
+	</select>
+	
+	<!-- 시도+시도군구의 경우 시도 추출 -->
+	<select id="selectOptPrimaryRegionName2" parameterType="DeliveryRegion" resultType="DeliveryRegion">
+		SELECT r.name primaryRegionName, r.no areaNo, dr.price
+		FROM regions r, delivery_regions dr, products p
+		WHERE r.no = #{no}
+		AND p.no = dr.product_no
+		AND p.no = #{productNo}
+	
+	</select>
+	
+	<!-- 시도+시도구군의 경우를 위해 (서울 송파/ 경기도 수원시 팔달구) -> 시도구군 출력하는 구문 
+		** 위 selectOptPrimaryRegionName 구문을 재사용하기 위해서 prior_no를 no로 alias처리한 것으로 오타아님
+	
+	-->
+
+	<select id="selectOptRegion" parameterType="int" resultType="DeliveryRegion">
+		SELECT r.name regionName, r.prior_no no, dr.area_no areaNo, dr.price
+		FROM regions r
+		INNER JOIN delivery_regions dr ON dr.area_no = r.no
+		INNER JOIN products p ON dr.product_no = p.no
+		WHERE p.no = #{productNo}
+        AND r.prior_no IS NOT NULL
+	
+	</select>
+	
+	<!-- 03-04 송진현 추가  -->
+	<select id="selectListRegion" parameterType="int" resultType="DeliveryRegion">
+		SELECT (SELECT name
+				FROM regions
+				WHERE (SELECT DISTINCT r.prior_no
+						FROM delivery_regions dr, regions r, products p
+						WHERE dr.area_no = r.no
+						AND dr.product_no = p.no
+						AND p.no = #{productNo}) = no) primaryRegionName , 
+				r.name regionName, dr.price price, r.no
+	
+		FROM products p, delivery_regions dr, regions r
+		WHERE p.no = dr.product_no
+		AND dr.area_no = r.no
+		AND p.no = #{productNo}
+	</select>
+	
+	<!-- 구독등록하기 -->
+	<insert id="insertDeliveryRegions" parameterType="DeliveryRegion">
+		INSERT INTO delivery_regions(NO, PRODUCT_NO, AREA_NO, PRICE, REGDATE)
+		VALUES(delivery_regions_seq.nextval, #{productNo}, #{areaNo}, #{price}, systimestamp)
+	</insert>
+	<!-- 210304 박형우 -->
+	
+	
+</mapper>
+
